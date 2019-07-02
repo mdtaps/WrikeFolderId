@@ -7,21 +7,33 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EA8131BC22C5750A009D2806 /* WrikeResponseObjectModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA8131BB22C5750A009D2806 /* WrikeResponseObjectModel.swift */; };
 		EAAAC98322BDB97600414284 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAAC98222BDB97600414284 /* AppDelegate.swift */; };
-		EAAAC98522BDB97600414284 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAAC98422BDB97600414284 /* ViewController.swift */; };
+		EAAAC98522BDB97600414284 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAAC98422BDB97600414284 /* LoginViewController.swift */; };
 		EAAAC98822BDB97600414284 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EAAAC98622BDB97600414284 /* Main.storyboard */; };
 		EAAAC98A22BDB97900414284 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EAAAC98922BDB97900414284 /* Assets.xcassets */; };
 		EAAAC98D22BDB97900414284 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EAAAC98B22BDB97900414284 /* LaunchScreen.storyboard */; };
+		EAAAC99522BDBA2800414284 /* StyledButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAAC99422BDBA2800414284 /* StyledButton.swift */; };
+		EAAAC99722BDDE8200414284 /* OAuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAAC99622BDDE8200414284 /* OAuthViewController.swift */; };
+		EAAAC99A22BF30E300414284 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAAAC99922BF30E300414284 /* WebKit.framework */; };
+		EAAAC99D22C18B9800414284 /* AccountElementsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAAC99B22C18B9800414284 /* AccountElementsViewController.swift */; };
+		EAAAC99E22C18B9800414284 /* AccountElementsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EAAAC99C22C18B9800414284 /* AccountElementsViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		EA8131BB22C5750A009D2806 /* WrikeResponseObjectModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WrikeResponseObjectModel.swift; sourceTree = "<group>"; };
 		EAAAC97F22BDB97600414284 /* Wrike API Tool.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Wrike API Tool.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EAAAC98222BDB97600414284 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		EAAAC98422BDB97600414284 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		EAAAC98422BDB97600414284 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		EAAAC98722BDB97600414284 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		EAAAC98922BDB97900414284 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EAAAC98C22BDB97900414284 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EAAAC98E22BDB97900414284 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EAAAC99422BDBA2800414284 /* StyledButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyledButton.swift; sourceTree = "<group>"; };
+		EAAAC99622BDDE8200414284 /* OAuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OAuthViewController.swift; sourceTree = "<group>"; };
+		EAAAC99922BF30E300414284 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
+		EAAAC99B22C18B9800414284 /* AccountElementsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountElementsViewController.swift; sourceTree = "<group>"; };
+		EAAAC99C22C18B9800414284 /* AccountElementsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AccountElementsViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,6 +41,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EAAAC99A22BF30E300414284 /* WebKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -40,6 +53,7 @@
 			children = (
 				EAAAC98122BDB97600414284 /* Wrike API Tool */,
 				EAAAC98022BDB97600414284 /* Products */,
+				EAAAC99822BF30E300414284 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -55,13 +69,26 @@
 			isa = PBXGroup;
 			children = (
 				EAAAC98222BDB97600414284 /* AppDelegate.swift */,
-				EAAAC98422BDB97600414284 /* ViewController.swift */,
+				EAAAC98422BDB97600414284 /* LoginViewController.swift */,
+				EAAAC99422BDBA2800414284 /* StyledButton.swift */,
 				EAAAC98622BDB97600414284 /* Main.storyboard */,
+				EAAAC99622BDDE8200414284 /* OAuthViewController.swift */,
+				EAAAC99B22C18B9800414284 /* AccountElementsViewController.swift */,
+				EAAAC99C22C18B9800414284 /* AccountElementsViewController.xib */,
 				EAAAC98922BDB97900414284 /* Assets.xcassets */,
 				EAAAC98B22BDB97900414284 /* LaunchScreen.storyboard */,
 				EAAAC98E22BDB97900414284 /* Info.plist */,
+				EA8131BB22C5750A009D2806 /* WrikeResponseObjectModel.swift */,
 			);
 			path = "Wrike API Tool";
+			sourceTree = "<group>";
+		};
+		EAAAC99822BF30E300414284 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				EAAAC99922BF30E300414284 /* WebKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -123,6 +150,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EAAAC98D22BDB97900414284 /* LaunchScreen.storyboard in Resources */,
+				EAAAC99E22C18B9800414284 /* AccountElementsViewController.xib in Resources */,
 				EAAAC98A22BDB97900414284 /* Assets.xcassets in Resources */,
 				EAAAC98822BDB97600414284 /* Main.storyboard in Resources */,
 			);
@@ -135,7 +163,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EAAAC98522BDB97600414284 /* ViewController.swift in Sources */,
+				EAAAC99D22C18B9800414284 /* AccountElementsViewController.swift in Sources */,
+				EAAAC99722BDDE8200414284 /* OAuthViewController.swift in Sources */,
+				EA8131BC22C5750A009D2806 /* WrikeResponseObjectModel.swift in Sources */,
+				EAAAC99522BDBA2800414284 /* StyledButton.swift in Sources */,
+				EAAAC98522BDB97600414284 /* LoginViewController.swift in Sources */,
 				EAAAC98322BDB97600414284 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -283,6 +315,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = CGABW4X2P7;
 				INFOPLIST_FILE = "Wrike API Tool/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -300,6 +333,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = CGABW4X2P7;
 				INFOPLIST_FILE = "Wrike API Tool/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
