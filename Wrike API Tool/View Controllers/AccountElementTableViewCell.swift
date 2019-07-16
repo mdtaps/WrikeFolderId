@@ -8,8 +8,35 @@
 
 import UIKit
 
+protocol CellClickDelegate {
+    func launchFolderIdView(folderId: String)
+    func loadChildFolders(folderId: String)
+}
+
 class AccountElementTableViewCell: UITableViewCell {
     
-    @IBOutlet weak var elementTitle: UILabel!
+    @IBOutlet weak var elementTitleButton: StyledButton!
+    @IBOutlet weak var caretButton: StyledButton!
     
+    var delegate: CellClickDelegate?
+    var folderId: String?
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        selectionStyle = .none
+        
+        caretButton.setTitle("\u{203A}", for: .normal)
+    }
+    
+    @IBAction func elementTitleTapped(_ sender: UIButton) {
+        if let folderId = folderId {
+            delegate?.launchFolderIdView(folderId: folderId)
+        }
+    }
+    
+    @IBAction func caretTapped(_ sender: UIButton) {
+        if let folderId = folderId {
+            delegate?.loadChildFolders(folderId: folderId)
+        }
+    }
 }

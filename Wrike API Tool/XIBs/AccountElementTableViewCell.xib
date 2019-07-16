@@ -19,23 +19,58 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="element tile" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dwK-N2-pKA">
-                        <rect key="frame" x="16" y="11" width="288" height="21"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bCe-oD-kWn" customClass="StyledButton" customModule="Wrike_API_Tool" customModuleProvider="target">
+                        <rect key="frame" x="16" y="6" width="250.5" height="31.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                        <state key="normal" title="Button">
+                            <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                        </state>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="5"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                        <connections>
+                            <action selector="elementTitleTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="qVr-By-XlN"/>
+                        </connections>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7iY-jX-cFC" customClass="StyledButton" customModule="Wrike_API_Tool" customModuleProvider="target">
+                        <rect key="frame" x="282.5" y="6" width="31.5" height="31.5"/>
+                        <color key="backgroundColor" red="0.65171706679999997" green="0.77407354120000005" blue="0.32929587360000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="7iY-jX-cFC" secondAttribute="height" multiplier="1:1" id="ehV-ZA-I95"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                        <color key="tintColor" red="0.65171706679999997" green="0.77407354120000005" blue="0.32929587360000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <state key="normal" title="Button">
+                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </state>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="5"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                        <connections>
+                            <action selector="caretTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="4Sx-Q9-ccE"/>
+                        </connections>
+                    </button>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="dwK-N2-pKA" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="11" id="2cj-ru-upG"/>
-                    <constraint firstAttribute="bottom" secondItem="dwK-N2-pKA" secondAttribute="bottom" constant="11.5" id="PXe-yB-ItB"/>
-                    <constraint firstAttribute="trailing" secondItem="dwK-N2-pKA" secondAttribute="trailing" constant="16" id="nwk-Oo-hd7"/>
-                    <constraint firstItem="dwK-N2-pKA" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="sCF-ny-0yT"/>
+                    <constraint firstItem="7iY-jX-cFC" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="0el-Fi-KkX"/>
+                    <constraint firstAttribute="trailing" secondItem="7iY-jX-cFC" secondAttribute="trailing" constant="6" id="47y-Sh-gGs"/>
+                    <constraint firstItem="bCe-oD-kWn" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="6" id="T2m-3m-g9Q"/>
+                    <constraint firstItem="bCe-oD-kWn" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="VJp-fm-g20"/>
+                    <constraint firstItem="bCe-oD-kWn" firstAttribute="trailing" secondItem="7iY-jX-cFC" secondAttribute="leading" constant="-16" id="XOv-xT-jX1"/>
+                    <constraint firstAttribute="bottom" secondItem="7iY-jX-cFC" secondAttribute="bottom" constant="6" id="XnL-gA-KGo"/>
+                    <constraint firstAttribute="bottom" secondItem="bCe-oD-kWn" secondAttribute="bottom" constant="6" id="b3Z-1S-7Oi"/>
+                    <constraint firstItem="bCe-oD-kWn" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="cWx-pM-HiH"/>
+                    <constraint firstItem="7iY-jX-cFC" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="6" id="mtw-Gi-MgK"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="elementTitle" destination="dwK-N2-pKA" id="QfJ-yc-Uub"/>
+                <outlet property="caretButton" destination="7iY-jX-cFC" id="KKt-vr-FEZ"/>
+                <outlet property="elementTitleButton" destination="bCe-oD-kWn" id="G4r-AW-UIJ"/>
             </connections>
             <point key="canvasLocation" x="47.826086956521742" y="34.821428571428569"/>
         </tableViewCell>

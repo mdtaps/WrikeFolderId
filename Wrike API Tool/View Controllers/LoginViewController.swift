@@ -38,12 +38,13 @@ class LoginViewController: UIViewController {
                 guard let rootFolder = object.data.first else {
                     fatalError("No folders found")
                 }
-
+                
                 DispatchQueue.main.async {
                     let vc = AccountElementsViewController(wrikeFolder: rootFolder)
+                    let navController = UINavigationController(rootViewController: vc)
                     let appDelegate = UIApplication.shared.delegate as? AppDelegate
                     appDelegate?.wrikeObject = object
-                    self.present(vc, animated: true, completion: nil)
+                    self.present(navController, animated: true, completion: nil)
                 }
             }
         }

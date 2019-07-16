@@ -32,7 +32,6 @@ extension WrikeNetworkClient {
             
             do {
                 let decodedJson = try decoder.decode(WrikeResponseObject.self, from: data)
-                print("Decoded JSON: \(decodedJson)")
                 return .Success(with: decodedJson)
             } catch {
                 return .Failure(with: error.localizedDescription)

@@ -30,26 +30,10 @@ class AccountElementsViewController: UIViewController {
         elementsTableView.delegate = self
         elementsTableView.dataSource = self
         
+        title = wrikeFolder.title
+        
+        elementsTableView.tableFooterView = UIView()
     }
-    
-//    func getTitles(ids: [String]) -> [String] {
-//        var titleStrings = [String]()
-//        for id in ids {
-//            titleStrings.append(getTitle(with: id))
-//        }
-//
-//        return titleStrings
-//    }
-//
-//    func getTitle(with id: String) -> String {
-//        for datum in wrikeFolder.data {
-//            if datum.id == id {
-//                return datum.title
-//            }
-//        }
-//
-//        return ""
-//    }
 }
 
 extension AccountElementsViewController: UITableViewDelegate, UITableViewDataSource {
@@ -72,18 +56,41 @@ extension AccountElementsViewController: UITableViewDelegate, UITableViewDataSou
             elementCell = nib?.first! as! AccountElementTableViewCell
         }
         
-        let childId = childIds[indexPath.row]
+        elementCell.delegate = self
+        
+        elementCell.folderId = childIds[indexPath.row]
         var elementTitleText: String?
         
         for datum in appDelegate.wrikeObject!.data {
-            if datum.id == childId {
+            if datum.id == elementCell.folderId {
                 elementTitleText = datum.title
+                if datum.childIds!.isEmpty {
+                    elementCell.caretButton.isHidden = true
+                }
                 break
             }
         }
         
-        elementCell.elementTitle.text = elementTitleText ?? "Unknown Title"
+        elementCell.elementTitleButton.setTitle(elementTitleText ?? "Unknown Title", for: .normal)
         
         return elementCell
+    }
+}
+
+extension AccountElementsViewController: CellClickDelegate {
+    func launchFolderIdView(folderId: String) {
+        let vc = FolderIdViewController(folderId: folderId)
+        present(vc, animated: true, completion: nil)
+    }
+    
+    func loadChildFolders(folderId: String) {
+        for folder in appDelegate.wrikeObject!.data {
+            if folder.id == folderId {
+                if !folder.childIds!.isEmpty {
+                    let vc = AccountElementsViewController(wrikeFolder: folder)
+                    navigationController?.pushViewController(vc, animated: true)
+                }
+            }
+        }
     }
 }

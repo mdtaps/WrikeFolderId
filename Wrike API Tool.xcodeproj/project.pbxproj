@@ -23,6 +23,8 @@
 		EAAAC99A22BF30E300414284 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAAAC99922BF30E300414284 /* WebKit.framework */; };
 		EAAAC99D22C18B9800414284 /* AccountElementsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAAC99B22C18B9800414284 /* AccountElementsViewController.swift */; };
 		EAAAC99E22C18B9800414284 /* AccountElementsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EAAAC99C22C18B9800414284 /* AccountElementsViewController.xib */; };
+		EAFB81B322DE2FE30062813D /* FolderIdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAFB81B122DE2FE30062813D /* FolderIdViewController.swift */; };
+		EAFB81B422DE2FE30062813D /* FolderIdViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EAFB81B222DE2FE30062813D /* FolderIdViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +46,8 @@
 		EAAAC99922BF30E300414284 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		EAAAC99B22C18B9800414284 /* AccountElementsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountElementsViewController.swift; sourceTree = "<group>"; };
 		EAAAC99C22C18B9800414284 /* AccountElementsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AccountElementsViewController.xib; sourceTree = "<group>"; };
+		EAFB81B122DE2FE30062813D /* FolderIdViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderIdViewController.swift; sourceTree = "<group>"; };
+		EAFB81B222DE2FE30062813D /* FolderIdViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FolderIdViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +67,7 @@
 			children = (
 				EA8131C222D854C2009D2806 /* AccountElementTableViewCell.xib */,
 				EAAAC99C22C18B9800414284 /* AccountElementsViewController.xib */,
+				EAFB81B222DE2FE30062813D /* FolderIdViewController.xib */,
 			);
 			path = XIBs;
 			sourceTree = "<group>";
@@ -71,6 +76,7 @@
 			isa = PBXGroup;
 			children = (
 				EAAAC98422BDB97600414284 /* LoginViewController.swift */,
+				EAFB81B122DE2FE30062813D /* FolderIdViewController.swift */,
 				EAAAC99622BDDE8200414284 /* OAuthViewController.swift */,
 				EA8131C122D854C2009D2806 /* AccountElementTableViewCell.swift */,
 				EAAAC99B22C18B9800414284 /* AccountElementsViewController.swift */,
@@ -109,10 +115,10 @@
 				EAAAC98222BDB97600414284 /* AppDelegate.swift */,
 				EA8131C822DAF638009D2806 /* View Controllers */,
 				EA8131C922DAF649009D2806 /* Views */,
-				EAAAC98622BDB97600414284 /* Main.storyboard */,
 				EA8131C722DAF629009D2806 /* XIBs */,
 				EA8131C522D93CC4009D2806 /* Extensions.swift */,
 				EAAAC98922BDB97900414284 /* Assets.xcassets */,
+				EAAAC98622BDB97600414284 /* Main.storyboard */,
 				EAAAC98B22BDB97900414284 /* LaunchScreen.storyboard */,
 				EAAAC98E22BDB97900414284 /* Info.plist */,
 				EA8131BD22CBFD75009D2806 /* WrikeNetworkingClient.swift */,
@@ -191,6 +197,7 @@
 				EAAAC98D22BDB97900414284 /* LaunchScreen.storyboard in Resources */,
 				EAAAC99E22C18B9800414284 /* AccountElementsViewController.xib in Resources */,
 				EA8131C422D854C2009D2806 /* AccountElementTableViewCell.xib in Resources */,
+				EAFB81B422DE2FE30062813D /* FolderIdViewController.xib in Resources */,
 				EAAAC98A22BDB97900414284 /* Assets.xcassets in Resources */,
 				EAAAC98822BDB97600414284 /* Main.storyboard in Resources */,
 			);
@@ -213,6 +220,7 @@
 				EAAAC98522BDB97600414284 /* LoginViewController.swift in Sources */,
 				EA8131BE22CBFD75009D2806 /* WrikeNetworkingClient.swift in Sources */,
 				EAAAC98322BDB97600414284 /* AppDelegate.swift in Sources */,
+				EAFB81B322DE2FE30062813D /* FolderIdViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
