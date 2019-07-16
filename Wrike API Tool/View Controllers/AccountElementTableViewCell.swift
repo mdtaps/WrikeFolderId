@@ -17,6 +17,7 @@ class AccountElementTableViewCell: UITableViewCell {
     
     @IBOutlet weak var elementTitleButton: StyledButton!
     @IBOutlet weak var caretButton: StyledButton!
+    @IBOutlet weak var clipboardImage: UIImageView!
     
     var delegate: CellClickDelegate?
     var folderId: String?

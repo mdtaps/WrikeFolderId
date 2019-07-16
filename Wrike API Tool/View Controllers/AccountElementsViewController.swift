@@ -64,9 +64,15 @@ extension AccountElementsViewController: UITableViewDelegate, UITableViewDataSou
         for datum in appDelegate.wrikeObject!.data {
             if datum.id == elementCell.folderId {
                 elementTitleText = datum.title
+                
                 if datum.childIds!.isEmpty {
                     elementCell.caretButton.isHidden = true
                 }
+                
+                if datum.project == nil {
+                    elementCell.clipboardImage.isHidden = true
+                }
+                
                 break
             }
         }

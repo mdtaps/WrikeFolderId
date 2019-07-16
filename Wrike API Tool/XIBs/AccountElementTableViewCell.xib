@@ -20,7 +20,10 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bCe-oD-kWn" customClass="StyledButton" customModule="Wrike_API_Tool" customModuleProvider="target">
-                        <rect key="frame" x="16" y="6" width="250.5" height="31.5"/>
+                        <rect key="frame" x="46" y="2.5" width="228" height="40"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="40" id="i1M-lA-2q5"/>
+                        </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                         <state key="normal" title="Button">
                             <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -34,11 +37,12 @@
                             <action selector="elementTitleTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="qVr-By-XlN"/>
                         </connections>
                     </button>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7iY-jX-cFC" customClass="StyledButton" customModule="Wrike_API_Tool" customModuleProvider="target">
-                        <rect key="frame" x="282.5" y="6" width="31.5" height="31.5"/>
+                    <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="748" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7iY-jX-cFC" customClass="StyledButton" customModule="Wrike_API_Tool" customModuleProvider="target">
+                        <rect key="frame" x="282" y="6.5" width="32" height="32"/>
                         <color key="backgroundColor" red="0.65171706679999997" green="0.77407354120000005" blue="0.32929587360000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
-                            <constraint firstAttribute="width" secondItem="7iY-jX-cFC" secondAttribute="height" multiplier="1:1" id="ehV-ZA-I95"/>
+                            <constraint firstAttribute="height" constant="32" id="10m-kG-x1w"/>
+                            <constraint firstAttribute="width" constant="32" id="vrT-St-JJ2"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
                         <color key="tintColor" red="0.65171706679999997" green="0.77407354120000005" blue="0.32929587360000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -54,25 +58,38 @@
                             <action selector="caretTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="4Sx-Q9-ccE"/>
                         </connections>
                     </button>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="clipboard" translatesAutoresizingMaskIntoConstraints="NO" id="fZb-4r-gxn">
+                        <rect key="frame" x="6" y="6.5" width="32" height="32"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="32" id="QjI-Th-jx1"/>
+                            <constraint firstAttribute="height" constant="32" id="SjO-kC-fiW"/>
+                        </constraints>
+                    </imageView>
                 </subviews>
                 <constraints>
                     <constraint firstItem="7iY-jX-cFC" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="0el-Fi-KkX"/>
                     <constraint firstAttribute="trailing" secondItem="7iY-jX-cFC" secondAttribute="trailing" constant="6" id="47y-Sh-gGs"/>
-                    <constraint firstItem="bCe-oD-kWn" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="6" id="T2m-3m-g9Q"/>
-                    <constraint firstItem="bCe-oD-kWn" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="VJp-fm-g20"/>
-                    <constraint firstItem="bCe-oD-kWn" firstAttribute="trailing" secondItem="7iY-jX-cFC" secondAttribute="leading" constant="-16" id="XOv-xT-jX1"/>
+                    <constraint firstItem="bCe-oD-kWn" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="2" id="T2m-3m-g9Q"/>
+                    <constraint firstItem="bCe-oD-kWn" firstAttribute="leading" secondItem="fZb-4r-gxn" secondAttribute="trailing" constant="8" id="UYl-Hx-uqL"/>
                     <constraint firstAttribute="bottom" secondItem="7iY-jX-cFC" secondAttribute="bottom" constant="6" id="XnL-gA-KGo"/>
-                    <constraint firstAttribute="bottom" secondItem="bCe-oD-kWn" secondAttribute="bottom" constant="6" id="b3Z-1S-7Oi"/>
+                    <constraint firstItem="7iY-jX-cFC" firstAttribute="leading" secondItem="bCe-oD-kWn" secondAttribute="trailing" constant="8" id="ajy-T9-SAP"/>
+                    <constraint firstAttribute="bottom" secondItem="bCe-oD-kWn" secondAttribute="bottom" constant="2" id="b3Z-1S-7Oi"/>
                     <constraint firstItem="bCe-oD-kWn" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="cWx-pM-HiH"/>
+                    <constraint firstItem="fZb-4r-gxn" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="6" id="hSG-FM-Ir6"/>
                     <constraint firstItem="7iY-jX-cFC" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="6" id="mtw-Gi-MgK"/>
+                    <constraint firstItem="fZb-4r-gxn" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="tr0-bc-QMS"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="caretButton" destination="7iY-jX-cFC" id="KKt-vr-FEZ"/>
+                <outlet property="clipboardImage" destination="fZb-4r-gxn" id="EfT-XO-wd0"/>
                 <outlet property="elementTitleButton" destination="bCe-oD-kWn" id="G4r-AW-UIJ"/>
             </connections>
             <point key="canvasLocation" x="47.826086956521742" y="34.821428571428569"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="clipboard" width="32" height="32"/>
+    </resources>
 </document>
