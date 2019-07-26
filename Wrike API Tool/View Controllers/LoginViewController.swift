@@ -20,12 +20,12 @@ class LoginViewController: UIViewController {
     
     @IBAction func loginButtonPressed(_ sender: StyledButton) {
 
-        connectToWrike()
+//        connectToWrike()
         
         //Will be used when using OAuth
-//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//        let vc = storyboard.instantiateViewController(withIdentifier: "oauthViewController") as! OAuthViewController
-//        self.show(vc, sender: self)
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "oauthViewController") as! OAuthViewController
+        self.show(vc, sender: self)
     }
     
     func connectToWrike() {

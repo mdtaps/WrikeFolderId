@@ -15,9 +15,13 @@ class OAuthViewController: UIViewController, WKUIDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        guard let requestUrl = URL(string: "https://www.wrike.com/oauth2/authorize/v4?client_id=q96F3zIx&response_type=code") else {
+        let urlString = "\"https://mdtaps.com\"".addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
+        
+        guard let requestUrl = URL(string: "https://www.wrike.com/oauth2/authorize/v4?client_id=m3jEarPA&response_type=code&redirect_uri=https://mdtaps.com") else {
             return
         }
+        
+        print(requestUrl.absoluteString)
         
         UIApplication.shared.open(requestUrl, options: [:], completionHandler: nil)
         

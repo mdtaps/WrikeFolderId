@@ -41,5 +41,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             return false
         }
     }
+    
+    func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void) -> Bool {
+        
+        guard userActivity.activityType == NSUserActivityTypeBrowsingWeb,
+            let incomingURL = userActivity.webpageURL,
+            let components = NSURLComponents(url: incomingURL, resolvingAgainstBaseURL: true),
+            let path = components.path,
+            let params = components.queryItems else {
+                return false
+        }
+        
+        var code = ""
+        for param in params {
+            if param.name == "code" {
+                code = param.value!
+            }
+        }
+        
+        print("code = \(code)")
+        print("incomingURL = \(incomingURL.absoluteString)")
+        
+        return true
+    }
 }
 
