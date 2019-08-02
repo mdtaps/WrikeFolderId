@@ -59,6 +59,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
         
+        
+        
+        /*
+         POST https://www.wrike.com/oauth2/token
+         //Parameters:
+         client_id=<client_id>
+         client_secret=<client_secret>
+         grant_type=authorization_code
+         code=<authorization_code>
+        */
+        
         print("code = \(code)")
         print("incomingURL = \(incomingURL.absoluteString)")
         
