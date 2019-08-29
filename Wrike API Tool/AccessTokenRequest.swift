@@ -1,5 +1,5 @@
 //
-//  AccessToken.swift
+//  AccessTokenRequest.swift
 //  Wrike API Tool
 //
 //  Created by Mark Tapia on 7/28/19.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct AccessTokenResponse: Codable {
+struct AccessTokenResponseObject: Codable {
     var access_token: String
     var refresh_token: String
     var token_type: String
@@ -29,12 +29,13 @@ struct AccessTokenRequestParameters {
             static var ClientId = getClientIdString()
             static var ClientSecret = getClientSecretString()
             static var GrantType = "authorization_code"
+            static var Code = getAuthCode()
         }
     }
     
 
     
-    static func getClientIdString() -> String {
+    private static func getClientIdString() -> String {
         guard let path = Bundle.main.path(forResource: "ClientKey", ofType: "plist") else {
             fatalError("Could not find ClientKey.plist")
         }
@@ -48,7 +49,7 @@ struct AccessTokenRequestParameters {
         return clientIdString
     }
     
-    static func getClientSecretString() -> String {
+    private static func getClientSecretString() -> String {
         guard let path = Bundle.main.path(forResource: "ClientKey", ofType: "plist") else {
             fatalError("Could not find ClientKey.plist")
         }
@@ -60,6 +61,10 @@ struct AccessTokenRequestParameters {
         }
         
         return clientSecretString
+    }
+    
+    private static func getAuthCode() -> String {
+        return UserDefaults.standard.string(forKey: "authCode")!
     }
 }
 

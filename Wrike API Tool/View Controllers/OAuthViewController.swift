@@ -25,6 +25,4 @@ class OAuthViewController: UIViewController, WKUIDelegate {
         
         UIApplication.shared.open(requestUrl, options: [:], completionHandler: nil)
     }
-    
-    
 }

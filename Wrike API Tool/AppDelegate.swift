@@ -52,6 +52,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 return false
         }
         
+        
         var code = ""
         for param in params {
             if param.name == "code" {
@@ -59,7 +60,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
         
-        
+        UserDefaults.standard.set(code, forKey: "authCode")
         
         /*
          POST https://www.wrike.com/oauth2/token
