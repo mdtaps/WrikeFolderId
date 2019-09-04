@@ -52,7 +52,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 return false
         }
         
-        
         var code = ""
         for param in params {
             if param.name == "code" {
@@ -61,18 +60,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         UserDefaults.standard.set(code, forKey: "authCode")
-        
-        /*
-         POST https://www.wrike.com/oauth2/token
-         //Parameters:
-         client_id=<client_id>
-         client_secret=<client_secret>
-         grant_type=authorization_code
-         code=<authorization_code>
-        */
-        
-        print("code = \(code)")
-        print("incomingURL = \(incomingURL.absoluteString)")
         
         return true
     }

@@ -9,8 +9,10 @@
 /* Begin PBXBuildFile section */
 		EA1C36CB22F40D2000D87AAF /* WrikeAuthNetworkingClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1C36CA22F40D2000D87AAF /* WrikeAuthNetworkingClient.swift */; };
 		EA1C36CD22F92BF000D87AAF /* WrikeAuthNetworkingClient+Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1C36CC22F92BF000D87AAF /* WrikeAuthNetworkingClient+Functions.swift */; };
-		EA1C36CF2314FF1C00D87AAF /* UserDefaultsClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1C36CE2314FF1C00D87AAF /* UserDefaultsClient.swift */; };
 		EA1C36D12315054F00D87AAF /* AccessTokenRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1C36D02315054F00D87AAF /* AccessTokenRequest.swift */; };
+		EA652895231F5D8400EEE5D4 /* UserDefaults+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA652894231F5D8400EEE5D4 /* UserDefaults+Extension.swift */; };
+		EA65289A231F7B1000EEE5D4 /* AuthorizationCodeRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA652899231F7B1000EEE5D4 /* AuthorizationCodeRequest.swift */; };
+		EA65289C231F7CB400EEE5D4 /* ClientKeyRequestor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA65289B231F7CB400EEE5D4 /* ClientKeyRequestor.swift */; };
 		EA8131BC22C5750A009D2806 /* WrikeResponseObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA8131BB22C5750A009D2806 /* WrikeResponseObject.swift */; };
 		EA8131BE22CBFD75009D2806 /* WrikeNetworkingClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA8131BD22CBFD75009D2806 /* WrikeNetworkingClient.swift */; };
 		EA8131C022CBFE92009D2806 /* WrikeNetworkClient+Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA8131BF22CBFE92009D2806 /* WrikeNetworkClient+Functions.swift */; };
@@ -35,8 +37,10 @@
 /* Begin PBXFileReference section */
 		EA1C36CA22F40D2000D87AAF /* WrikeAuthNetworkingClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WrikeAuthNetworkingClient.swift; sourceTree = "<group>"; };
 		EA1C36CC22F92BF000D87AAF /* WrikeAuthNetworkingClient+Functions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WrikeAuthNetworkingClient+Functions.swift"; sourceTree = "<group>"; };
-		EA1C36CE2314FF1C00D87AAF /* UserDefaultsClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsClient.swift; sourceTree = "<group>"; };
 		EA1C36D02315054F00D87AAF /* AccessTokenRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccessTokenRequest.swift; sourceTree = "<group>"; };
+		EA652894231F5D8400EEE5D4 /* UserDefaults+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Extension.swift"; sourceTree = "<group>"; };
+		EA652899231F7B1000EEE5D4 /* AuthorizationCodeRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationCodeRequest.swift; sourceTree = "<group>"; };
+		EA65289B231F7CB400EEE5D4 /* ClientKeyRequestor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientKeyRequestor.swift; sourceTree = "<group>"; };
 		EA8131BB22C5750A009D2806 /* WrikeResponseObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WrikeResponseObject.swift; sourceTree = "<group>"; };
 		EA8131BD22CBFD75009D2806 /* WrikeNetworkingClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WrikeNetworkingClient.swift; sourceTree = "<group>"; };
 		EA8131BF22CBFE92009D2806 /* WrikeNetworkClient+Functions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WrikeNetworkClient+Functions.swift"; sourceTree = "<group>"; };
@@ -73,14 +77,49 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		EA8131C722DAF629009D2806 /* XIBs */ = {
+		EA652896231F5ED500EEE5D4 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				EA8131C522D93CC4009D2806 /* Extensions.swift */,
+				EA652894231F5D8400EEE5D4 /* UserDefaults+Extension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		EA652897231F5EF200EEE5D4 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				EA1C36CA22F40D2000D87AAF /* WrikeAuthNetworkingClient.swift */,
+				EA1C36CC22F92BF000D87AAF /* WrikeAuthNetworkingClient+Functions.swift */,
+				EA8131BD22CBFD75009D2806 /* WrikeNetworkingClient.swift */,
+				EA8131BF22CBFE92009D2806 /* WrikeNetworkClient+Functions.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		EA652898231F5F4300EEE5D4 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				EA8131BB22C5750A009D2806 /* WrikeResponseObject.swift */,
+				EA1C36D02315054F00D87AAF /* AccessTokenRequest.swift */,
+				EA652899231F7B1000EEE5D4 /* AuthorizationCodeRequest.swift */,
+				EA65289B231F7CB400EEE5D4 /* ClientKeyRequestor.swift */,
+				EA652896231F5ED500EEE5D4 /* Extensions */,
+				EA652897231F5EF200EEE5D4 /* Networking */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		EA8131C722DAF629009D2806 /* Stroyboards and XIBs */ = {
+			isa = PBXGroup;
+			children = (
+				EAAAC98622BDB97600414284 /* Main.storyboard */,
+				EAAAC98B22BDB97900414284 /* LaunchScreen.storyboard */,
 				EA8131C222D854C2009D2806 /* AccountElementTableViewCell.xib */,
 				EAAAC99C22C18B9800414284 /* AccountElementsViewController.xib */,
 				EAFB81B222DE2FE30062813D /* FolderIdViewController.xib */,
 			);
-			path = XIBs;
+			path = "Stroyboards and XIBs";
 			sourceTree = "<group>";
 		};
 		EA8131C822DAF638009D2806 /* View Controllers */ = {
@@ -125,21 +164,12 @@
 			children = (
 				EAD32C1622EA6420007368B8 /* Wrike API Tool.entitlements */,
 				EAAAC98222BDB97600414284 /* AppDelegate.swift */,
-				EA1C36CE2314FF1C00D87AAF /* UserDefaultsClient.swift */,
 				EA8131C822DAF638009D2806 /* View Controllers */,
 				EA8131C922DAF649009D2806 /* Views */,
-				EA8131C722DAF629009D2806 /* XIBs */,
-				EA8131C522D93CC4009D2806 /* Extensions.swift */,
+				EA8131C722DAF629009D2806 /* Stroyboards and XIBs */,
+				EA652898231F5F4300EEE5D4 /* Models */,
 				EAAAC98922BDB97900414284 /* Assets.xcassets */,
-				EAAAC98622BDB97600414284 /* Main.storyboard */,
-				EAAAC98B22BDB97900414284 /* LaunchScreen.storyboard */,
 				EAAAC98E22BDB97900414284 /* Info.plist */,
-				EA1C36CA22F40D2000D87AAF /* WrikeAuthNetworkingClient.swift */,
-				EA1C36CC22F92BF000D87AAF /* WrikeAuthNetworkingClient+Functions.swift */,
-				EA8131BD22CBFD75009D2806 /* WrikeNetworkingClient.swift */,
-				EA8131BF22CBFE92009D2806 /* WrikeNetworkClient+Functions.swift */,
-				EA8131BB22C5750A009D2806 /* WrikeResponseObject.swift */,
-				EA1C36D02315054F00D87AAF /* AccessTokenRequest.swift */,
 				EAD32C1922EE2139007368B8 /* ClientKeys.plist */,
 			);
 			path = "Wrike API Tool";
@@ -237,7 +267,7 @@
 				EAAAC99722BDDE8200414284 /* OAuthViewController.swift in Sources */,
 				EA8131C322D854C2009D2806 /* AccountElementTableViewCell.swift in Sources */,
 				EA8131BC22C5750A009D2806 /* WrikeResponseObject.swift in Sources */,
-				EA1C36CF2314FF1C00D87AAF /* UserDefaultsClient.swift in Sources */,
+				EA65289C231F7CB400EEE5D4 /* ClientKeyRequestor.swift in Sources */,
 				EA1C36CB22F40D2000D87AAF /* WrikeAuthNetworkingClient.swift in Sources */,
 				EAAAC99522BDBA2800414284 /* StyledButton.swift in Sources */,
 				EA8131C622D93CC4009D2806 /* Extensions.swift in Sources */,
@@ -247,6 +277,8 @@
 				EAAAC98322BDB97600414284 /* AppDelegate.swift in Sources */,
 				EA1C36D12315054F00D87AAF /* AccessTokenRequest.swift in Sources */,
 				EAFB81B322DE2FE30062813D /* FolderIdViewController.swift in Sources */,
+				EA652895231F5D8400EEE5D4 /* UserDefaults+Extension.swift in Sources */,
+				EA65289A231F7B1000EEE5D4 /* AuthorizationCodeRequest.swift in Sources */,
 				EA1C36CD22F92BF000D87AAF /* WrikeAuthNetworkingClient+Functions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

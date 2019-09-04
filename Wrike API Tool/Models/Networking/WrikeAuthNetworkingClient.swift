@@ -38,8 +38,6 @@ class WrikeAuthNetworkingClient {
                 completion(.Failure(with: "No data returned"))
             }
         }
-        
-        
     }
     
     func getUrl() -> URL {
