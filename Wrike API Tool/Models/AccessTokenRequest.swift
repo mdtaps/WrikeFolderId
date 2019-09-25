@@ -12,7 +12,7 @@ struct AccessTokenResponseObject: Codable {
     var access_token: String
     var refresh_token: String
     var token_type: String
-    var expires_in: String
+    var expires_in: Int
     var host: String
 }
 
@@ -29,12 +29,10 @@ struct AccessTokenRequestParameters: ClientKeyRequestor {
             static var ClientId = getClientId()
             static var ClientSecret = getClientSecret()
             static var GrantType = "authorization_code"
-            static var Code = getAuthCode()
+            static var Code: String = {
+                return UserDefaults.standard.authCode!
+            }()
         }
-    }
-    
-    private static func getAuthCode() -> String {
-        return UserDefaults.standard.authCode!
     }
 }
 

@@ -18,20 +18,32 @@ class OAuthViewController: UIViewController, WKUIDelegate {
         
         let requestUrl = getWrikeOAuthUrl()
         
-        //Open URL to login to Wrike via OAuth, returns Authorization Code to AppDelegate
-        //for use in token creation
-        UIApplication.shared.open(requestUrl, options: [:], completionHandler: nil)
-        
         //Set observer for authCode value in UserDefaults. Closure runs
         //request for Wrike token once value is set
-        observer = UserDefaults.standard.observe(\.authCode, options:[.new]) { (defaults, change) in
+        
+        let defaults = UserDefaults.standard
+        
+//        defaults.set("", forKey: "authCode")
+        
+        observer = defaults.observe(\.authCode!) { (defaults, change) in
             guard let authCode = defaults.authCode else {
                 print("No value set for UserDefault authCode")
                 return
             }
             
-            //TODO: Call network request using authCode
+            WrikeAuthNetworkingClient.shared.getAccessToken { result in
+                switch result {
+                case .Failure(with: let failureString):
+                    print(failureString)
+                case .Success(with: let accessTokenObject):
+                    print(accessTokenObject)
+                }
+            }
         }
+        
+        //Open URL to login to Wrike via OAuth, returns Authorization Code to AppDelegate
+        //for use in token creation
+        UIApplication.shared.open(requestUrl, options: [:], completionHandler: nil)
     }
 }
 
@@ -44,11 +56,11 @@ extension OAuthViewController {
         components.path = "/oauth2/authorize/v4"
         var queryItems = [URLQueryItem]()
         
-        queryItems.append(URLQueryItem(name: AccessTokenRequestParameters.Constants.Keys.ClientId,
-                                       value: AccessTokenRequestParameters.Constants.Values.ClientId))
-        queryItems.append(URLQueryItem(name: AccessTokenRequestParameters.Constants.Keys.Code,
-                                       value: AccessTokenRequestParameters.Constants.Values.Code))
-        queryItems.append(URLQueryItem(name: "redirect_uri", value: "https://mdtaps.com"))
+        queryItems.append(URLQueryItem(name: AuthorizationCodeRequest.Constants.Keys.ClientId,
+                                       value: AuthorizationCodeRequest.Constants.Values.ClientId))
+        queryItems.append(URLQueryItem(name: AuthorizationCodeRequest.Constants.Keys.ResponseType,
+                                       value: AuthorizationCodeRequest.Constants.Values.ResponseType))
+        queryItems.append(URLQueryItem(name: AuthorizationCodeRequest.Constants.Keys.RedirectUri, value: AuthorizationCodeRequest.Constants.Values.RedirectUri))
         components.queryItems = queryItems
         
         return components.url!

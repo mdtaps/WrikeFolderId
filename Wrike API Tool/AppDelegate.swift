@@ -58,9 +58,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 code = param.value!
             }
         }
+                
+        var observer: NSKeyValueObservation?
+        let defaults = UserDefaults.standard
+        observer = defaults.observe(\.authCode!) { (defaults, change) in
+            print("Defaults being observed")
+        }
         
         UserDefaults.standard.set(code, forKey: "authCode")
-        
+                
         return true
     }
 }

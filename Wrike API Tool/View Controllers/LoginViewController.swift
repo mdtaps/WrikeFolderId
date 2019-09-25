@@ -16,6 +16,8 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        
+        
     }
     
     @IBAction func loginButtonPressed(_ sender: StyledButton) {
@@ -28,27 +30,27 @@ class LoginViewController: UIViewController {
         self.show(vc, sender: self)
     }
     
-    func connectToWrike() {
-        WrikeNetworkClient.shared.retrieveWrikeFolders { (result) in
-            switch result {
-            case .Failure(with: let failureString):
-                //TODO: Display failure
-                fatalError(failureString)
-            case .Success(with: let object):
-                guard let rootFolder = object.data.first else {
-                    fatalError("No folders found")
-                }
-                
-                DispatchQueue.main.async {
-                    let vc = AccountElementsViewController(wrikeFolder: rootFolder)
-                    let navController = UINavigationController(rootViewController: vc)
-                    let appDelegate = UIApplication.shared.delegate as? AppDelegate
-                    appDelegate?.wrikeObject = object
-                    self.present(navController, animated: true, completion: nil)
-                }
-            }
-        }
-    }
+//    func connectToWrike() {
+//        WrikeNetworkClient.shared.retrieveWrikeFolders { (result) in
+//            switch result {
+//            case .Failure(with: let failureString):
+//                //TODO: Display failure
+//                fatalError(failureString)
+//            case .Success(with: let object):
+//                guard let rootFolder = object.data.first else {
+//                    fatalError("No folders found")
+//                }
+//
+//                DispatchQueue.main.async {
+//                    let vc = AccountElementsViewController(wrikeFolder: rootFolder)
+//                    let navController = UINavigationController(rootViewController: vc)
+//                    let appDelegate = UIApplication.shared.delegate as? AppDelegate
+//                    appDelegate?.wrikeObject = object
+//                    self.present(navController, animated: true, completion: nil)
+//                }
+//            }
+//        }
+//    }
     
 }
 

@@ -8,7 +8,7 @@
 
 import Foundation
 
-//Protocol to confirm to for members requesting client keys
+//Protocol to conform to for members requesting client keys
 //from ClientKeys.plist
 protocol ClientKeyRequestor {
     static func getClientId() -> String
@@ -20,7 +20,7 @@ extension ClientKeyRequestor {
         let clientKeysDict = getClientKeys()
         
         guard let clientIdString = clientKeysDict?["client_id"] as? String else {
-            fatalError("Could not find client_id in ClientKey.plist")
+            fatalError("Could not find client_id in ClientKeys.plist")
         }
         
         return clientIdString
@@ -30,7 +30,7 @@ extension ClientKeyRequestor {
         let clientKeysDict = getClientKeys()
         
         guard let clientSecretString = clientKeysDict?["client_secret"] as? String else {
-            fatalError("Could not find client_secret in ClientKey.plist")
+            fatalError("Could not find client_secret in ClientKeys.plist")
         }
         
         return clientSecretString
@@ -38,8 +38,8 @@ extension ClientKeyRequestor {
     
     //Helper function to get ClientKeys.plist as NSDictionary
     static func getClientKeys() -> NSDictionary? {
-        guard let path = Bundle.main.path(forResource: "ClientKey", ofType: "plist") else {
-            fatalError("Could not find ClientKey.plist")
+        guard let path = Bundle.main.path(forResource: "ClientKeys", ofType: "plist") else {
+            fatalError("Could not find ClientKeys.plist")
         }
         
         return NSDictionary(contentsOfFile: path)

@@ -15,7 +15,7 @@ class WrikeAuthNetworkingClient {
     
     func wrikePOSTRequest(_ completion: @escaping (_ requestResult: Result<Data>) -> Void) {
         let url = getUrl()
-        let urlRequest = getUrlRequest(using: url)
+        let urlRequest = makeUrlRequest(using: url)
         
         let task = URLSession.shared.dataTask(with: urlRequest) { (data, response, error) in
             if let error = error {
@@ -38,6 +38,8 @@ class WrikeAuthNetworkingClient {
                 completion(.Failure(with: "No data returned"))
             }
         }
+        
+        task.resume()
     }
     
     func getUrl() -> URL {
@@ -55,11 +57,16 @@ class WrikeAuthNetworkingClient {
                                        value: AccessTokenRequestParameters.Constants.Values.GrantType))
         queryItems.append(URLQueryItem(name: AccessTokenRequestParameters.Constants.Keys.Code,
                                        value: AccessTokenRequestParameters.Constants.Values.Code))
+        queryItems.append((URLQueryItem(name: AuthorizationCodeRequest.Constants.Keys.RedirectUri, value: AuthorizationCodeRequest.Constants.Values.RedirectUri)))
+        
+        components.queryItems = queryItems
+        
+        print("Token URL: \(components.url!)")
         
         return components.url!
     }
     
-    func getUrlRequest(using url: URL) -> URLRequest {
+    func makeUrlRequest(using url: URL) -> URLRequest {
         var urlRequest = URLRequest(url: url)
         urlRequest.httpMethod = "POST"
         
