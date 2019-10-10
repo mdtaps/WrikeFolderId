@@ -11,22 +11,23 @@ import WebKit
 
 class OAuthViewController: UIViewController, WKUIDelegate {
     @IBOutlet weak var webView: WKWebView!
-    var observer: NSKeyValueObservation?
+    var authCodeObserver: NSKeyValueObservation?
     
-    override func viewDidLoad() {
+    override func viewDidLoad() { 
         super.viewDidLoad()
         
         let requestUrl = getWrikeOAuthUrl()
         
-        //Set observer for authCode value in UserDefaults. Closure runs
-        //request for Wrike token once value is set
+        //Open URL to login to Wrike via OAuth, returns Authorization Code to AppDelegate
+        //for use in token creation
+        UIApplication.shared.open(requestUrl, options: [:], completionHandler: nil)
         
+        //Set observer for authCode value in UserDefaults.
+        //Closure runs request for Wrike token once value is set
         let defaults = UserDefaults.standard
-        
-//        defaults.set("", forKey: "authCode")
-        
-        observer = defaults.observe(\.authCode!) { (defaults, change) in
-            guard let authCode = defaults.authCode else {
+                
+        authCodeObserver = defaults.observe(\.authCode!) { (defaults, change) in
+            guard defaults.authCode != nil else {
                 print("No value set for UserDefault authCode")
                 return
             }
@@ -36,14 +37,12 @@ class OAuthViewController: UIViewController, WKUIDelegate {
                 case .Failure(with: let failureString):
                     print(failureString)
                 case .Success(with: let accessTokenObject):
-                    print(accessTokenObject)
+                    accessTokenObject.writeToDefaults()
+                    
+                    self.connectToWrike()
                 }
             }
         }
-        
-        //Open URL to login to Wrike via OAuth, returns Authorization Code to AppDelegate
-        //for use in token creation
-        UIApplication.shared.open(requestUrl, options: [:], completionHandler: nil)
     }
 }
 
@@ -64,5 +63,27 @@ extension OAuthViewController {
         components.queryItems = queryItems
         
         return components.url!
+    }
+    
+    func connectToWrike() {
+        WrikeNetworkClient.shared.retrieveWrikeFolders { (result) in
+            switch result {
+            case .Failure(with: let failureString):
+                //TODO: Display failure
+                fatalError(failureString)
+            case .Success(with: let object):
+                guard let rootFolder = object.data.first else {
+                    fatalError("No folders found")
+                }
+
+                DispatchQueue.main.async {
+                    let vc = AccountElementsViewController(wrikeFolder: rootFolder)
+                    let navController = UINavigationController(rootViewController: vc)
+                    let appDelegate = UIApplication.shared.delegate as? AppDelegate
+                    appDelegate?.wrikeObject = object
+                    self.present(navController, animated: true, completion: nil)
+                }
+            }
+        }
     }
 }

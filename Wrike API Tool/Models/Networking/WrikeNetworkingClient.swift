@@ -29,7 +29,7 @@ class WrikeNetworkClient {
             }
             
             guard (200...299).contains(httpResponse.statusCode) else {
-                completion(.Failure(with: "Invalid, Status Code of \(httpResponse.statusCode)"))
+                completion(.Failure(with: "Token Request Invalid, Status Code of \(httpResponse.statusCode)"))
                 return
             }
             
@@ -49,24 +49,17 @@ class WrikeNetworkClient {
         components.host = "www.wrike.com" //TODO: Get host from response
         components.path = "/api/v4/folders"
         
-        var queryItems = [URLQueryItem]()
-        queryItems.append(URLQueryItem(name: AccessTokenRequestParameters.Constants.Keys.ClientId,
-                                       value: AccessTokenRequestParameters.Constants.Values.ClientId))
-        queryItems.append(URLQueryItem(name: AccessTokenRequestParameters.Constants.Keys.ClientSecret,
-                                       value: AccessTokenRequestParameters.Constants.Values.ClientSecret))
-        queryItems.append(URLQueryItem(name: AccessTokenRequestParameters.Constants.Keys.GrantType,
-                                       value: AccessTokenRequestParameters.Constants.Values.GrantType))
-        queryItems.append(URLQueryItem(name: AccessTokenRequestParameters.Constants.Keys.Code,
-                                       value: AccessTokenRequestParameters.Constants.Values.Code))
-        
         return components.url!
     }
-
     
     private func makeURLRequest(using url: URL) -> URLRequest {
         var request = URLRequest(url: url)
+        let defaults = UserDefaults.standard
+        
         request.httpMethod = "GET"
         
+        //TODO: Build model for getting values
+        request.addValue(defaults.tokenType! + " " + defaults.accessToken!, forHTTPHeaderField: "Authorization")
         return request
     }
 }

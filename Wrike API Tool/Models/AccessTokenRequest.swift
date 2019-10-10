@@ -9,11 +9,29 @@
 import Foundation
 
 struct AccessTokenResponseObject: Codable {
-    var access_token: String
-    var refresh_token: String
-    var token_type: String
-    var expires_in: Int
+    var accessToken: String
+    var refreshToken: String
+    var tokenType: String
+    var expiresIn: Int
     var host: String
+    
+    enum CodingKeys: String, CodingKey {
+        case accessToken = "access_token"
+        case refreshToken = "refresh_token"
+        case tokenType = "token_type"
+        case expiresIn = "expires_in"
+        case host
+    }
+    
+    func writeToDefaults() {
+        let defaults = UserDefaults.standard
+        
+        defaults.set(accessToken, forKey: "accessToken")
+        defaults.set(refreshToken, forKey: "refreshToken")
+        defaults.set(tokenType, forKey: "tokenType")
+        defaults.set(expiresIn, forKey: "expiresIn")
+        defaults.set(host, forKey: "host")
+    }
 }
 
 struct AccessTokenRequestParameters: ClientKeyRequestor {

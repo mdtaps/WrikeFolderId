@@ -47,7 +47,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         guard userActivity.activityType == NSUserActivityTypeBrowsingWeb,
             let incomingURL = userActivity.webpageURL,
             let components = NSURLComponents(url: incomingURL, resolvingAgainstBaseURL: true),
-            let path = components.path,
             let params = components.queryItems else {
                 return false
         }
@@ -59,13 +58,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
                 
-        var observer: NSKeyValueObservation?
         let defaults = UserDefaults.standard
-        observer = defaults.observe(\.authCode!) { (defaults, change) in
-            print("Defaults being observed")
-        }
         
-        UserDefaults.standard.set(code, forKey: "authCode")
+        defaults.set(code, forKey: "authCode")
                 
         return true
     }

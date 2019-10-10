@@ -29,28 +29,5 @@ class LoginViewController: UIViewController {
         let vc = storyboard.instantiateViewController(withIdentifier: "oauthViewController") as! OAuthViewController
         self.show(vc, sender: self)
     }
-    
-//    func connectToWrike() {
-//        WrikeNetworkClient.shared.retrieveWrikeFolders { (result) in
-//            switch result {
-//            case .Failure(with: let failureString):
-//                //TODO: Display failure
-//                fatalError(failureString)
-//            case .Success(with: let object):
-//                guard let rootFolder = object.data.first else {
-//                    fatalError("No folders found")
-//                }
-//
-//                DispatchQueue.main.async {
-//                    let vc = AccountElementsViewController(wrikeFolder: rootFolder)
-//                    let navController = UINavigationController(rootViewController: vc)
-//                    let appDelegate = UIApplication.shared.delegate as? AppDelegate
-//                    appDelegate?.wrikeObject = object
-//                    self.present(navController, animated: true, completion: nil)
-//                }
-//            }
-//        }
-//    }
-    
 }
 
