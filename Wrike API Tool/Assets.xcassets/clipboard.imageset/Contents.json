@@ -7,12 +7,45 @@
     },
     {
       "idiom" : "universal",
+      "filename" : "clipboards darkmode.png",
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
+      "scale" : "1x"
+    },
+    {
+      "idiom" : "universal",
       "filename" : "clipboards (2).png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
+      "filename" : "clipboards darkmode-1.png",
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
+      "scale" : "2x"
+    },
+    {
+      "idiom" : "universal",
       "filename" : "clipboards (2)-1.png",
+      "scale" : "3x"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "clipboards darkmode-2.png",
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
       "scale" : "3x"
     }
   ],

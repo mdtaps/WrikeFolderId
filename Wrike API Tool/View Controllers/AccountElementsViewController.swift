@@ -34,6 +34,10 @@ class AccountElementsViewController: UIViewController {
         
         elementsTableView.tableFooterView = UIView()
     }
+    
+    @objc func logout() {
+        dismiss(animated: true, completion: nil)
+    }
 }
 
 extension AccountElementsViewController: UITableViewDelegate, UITableViewDataSource {
@@ -72,7 +76,7 @@ extension AccountElementsViewController: UITableViewDelegate, UITableViewDataSou
                 if datum.project == nil {
                     elementCell.clipboardImage.isHidden = true
                 }
-                
+                //TODO: Why is this here
                 break
             }
         }

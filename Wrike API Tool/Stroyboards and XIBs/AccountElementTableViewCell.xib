@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina6_1" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="dark"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -16,17 +14,17 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bCe-oD-kWn" customClass="StyledButton" customModule="Wrike_API_Tool" customModuleProvider="target">
-                        <rect key="frame" x="46" y="2.5" width="228" height="40"/>
+                        <rect key="frame" x="46" y="2" width="228" height="40"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="40" id="i1M-lA-2q5"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                         <state key="normal" title="Button">
-                            <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <color key="titleColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                         </state>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -38,7 +36,7 @@
                         </connections>
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="748" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7iY-jX-cFC" customClass="StyledButton" customModule="Wrike_API_Tool" customModuleProvider="target">
-                        <rect key="frame" x="282" y="6.5" width="32" height="32"/>
+                        <rect key="frame" x="282" y="6" width="32" height="32"/>
                         <color key="backgroundColor" red="0.65171706679999997" green="0.77407354120000005" blue="0.32929587360000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="32" id="10m-kG-x1w"/>
@@ -59,13 +57,14 @@
                         </connections>
                     </button>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="clipboard" translatesAutoresizingMaskIntoConstraints="NO" id="fZb-4r-gxn">
-                        <rect key="frame" x="6" y="6.5" width="32" height="32"/>
+                        <rect key="frame" x="6" y="6" width="32" height="32"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="32" id="QjI-Th-jx1"/>
                             <constraint firstAttribute="height" constant="32" id="SjO-kC-fiW"/>
                         </constraints>
                     </imageView>
                 </subviews>
+                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                 <constraints>
                     <constraint firstItem="7iY-jX-cFC" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="0el-Fi-KkX"/>
                     <constraint firstAttribute="trailing" secondItem="7iY-jX-cFC" secondAttribute="trailing" constant="6" id="47y-Sh-gGs"/>
@@ -80,6 +79,7 @@
                     <constraint firstItem="fZb-4r-gxn" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="tr0-bc-QMS"/>
                 </constraints>
             </tableViewCellContentView>
+            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="caretButton" destination="7iY-jX-cFC" id="KKt-vr-FEZ"/>

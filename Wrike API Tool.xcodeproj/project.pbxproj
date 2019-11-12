@@ -25,7 +25,6 @@
 		EAAAC98A22BDB97900414284 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EAAAC98922BDB97900414284 /* Assets.xcassets */; };
 		EAAAC98D22BDB97900414284 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EAAAC98B22BDB97900414284 /* LaunchScreen.storyboard */; };
 		EAAAC99522BDBA2800414284 /* StyledButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAAC99422BDBA2800414284 /* StyledButton.swift */; };
-		EAAAC99722BDDE8200414284 /* OAuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAAC99622BDDE8200414284 /* OAuthViewController.swift */; };
 		EAAAC99A22BF30E300414284 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAAAC99922BF30E300414284 /* WebKit.framework */; };
 		EAAAC99D22C18B9800414284 /* AccountElementsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAAC99B22C18B9800414284 /* AccountElementsViewController.swift */; };
 		EAAAC99E22C18B9800414284 /* AccountElementsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EAAAC99C22C18B9800414284 /* AccountElementsViewController.xib */; };
@@ -55,7 +54,6 @@
 		EAAAC98C22BDB97900414284 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EAAAC98E22BDB97900414284 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EAAAC99422BDBA2800414284 /* StyledButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyledButton.swift; sourceTree = "<group>"; };
-		EAAAC99622BDDE8200414284 /* OAuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OAuthViewController.swift; sourceTree = "<group>"; };
 		EAAAC99922BF30E300414284 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		EAAAC99B22C18B9800414284 /* AccountElementsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountElementsViewController.swift; sourceTree = "<group>"; };
 		EAAAC99C22C18B9800414284 /* AccountElementsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AccountElementsViewController.xib; sourceTree = "<group>"; };
@@ -127,7 +125,6 @@
 			children = (
 				EAAAC98422BDB97600414284 /* LoginViewController.swift */,
 				EAFB81B122DE2FE30062813D /* FolderIdViewController.swift */,
-				EAAAC99622BDDE8200414284 /* OAuthViewController.swift */,
 				EA8131C122D854C2009D2806 /* AccountElementTableViewCell.swift */,
 				EAAAC99B22C18B9800414284 /* AccountElementsViewController.swift */,
 			);
@@ -264,7 +261,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				EAAAC99D22C18B9800414284 /* AccountElementsViewController.swift in Sources */,
-				EAAAC99722BDDE8200414284 /* OAuthViewController.swift in Sources */,
 				EA8131C322D854C2009D2806 /* AccountElementTableViewCell.swift in Sources */,
 				EA8131BC22C5750A009D2806 /* WrikeResponseObject.swift in Sources */,
 				EA65289C231F7CB400EEE5D4 /* ClientKeyRequestor.swift in Sources */,
