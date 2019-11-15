@@ -72,6 +72,7 @@ extension LoginViewController {
     }
     
     func connectToWrike() {
+        
         WrikeNetworkClient.shared.retrieveWrikeFolders { (result) in
             switch result {
             case .Failure(with: let failureString):
@@ -79,6 +80,7 @@ extension LoginViewController {
                 fatalError(failureString)
             case .Success(with: let object):
                 guard let rootFolder = object.data.first else {
+                    //TODO: Throw error
                     fatalError("No folders found")
                 }
 

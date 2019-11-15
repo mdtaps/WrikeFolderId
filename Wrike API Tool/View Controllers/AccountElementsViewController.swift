@@ -30,12 +30,20 @@ class AccountElementsViewController: UIViewController {
         elementsTableView.delegate = self
         elementsTableView.dataSource = self
         
-        title = wrikeFolder.title
+       if wrikeFolder.title == "Root" {
+            title = "Home"
+        } else {
+            title = wrikeFolder.title
+        }
         
         elementsTableView.tableFooterView = UIView()
     }
     
     @objc func logout() {
+        let domain = Bundle.main.bundleIdentifier!
+        UserDefaults.standard.removePersistentDomain(forName: domain)
+        UserDefaults.standard.synchronize()
+        print("Amount of UserDefaults: \(Array(UserDefaults.standard.dictionaryRepresentation().keys).count)")
         dismiss(animated: true, completion: nil)
     }
 }

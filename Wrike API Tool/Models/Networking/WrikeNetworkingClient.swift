@@ -45,8 +45,10 @@ class WrikeNetworkClient {
     
     func getUrl() -> URL {
         var components = URLComponents()
+        let defaults = UserDefaults.standard
+        
         components.scheme = "https"
-        components.host = "www.wrike.com" //TODO: Get host from response
+        components.host = defaults.host ?? "www.wrike.com"
         components.path = "/api/v4/folders"
         
         return components.url!
