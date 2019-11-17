@@ -9,6 +9,7 @@
 import Foundation
 
 extension UserDefaults {
+    //TODO: Find out if this is being used
     @objc dynamic var authCode: String? {
         return string(forKey: "authCode")
     }
@@ -28,5 +29,4 @@ extension UserDefaults {
     @objc dynamic var host: String? {
         return string(forKey: "host")
     }
-    
 }

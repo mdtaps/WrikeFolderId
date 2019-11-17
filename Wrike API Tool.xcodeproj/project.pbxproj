@@ -78,8 +78,8 @@
 		EA652896231F5ED500EEE5D4 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				EA8131C522D93CC4009D2806 /* Extensions.swift */,
 				EA652894231F5D8400EEE5D4 /* UserDefaults+Extension.swift */,
+				EA8131C522D93CC4009D2806 /* Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";

@@ -25,12 +25,14 @@ struct AccessTokenResponseObject: Codable {
     
     func writeToDefaults() {
         let defaults = UserDefaults.standard
+        let currentUnixTimeMinusOneMinute = Date().timeIntervalSince1970 - 60
         
         defaults.set(accessToken, forKey: "accessToken")
         defaults.set(refreshToken, forKey: "refreshToken")
         defaults.set(tokenType, forKey: "tokenType")
         defaults.set(expiresIn, forKey: "expiresIn")
         defaults.set(host, forKey: "host")
+        defaults.set(currentUnixTimeMinusOneMinute + TimeInterval(expiresIn), forKey: "expirationTime")
     }
 }
 

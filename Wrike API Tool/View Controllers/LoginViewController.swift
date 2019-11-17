@@ -22,30 +22,39 @@ class LoginViewController: UIViewController, WKUIDelegate {
     }
     
     @IBAction func loginButtonPressed(_ sender: StyledButton) {
-        let requestUrl = getWrikeOAuthUrl()
+        switch userDefaultHasAuthValues() {
+        case .TokenReady:
+            connectToWrike()
+        case .TokenNeedsRefresh:
+            //TODO:
+            print("TokenNeedsRefresh")
+        case .NoAccessToken:
         
-        //Open URL to login to Wrike via OAuth, returns Authorization Code to AppDelegate
-        //for use in token creation
-        UIApplication.shared.open(requestUrl, options: [:], completionHandler: nil)
-        
-        //Set observer for authCode value in UserDefaults.
-        //Closure runs request for Wrike token once value is set
-        let defaults = UserDefaults.standard
-                
-        authCodeObserver = defaults.observe(\.authCode!) { (defaults, change) in
-            guard defaults.authCode != nil else {
-                print("No value set for UserDefault authCode")
-                return
-            }
+            let requestUrl = getWrikeOAuthUrl()
             
-            WrikeAuthNetworkingClient.shared.getAccessToken { result in
-                switch result {
-                case .Failure(with: let failureString):
-                    print(failureString)
-                case .Success(with: let accessTokenObject):
-                    accessTokenObject.writeToDefaults()
+            //Open URL to login to Wrike via OAuth, returns Authorization Code to AppDelegate
+            //for use in token creation
+            UIApplication.shared.open(requestUrl, options: [:], completionHandler: nil)
+            
+            //Set observer for authCode value in UserDefaults.
+            //Closure runs request for Wrike token once value is set
+            let defaults = UserDefaults.standard
                     
-                    self.connectToWrike()
+            authCodeObserver = defaults.observe(\.authCode!) { (defaults, change) in
+                guard defaults.authCode != nil else {
+                    print("No value set for UserDefault authCode")
+                    return
+                }
+                
+                WrikeAuthNetworkingClient.shared.getAccessToken { result in
+                    switch result {
+                    case .Failure(with: let failureString):
+                        print(failureString)
+                    case .Success(with: let accessTokenObject):
+                        accessTokenObject.writeToDefaults()
+                        
+                        self.connectToWrike()
+                    }
                 }
             }
         }
@@ -97,6 +106,29 @@ extension LoginViewController {
                 }
             }
         }
+    }
+    
+    func userDefaultHasAuthValues() -> AuthorizationStatus {
+        let defaults = UserDefaults.standard
+
+        guard defaults.accessToken != nil else {
+            return .NoAccessToken
+        }
+        
+        let expirationTime = defaults.double(forKey: "expirationTime")
+        let currentTime = Date().timeIntervalSince1970
+        
+        guard currentTime < expirationTime else {
+            return .TokenNeedsRefresh
+        }
+        
+        return .TokenReady
+    }
+    
+    enum AuthorizationStatus {
+        case NoAccessToken
+        case TokenNeedsRefresh
+        case TokenReady
     }
 }
 
