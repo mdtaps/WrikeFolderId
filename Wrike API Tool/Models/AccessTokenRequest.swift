@@ -43,17 +43,22 @@ struct AccessTokenRequestParameters: ClientKeyRequestor {
             static var ClientSecret = "client_secret"
             static var GrantType = "grant_type"
             static var Code = "code"
+            static var RefreshToken = "refresh_token"
         }
         
         struct Values {
             static var ClientId = getClientId()
             static var ClientSecret = getClientSecret()
-            static var GrantType = "authorization_code"
             static var Code: String = {
                 return UserDefaults.standard.authCode!
             }()
         }
     }
+}
+
+enum AuthorizationRequestType: String {
+    case authorizationCode = "authorization_code"
+    case refreshToken = "refresh_token"
 }
 
 

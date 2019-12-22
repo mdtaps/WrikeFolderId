@@ -12,6 +12,7 @@ class AccountElementsViewController: UIViewController {
 
     @IBOutlet weak var elementsTableView: UITableView!
     var wrikeFolder: FolderData
+    private let refreshControl = UIRefreshControl()
     lazy var appDelegate = {
         return UIApplication.shared.delegate as! AppDelegate
     }()
@@ -36,14 +37,16 @@ class AccountElementsViewController: UIViewController {
             title = wrikeFolder.title
         }
         
+        //Setting footerView keeps the table view from creating blank cells
+        //when there are only a few cells on the screen
         elementsTableView.tableFooterView = UIView()
+        
+        elementsTableView.refreshControl = refreshControl
+        refreshControl.addTarget(self, action: #selector(refreshWrikeFolderData), for: .valueChanged)
     }
     
     @objc func logout() {
-        let domain = Bundle.main.bundleIdentifier!
-        UserDefaults.standard.removePersistentDomain(forName: domain)
-        UserDefaults.standard.synchronize()
-        print("Amount of UserDefaults: \(Array(UserDefaults.standard.dictionaryRepresentation().keys).count)")
+        clearUserDefaultsAuthData()
         dismiss(animated: true, completion: nil)
     }
 }
@@ -84,7 +87,6 @@ extension AccountElementsViewController: UITableViewDelegate, UITableViewDataSou
                 if datum.project == nil {
                     elementCell.clipboardImage.isHidden = true
                 }
-                //TODO: Why is this here
                 break
             }
         }
@@ -96,12 +98,12 @@ extension AccountElementsViewController: UITableViewDelegate, UITableViewDataSou
 }
 
 extension AccountElementsViewController: CellClickDelegate {
-    func launchFolderIdView(folderId: String) {
+    internal func launchFolderIdView(folderId: String) {
         let vc = FolderIdViewController(folderId: folderId)
         present(vc, animated: true, completion: nil)
     }
     
-    func loadChildFolders(folderId: String) {
+    internal func loadChildFolders(folderId: String) {
         for folder in appDelegate.wrikeObject!.data {
             if folder.id == folderId {
                 if !folder.childIds!.isEmpty {
@@ -110,5 +112,17 @@ extension AccountElementsViewController: CellClickDelegate {
                 }
             }
         }
+    }
+    
+    private func clearUserDefaultsAuthData() {
+        let domain = Bundle.main.bundleIdentifier!
+        UserDefaults.standard.removePersistentDomain(forName: domain)
+        UserDefaults.standard.synchronize()
+    }
+    
+     @objc private func refreshWrikeFolderData() {
+        //TODO: Get Wrike data
+        
+        //TODO: Close table view to root
     }
 }

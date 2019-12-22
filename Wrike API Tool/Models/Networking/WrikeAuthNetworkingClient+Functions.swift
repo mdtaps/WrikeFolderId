@@ -9,8 +9,8 @@
 import Foundation
 
 extension WrikeAuthNetworkingClient {
-    func getAccessToken(_ completion: @escaping (_ response: Result<AccessTokenResponseObject>) -> Void) {        
-        wrikePOSTRequest { result in
+    func getAccessToken(requestType: AuthorizationRequestType, _ completion: @escaping (_ response: Result<AccessTokenResponseObject>) -> Void) {
+        wrikePOSTRequest(requestType: requestType) { result in
             switch result {
             case .Failure(with: let failureString):
                 completion(.Failure(with: failureString))

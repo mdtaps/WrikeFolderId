@@ -20,7 +20,7 @@
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bCe-oD-kWn" customClass="StyledButton" customModule="Wrike_API_Tool" customModuleProvider="target">
                         <rect key="frame" x="46" y="2" width="228" height="40"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="40" id="i1M-lA-2q5"/>
+                            <constraint firstAttribute="height" priority="999" constant="40" id="i1M-lA-2q5"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                         <state key="normal" title="Button">
@@ -39,7 +39,7 @@
                         <rect key="frame" x="282" y="6" width="32" height="32"/>
                         <color key="backgroundColor" red="0.65171706679999997" green="0.77407354120000005" blue="0.32929587360000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="32" id="10m-kG-x1w"/>
+                            <constraint firstAttribute="height" priority="999" constant="32" id="10m-kG-x1w"/>
                             <constraint firstAttribute="width" constant="32" id="vrT-St-JJ2"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
@@ -66,14 +66,12 @@
                 </subviews>
                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                 <constraints>
-                    <constraint firstItem="7iY-jX-cFC" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="0el-Fi-KkX"/>
                     <constraint firstAttribute="trailing" secondItem="7iY-jX-cFC" secondAttribute="trailing" constant="6" id="47y-Sh-gGs"/>
                     <constraint firstItem="bCe-oD-kWn" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="2" id="T2m-3m-g9Q"/>
                     <constraint firstItem="bCe-oD-kWn" firstAttribute="leading" secondItem="fZb-4r-gxn" secondAttribute="trailing" constant="8" id="UYl-Hx-uqL"/>
                     <constraint firstAttribute="bottom" secondItem="7iY-jX-cFC" secondAttribute="bottom" constant="6" id="XnL-gA-KGo"/>
                     <constraint firstItem="7iY-jX-cFC" firstAttribute="leading" secondItem="bCe-oD-kWn" secondAttribute="trailing" constant="8" id="ajy-T9-SAP"/>
                     <constraint firstAttribute="bottom" secondItem="bCe-oD-kWn" secondAttribute="bottom" constant="2" id="b3Z-1S-7Oi"/>
-                    <constraint firstItem="bCe-oD-kWn" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="cWx-pM-HiH"/>
                     <constraint firstItem="fZb-4r-gxn" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="6" id="hSG-FM-Ir6"/>
                     <constraint firstItem="7iY-jX-cFC" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="6" id="mtw-Gi-MgK"/>
                     <constraint firstItem="fZb-4r-gxn" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="tr0-bc-QMS"/>

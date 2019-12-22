@@ -12,7 +12,7 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    var wrikeObject: WrikeResponseObject?
+    var wrikeObject: WrikeAllFoldersResponseObject?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
@@ -59,7 +59,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
                 
         let defaults = UserDefaults.standard
-        
         defaults.set(code, forKey: "authCode")
                 
         return true

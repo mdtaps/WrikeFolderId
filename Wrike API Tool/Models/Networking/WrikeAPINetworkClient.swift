@@ -1,5 +1,5 @@
 //
-//  WrikeNetworkingClient.swift
+//  WrikeAPINetworkClient.swift
 //  Wrike API Tool
 //
 //  Created by Mark Tapia on 7/2/19.
@@ -8,9 +8,9 @@
 
 import Foundation
 
-class WrikeNetworkClient {
+class WrikeAPINetworkClient {
     
-    static let shared = WrikeNetworkClient()
+    static let shared = WrikeAPINetworkClient()
     
     private init() {}
     
