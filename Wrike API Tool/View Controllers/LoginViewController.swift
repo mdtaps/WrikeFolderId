@@ -11,7 +11,6 @@ import WebKit
 
 @IBDesignable
 class LoginViewController: UIViewController, WKUIDelegate {
-
     @IBOutlet weak var loginButton: StyledButton!
     @IBOutlet weak var webView: WKWebView!
     var wrikeObjectObserver: NSKeyValueObservation?
@@ -26,7 +25,7 @@ class LoginViewController: UIViewController, WKUIDelegate {
 //MARK: Extensions
 extension LoginViewController {
     private func getWrikeFolderResponseObject() {
-        WrikeAPINetworkClient.shared.retrieveWrikeFolders { (result) in
+        WrikeAPINetworkClient.shared.retrieveWrikeFolders(for: .GetAllFolders) { (result) in
             switch result {
             case .Failure(with: let failureString):
                 //TODO: Display failure

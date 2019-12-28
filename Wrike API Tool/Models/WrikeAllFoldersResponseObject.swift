@@ -8,27 +8,31 @@
 
 import Foundation
 
-struct WrikeAllFoldersResponseObject: Codable {
+protocol WrikeResponseObject {
+    
+}
+
+struct WrikeAllFoldersResponseObject: Codable, WrikeResponseObject {
     let kind: String
     let data: [FolderData]
+}
 
-    struct FolderData: Codable {
-        let id: String
-        let title: String
-        let color: String?
-        let childIds: [String]?
-        let scope: String
-        let project: Project?
-    }
+struct FolderData: Codable {
+    let id: String
+    let title: String
+    let color: String?
+    let childIds: [String]?
+    let scope: String
+    let project: Project?
+}
 
-    struct Project: Codable {
-        let authorId: String?
-        let ownerIds: [String]
-        let customStatusId: String?
-        let startDate: String?
-        let endDate: String?
-        let createdDate: String?
-        let completedDate: String?
-        let status: String?
-    }
+struct Project: Codable {
+    let authorId: String?
+    let ownerIds: [String]
+    let customStatusId: String?
+    let startDate: String?
+    let endDate: String?
+    let createdDate: String?
+    let completedDate: String?
+    let status: String?
 }

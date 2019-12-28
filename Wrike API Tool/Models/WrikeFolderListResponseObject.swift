@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct WrikeFolderListObject: Codable {
+struct WrikeFolderListObject: Codable, WrikeResponseObject {
     let kind: String
     let data: [FolderObject]
 

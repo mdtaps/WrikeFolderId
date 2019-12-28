@@ -10,7 +10,8 @@ import Foundation
 import UIKit
 
 extension WrikeAPINetworkClient {
-    func retrieveWrikeFolders(_ completion: @escaping (_ response: Result<WrikeAllFoldersResponseObject>) -> Void) {
+    func retrieveWrikeFolders(for requestMethod: APIRequestMethod, _ completion: @escaping (_ response: Result<WrikeAllFoldersResponseObject>) -> Void) {
+        let requestData = WrikeAPIRequestModel(using: requestMethod)
         
         WrikeLoginProcess.shared.loginToWrike { tokenIsSet in
             switch tokenIsSet {
