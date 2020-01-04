@@ -25,7 +25,7 @@ struct FolderData: Codable {
     let id: String
     let title: String
     let color: String?
-    let childIds: [String]?
+    let childIds: [String]
     let scope: String
     let project: Project?
 }

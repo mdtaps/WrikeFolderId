@@ -11,14 +11,28 @@ import UIKit
 class AccountElementsViewController: UIViewController {
 
     @IBOutlet weak var elementsTableView: UITableView!
-    var wrikeFolder: FolderData
+    var parentFolder: FolderData
+    lazy var childFolders: [FolderData] = {
+        var folders = [FolderData]()
+
+        if !parentFolder.childIds.isEmpty {
+            for datum in appDelegate.wrikeObject!.data {
+                if parentFolder.childIds.contains(datum.id) {
+                    folders.append(datum)
+                }
+            }
+        }
+        
+        return folders
+    }()
+    
     private let refreshControl = UIRefreshControl()
     lazy var appDelegate = {
-        return UIApplication.shared.delegate as! AppDelegate
+        UIApplication.shared.delegate as! AppDelegate
     }()
  
     init(wrikeFolder: FolderData) {
-        self.wrikeFolder = wrikeFolder
+        self.parentFolder = wrikeFolder
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -31,14 +45,14 @@ class AccountElementsViewController: UIViewController {
         elementsTableView.delegate = self
         elementsTableView.dataSource = self
         
-       if wrikeFolder.title == "Root" {
+       if parentFolder.title == "Root" {
             title = "Home"
         } else {
-            title = wrikeFolder.title
+            title = parentFolder.title
         }
         
         //Setting footerView keeps the table view from creating blank cells
-        //when there are only a few cells on the screen
+        //when there are not enough cells to fill the screen
         elementsTableView.tableFooterView = UIView()
         
         elementsTableView.refreshControl = refreshControl
@@ -51,16 +65,14 @@ class AccountElementsViewController: UIViewController {
     }
 }
 
+//MARK: Table View Delegate & Data Source Functions
 extension AccountElementsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return wrikeFolder.childIds?.count ?? 0
+        return parentFolder.childIds.count
     }
     
+    //TODO: Figure out why cell items keep disappearing
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let childIds = wrikeFolder.childIds else {
-            return UITableViewCell()
-        }
-        
         let elementCell: AccountElementTableViewCell
         
         if let cell = tableView.dequeueReusableCell(withIdentifier: "accountElementCell") as? AccountElementTableViewCell {
@@ -73,25 +85,18 @@ extension AccountElementsViewController: UITableViewDelegate, UITableViewDataSou
         
         elementCell.delegate = self
         
-        elementCell.folderId = childIds[indexPath.row]
-        var elementTitleText: String?
-        
-        for datum in appDelegate.wrikeObject!.data {
-            if datum.id == elementCell.folderId {
-                elementTitleText = datum.title
+        elementCell.folderId = parentFolder.childIds[indexPath.row]
+        let currentFolder = childFolders[indexPath.row]
                 
-                if datum.childIds!.isEmpty {
-                    elementCell.caretButton.isHidden = true
-                }
-                
-                if datum.project == nil {
-                    elementCell.clipboardImage.isHidden = true
-                }
-                break
-            }
+        if currentFolder.childIds.isEmpty {
+            elementCell.caretButton.isHidden = true
         }
         
-        elementCell.elementTitleButton.setTitle(elementTitleText ?? "Unknown Title", for: .normal)
+        if currentFolder.project == nil {
+            elementCell.clipboardImage.isHidden = true
+        }
+        
+        elementCell.elementTitleButton.setTitle(currentFolder.title, for: .normal)
         
         return elementCell
     }
@@ -103,10 +108,11 @@ extension AccountElementsViewController: CellClickDelegate {
         present(vc, animated: true, completion: nil)
     }
     
+    //TODO: Use new childFolders array
     internal func loadChildFolders(folderId: String) {
         for folder in appDelegate.wrikeObject!.data {
             if folder.id == folderId {
-                if !folder.childIds!.isEmpty {
+                if !folder.childIds.isEmpty {
                     let vc = AccountElementsViewController(wrikeFolder: folder)
                     navigationController?.pushViewController(vc, animated: true)
                 }

@@ -61,7 +61,7 @@ class WrikeAPINetworkClient {
         
         request.httpMethod = httpMethod
         
-        //TODO: Build model for getting values
+        //TODO: Check why nil sometimes gets returned
         request.addValue(defaults.tokenType! + " " + defaults.accessToken!, forHTTPHeaderField: "Authorization")
         return request
     }

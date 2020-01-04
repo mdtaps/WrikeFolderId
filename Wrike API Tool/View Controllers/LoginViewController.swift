@@ -51,6 +51,7 @@ extension LoginViewController {
         navController.modalPresentationStyle = .fullScreen
 
         appDelegate?.wrikeObject = wrikeObject
+
         self.present(navController, animated: true, completion: nil)
     }
 }

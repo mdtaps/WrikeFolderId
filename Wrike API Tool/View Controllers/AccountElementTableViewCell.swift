@@ -14,7 +14,6 @@ protocol CellClickDelegate {
 }
 
 class AccountElementTableViewCell: UITableViewCell {
-    
     @IBOutlet weak var elementTitleButton: StyledButton!
     @IBOutlet weak var caretButton: StyledButton!
     @IBOutlet weak var clipboardImage: UIImageView!
