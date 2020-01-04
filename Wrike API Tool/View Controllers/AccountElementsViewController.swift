@@ -23,6 +23,8 @@ class AccountElementsViewController: UIViewController {
             }
         }
         
+        dump(folders)
+        
         return folders
     }()
     
@@ -71,7 +73,6 @@ extension AccountElementsViewController: UITableViewDelegate, UITableViewDataSou
         return parentFolder.childIds.count
     }
     
-    //TODO: Figure out why cell items keep disappearing
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let elementCell: AccountElementTableViewCell
         
@@ -90,10 +91,14 @@ extension AccountElementsViewController: UITableViewDelegate, UITableViewDataSou
                 
         if currentFolder.childIds.isEmpty {
             elementCell.caretButton.isHidden = true
+        } else {
+            elementCell.caretButton.isHidden = false
         }
         
         if currentFolder.project == nil {
             elementCell.clipboardImage.isHidden = true
+        } else {
+            elementCell.clipboardImage.isHidden = false
         }
         
         elementCell.elementTitleButton.setTitle(currentFolder.title, for: .normal)
