@@ -10,28 +10,35 @@ import Foundation
 
 struct WrikeAPIRequestModel {
     //MARK: Properties
-    var urlPath: String!
-    var urlQueryItems: [URLQueryItem]!
-    var httpRequestMethod: HTTPRequestMethod!
-    var returnType: WrikeResponseObject.Type!
+    var urlPath: String
+    var urlQueryItems: [URLQueryItem]?
+    var httpRequestMethod: HTTPRequestMethod
     
     //MARK: Initializers
+    init(urlPath: String,
+         urlQueryItems: [URLQueryItem]? = nil,
+         httpRequestMethod: HTTPRequestMethod = .GET) {
+        self.urlPath = urlPath
+        self.urlQueryItems = urlQueryItems
+        self.httpRequestMethod = httpRequestMethod
+    }
+    
     init(using apiMethod: APIRequestMethod) {
         switch apiMethod {
         case .GetAllFolders:
-            setPropertiesForAllFolders()
+            self.init(urlPath: "/folders",
+                      httpRequestMethod: .GET)
         case .GetFoldersFromListOfIds(let idsArray):
-            setPropertiesForFolderList(folderList: idsArray)
-        case .OtherMethod:
-            print("Other method")
+            let urlPath = "/folders/" + WrikeAPIRequestModel.getStringForUrlPath(using: idsArray)
+            self.init(urlPath: urlPath,
+                      httpRequestMethod: .GET)
         }
     }
 }
 
 enum APIRequestMethod {
     case GetAllFolders
-    case GetFoldersFromListOfIds([String])
-    case OtherMethod(String)
+    case GetFoldersFromListOfIds(idsArray: [String])
 }
 
 enum HTTPRequestMethod: String {

@@ -14,9 +14,9 @@ class WrikeAPINetworkClient {
     
     private init() {}
     
-    func wrikeGETRequest(_ completion: @escaping (_ requestResult: Result<Data>) -> Void) {
-        let url = getUrl()
-        let urlRequest = makeURLRequest(using: url)
+    func wrikeGETRequest(using requestData: WrikeAPIRequestModel, _ completion: @escaping (_ requestResult: Result<Data>) -> Void) {
+        let url = getUrl(using: requestData.urlPath)
+        let urlRequest = makeURLRequest(using: url, withMethod: requestData.httpRequestMethod.rawValue)
         
         let task = URLSession.shared.dataTask(with: urlRequest) { (data, response, error) in
             if let error = error {
@@ -43,22 +43,23 @@ class WrikeAPINetworkClient {
         task.resume()
     }
     
-    func getUrl() -> URL {
+    func getUrl(using urlPath: String) -> URL {
         var components = URLComponents()
         let defaults = UserDefaults.standard
         
         components.scheme = "https"
         components.host = defaults.host ?? "www.wrike.com"
-        components.path = "/api/v4/folders"
+        components.path = "/api/v4" + urlPath
+        
         
         return components.url!
     }
     
-    private func makeURLRequest(using url: URL) -> URLRequest {
+    private func makeURLRequest(using url: URL, withMethod httpMethod: String) -> URLRequest {
         var request = URLRequest(url: url)
         let defaults = UserDefaults.standard
         
-        request.httpMethod = "GET"
+        request.httpMethod = httpMethod
         
         //TODO: Build model for getting values
         request.addValue(defaults.tokenType! + " " + defaults.accessToken!, forHTTPHeaderField: "Authorization")

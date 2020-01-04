@@ -97,9 +97,9 @@
 			children = (
 				EA1C36CA22F40D2000D87AAF /* WrikeAuthNetworkingClient.swift */,
 				EA1C36CC22F92BF000D87AAF /* WrikeAuthNetworkingClient+Functions.swift */,
+				EA1D125323A208800013A58D /* WrikeLoginProcess.swift */,
 				EA8131BD22CBFD75009D2806 /* WrikeAPINetworkClient.swift */,
 				EA8131BF22CBFE92009D2806 /* WrikeAPINetworkClient+HelperFunctions.swift */,
-				EA1D125323A208800013A58D /* WrikeLoginProcess.swift */,
 				EAFCC6B623AEF42800DF8A16 /* WrikeAPIRequestModel.swift */,
 				EAFCC6B823B45BB500DF8A16 /* WrikeAPIRequestModel+Extension.swift */,
 			);

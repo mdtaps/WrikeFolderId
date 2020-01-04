@@ -25,7 +25,7 @@ class LoginViewController: UIViewController, WKUIDelegate {
 //MARK: Extensions
 extension LoginViewController {
     private func getWrikeFolderResponseObject() {
-        WrikeAPINetworkClient.shared.retrieveWrikeFolders(for: .GetAllFolders) { (result) in
+        WrikeAPINetworkClient.shared.retrieveWrikeFolders(for: .GetAllFolders, returnType: WrikeAllFoldersResponseObject.self) { result in
             switch result {
             case .Failure(with: let failureString):
                 //TODO: Display failure

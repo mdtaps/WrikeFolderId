@@ -23,12 +23,10 @@ class WrikeLoginProcess {
         switch tokenStatus {
         case .TokenReady:
             completion(true)
-            return
         case .TokenNeedsRefresh:
             setLoginToken(using: .refreshToken) { result in
                 completion(true)
             }
-            
         case .NoAccessToken:
             //Set observer for authCode value in UserDefaults.
             //Closure runs request for Wrike token once value is set

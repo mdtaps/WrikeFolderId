@@ -8,11 +8,15 @@
 
 import Foundation
 
-protocol WrikeResponseObject {
-    
+protocol WrikeResponseObject: Decodable { }
+
+extension WrikeResponseObject {
+    static func getUnderlyingType() -> Self.Type {
+        return Self.self
+    }
 }
 
-struct WrikeAllFoldersResponseObject: Codable, WrikeResponseObject {
+struct WrikeAllFoldersResponseObject: WrikeResponseObject {
     let kind: String
     let data: [FolderData]
 }

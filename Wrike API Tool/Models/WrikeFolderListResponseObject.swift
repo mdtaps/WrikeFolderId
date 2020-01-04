@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct WrikeFolderListObject: Codable, WrikeResponseObject {
+struct WrikeFolderListResponseObject: WrikeResponseObject {
     let kind: String
     let data: [FolderObject]
 
@@ -44,16 +44,5 @@ struct WrikeFolderListObject: Codable, WrikeResponseObject {
     struct CustomField: Codable {
         let id: String
         let value: String
-    }
-
-    struct Project: Codable {
-        let authorId: String?
-        let ownerIds: [String]
-        let customStatusId: String?
-        let startDate: String?
-        let endDate: String?
-        let createdDate: String?
-        let completedDate: String?
-        let status: String?
     }
 }
