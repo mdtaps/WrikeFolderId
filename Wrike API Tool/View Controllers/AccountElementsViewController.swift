@@ -85,12 +85,14 @@ extension AccountElementsViewController: UITableViewDelegate, UITableViewDataSou
         }
         
         elementCell.delegate = self
-        
-        elementCell.folderId = parentFolder.childIds[indexPath.row]
         let currentFolder = childFolders[indexPath.row]
+        
+        elementCell.folderId = currentFolder.id
+
                 
         if currentFolder.childIds.isEmpty {
             elementCell.caretButton.isHidden = true
+            
         } else {
             elementCell.caretButton.isHidden = false
         }
@@ -115,12 +117,13 @@ extension AccountElementsViewController: CellClickDelegate {
     
     //TODO: Use new childFolders array
     internal func loadChildFolders(folderId: String) {
-        for folder in appDelegate.wrikeObject!.data {
+        for folder in childFolders {
             if folder.id == folderId {
                 if !folder.childIds.isEmpty {
                     let vc = AccountElementsViewController(wrikeFolder: folder)
                     navigationController?.pushViewController(vc, animated: true)
                 }
+                break
             }
         }
     }
