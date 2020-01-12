@@ -35,6 +35,7 @@
 		EAFCC6B523AEB3A600DF8A16 /* WrikeFolderListResponseObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAFCC6B423AEB3A600DF8A16 /* WrikeFolderListResponseObject.swift */; };
 		EAFCC6B723AEF42800DF8A16 /* WrikeAPIRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAFCC6B623AEF42800DF8A16 /* WrikeAPIRequestModel.swift */; };
 		EAFCC6B923B45BB500DF8A16 /* WrikeAPIRequestModel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAFCC6B823B45BB500DF8A16 /* WrikeAPIRequestModel+Extension.swift */; };
+		EAFCC6BB23CB09C000DF8A16 /* FoldersNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAFCC6BA23CB09C000DF8A16 /* FoldersNavigationController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -69,6 +70,7 @@
 		EAFCC6B423AEB3A600DF8A16 /* WrikeFolderListResponseObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WrikeFolderListResponseObject.swift; sourceTree = "<group>"; };
 		EAFCC6B623AEF42800DF8A16 /* WrikeAPIRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WrikeAPIRequestModel.swift; sourceTree = "<group>"; };
 		EAFCC6B823B45BB500DF8A16 /* WrikeAPIRequestModel+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WrikeAPIRequestModel+Extension.swift"; sourceTree = "<group>"; };
+		EAFCC6BA23CB09C000DF8A16 /* FoldersNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoldersNavigationController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,6 +138,7 @@
 			isa = PBXGroup;
 			children = (
 				EAAAC98422BDB97600414284 /* LoginViewController.swift */,
+				EAFCC6BA23CB09C000DF8A16 /* FoldersNavigationController.swift */,
 				EAFB81B122DE2FE30062813D /* FolderIdViewController.swift */,
 				EA8131C122D854C2009D2806 /* AccountElementTableViewCell.swift */,
 				EAAAC99B22C18B9800414284 /* AccountElementsViewController.swift */,
@@ -290,6 +293,7 @@
 				EAFB81B322DE2FE30062813D /* FolderIdViewController.swift in Sources */,
 				EA652895231F5D8400EEE5D4 /* UserDefaults+Extension.swift in Sources */,
 				EA65289A231F7B1000EEE5D4 /* AuthorizationCodeRequest.swift in Sources */,
+				EAFCC6BB23CB09C000DF8A16 /* FoldersNavigationController.swift in Sources */,
 				EAFCC6B523AEB3A600DF8A16 /* WrikeFolderListResponseObject.swift in Sources */,
 				EA1C36CD22F92BF000D87AAF /* WrikeAuthNetworkingClient+Functions.swift in Sources */,
 			);

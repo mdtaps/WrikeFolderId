@@ -9,22 +9,26 @@
 import UIKit
 import WebKit
 
+protocol RefreshDelegate {
+    func getWrikeFolders()
+}
+
 @IBDesignable
 class LoginViewController: UIViewController, WKUIDelegate {
-    @IBOutlet weak var loginButton: StyledButton!
-    @IBOutlet weak var webView: WKWebView!
-    var wrikeObjectObserver: NSKeyValueObservation?
-    let defaults = UserDefaults.standard
-    let appDelegate = UIApplication.shared.delegate as? AppDelegate
+    var mainNavigationController = FoldersNavigationController()
     
+    //MARK: Outlets
+    @IBOutlet weak var loginButton: StyledButton!
+    
+    //MARK: Actions
     @IBAction func loginButtonPressed(_ sender: StyledButton) {
-        getWrikeFolderResponseObject()
+        getWrikeFolders()
     }
 }
 
 //MARK: Extensions
-extension LoginViewController {
-    private func getWrikeFolderResponseObject() {
+extension LoginViewController: RefreshDelegate {
+    func getWrikeFolders() {
         WrikeAPINetworkClient.shared.retrieveWrikeFolders(for: .GetAllFolders, returnType: WrikeAllFoldersResponseObject.self) { result in
             switch result {
             case .Failure(with: let failureString):
@@ -39,20 +43,25 @@ extension LoginViewController {
     }
     
     private func launchFolderView(using wrikeObject: WrikeAllFoldersResponseObject) {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+
         guard let rootFolder = wrikeObject.data.first else {
             //TODO: Throw error
             fatalError("No folders found")
         }
         
-        let vc = AccountElementsViewController(wrikeFolder: rootFolder)
+        let vc = AccountElementsViewController(wrikeFolder: rootFolder, refreshDelegate: self)
         vc.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Logout", style: .done, target: vc, action: #selector(AccountElementsViewController.logout))
         
-        let navController = UINavigationController(rootViewController: vc)
-        navController.modalPresentationStyle = .fullScreen
+        appDelegate.wrikeObject = wrikeObject
+        
+        mainNavigationController.viewControllers.removeAll()
+        mainNavigationController.pushViewController(vc, animated: false)
+        mainNavigationController.popToRootViewController(animated: false)
 
-        appDelegate?.wrikeObject = wrikeObject
-
-        self.present(navController, animated: true, completion: nil)
+        if mainNavigationController.presentingViewController == nil {
+            self.present(mainNavigationController, animated: true, completion: nil)
+        }
     }
 }
 

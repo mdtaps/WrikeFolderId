@@ -9,9 +9,13 @@
 import UIKit
 
 class AccountElementsViewController: UIViewController {
-
+    //MARK: Outlets
     @IBOutlet weak var elementsTableView: UITableView!
+    
+    //MARK: Properties
     var parentFolder: FolderData
+    var refreshDelegate: RefreshDelegate
+    private let refreshControl = UIRefreshControl()
     lazy var childFolders: [FolderData] = {
         var folders = [FolderData]()
 
@@ -23,17 +27,16 @@ class AccountElementsViewController: UIViewController {
             }
         }
         
-        dump(folders)
-        
         return folders
     }()
     
-    private let refreshControl = UIRefreshControl()
     lazy var appDelegate = {
         UIApplication.shared.delegate as! AppDelegate
     }()
  
-    init(wrikeFolder: FolderData) {
+    //MARK: Initializers
+    init(wrikeFolder: FolderData, refreshDelegate: RefreshDelegate) {
+        self.refreshDelegate = refreshDelegate
         self.parentFolder = wrikeFolder
         super.init(nibName: nil, bundle: nil)
     }
@@ -61,6 +64,7 @@ class AccountElementsViewController: UIViewController {
         refreshControl.addTarget(self, action: #selector(refreshWrikeFolderData), for: .valueChanged)
     }
     
+    //MARK: Functions
     @objc func logout() {
         clearUserDefaultsAuthData()
         dismiss(animated: true, completion: nil)
@@ -120,7 +124,7 @@ extension AccountElementsViewController: CellClickDelegate {
         for folder in childFolders {
             if folder.id == folderId {
                 if !folder.childIds.isEmpty {
-                    let vc = AccountElementsViewController(wrikeFolder: folder)
+                    let vc = AccountElementsViewController(wrikeFolder: folder, refreshDelegate: refreshDelegate)
                     navigationController?.pushViewController(vc, animated: true)
                 }
                 break
@@ -135,8 +139,7 @@ extension AccountElementsViewController: CellClickDelegate {
     }
     
      @objc private func refreshWrikeFolderData() {
-        //TODO: Get Wrike data
-        
-        //TODO: Close table view to root
+        //TODO: Call refresh
+        refreshDelegate.getWrikeFolders()
     }
 }

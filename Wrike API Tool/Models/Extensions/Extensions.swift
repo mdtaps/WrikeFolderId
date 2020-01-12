@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 
 extension UIView {
+    //TODO: Get rid of this
     class func fromNib<T: UIView>() -> T {
         let bundle = Bundle(for: self)
         let nibName = String(describing: self)
@@ -23,6 +24,7 @@ extension UIView {
     }
 }
 
+//Extension for custom description on layour warnings in console
 extension NSLayoutConstraint {
     override public var description: String {
         let id = identifier ?? ""
