@@ -36,6 +36,7 @@
 		EAFCC6B723AEF42800DF8A16 /* WrikeAPIRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAFCC6B623AEF42800DF8A16 /* WrikeAPIRequestModel.swift */; };
 		EAFCC6B923B45BB500DF8A16 /* WrikeAPIRequestModel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAFCC6B823B45BB500DF8A16 /* WrikeAPIRequestModel+Extension.swift */; };
 		EAFCC6BB23CB09C000DF8A16 /* FoldersNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAFCC6BA23CB09C000DF8A16 /* FoldersNavigationController.swift */; };
+		EAFCC6BD23CBC59F00DF8A16 /* ActivityIndicatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAFCC6BC23CBC59F00DF8A16 /* ActivityIndicatorViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -71,6 +72,7 @@
 		EAFCC6B623AEF42800DF8A16 /* WrikeAPIRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WrikeAPIRequestModel.swift; sourceTree = "<group>"; };
 		EAFCC6B823B45BB500DF8A16 /* WrikeAPIRequestModel+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WrikeAPIRequestModel+Extension.swift"; sourceTree = "<group>"; };
 		EAFCC6BA23CB09C000DF8A16 /* FoldersNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoldersNavigationController.swift; sourceTree = "<group>"; };
+		EAFCC6BC23CBC59F00DF8A16 /* ActivityIndicatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicatorViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,6 +143,7 @@
 				EAFCC6BA23CB09C000DF8A16 /* FoldersNavigationController.swift */,
 				EAFB81B122DE2FE30062813D /* FolderIdViewController.swift */,
 				EA8131C122D854C2009D2806 /* AccountElementTableViewCell.swift */,
+				EAFCC6BC23CBC59F00DF8A16 /* ActivityIndicatorViewController.swift */,
 				EAAAC99B22C18B9800414284 /* AccountElementsViewController.swift */,
 			);
 			path = "View Controllers";
@@ -278,6 +281,7 @@
 				EA1D125423A208800013A58D /* WrikeLoginProcess.swift in Sources */,
 				EAAAC99D22C18B9800414284 /* AccountElementsViewController.swift in Sources */,
 				EA8131C322D854C2009D2806 /* AccountElementTableViewCell.swift in Sources */,
+				EAFCC6BD23CBC59F00DF8A16 /* ActivityIndicatorViewController.swift in Sources */,
 				EA8131BC22C5750A009D2806 /* WrikeAllFoldersResponseObject.swift in Sources */,
 				EA65289C231F7CB400EEE5D4 /* ClientKeyRequestor.swift in Sources */,
 				EA1C36CB22F40D2000D87AAF /* WrikeAuthNetworkingClient.swift in Sources */,

@@ -9,18 +9,25 @@
 import Foundation
 import UIKit
 
-extension UIView {
-    //TODO: Get rid of this
-    class func fromNib<T: UIView>() -> T {
-        let bundle = Bundle(for: self)
-        let nibName = String(describing: self)
-        let nib = UINib(nibName: nibName, bundle: bundle)
-        
-        guard let view = nib.instantiate(withOwner: self, options: nil).first as? T else {
-            fatalError("Error loading nib with name \(nibName)")
+extension UIViewController {
+    func addLoadingWheel() {
+        let child = ActivityIndicatorViewController()
+
+        // add the spinner view controller
+        addChild(child)
+        child.view.frame = view.frame
+        view.addSubview(child.view)
+        child.didMove(toParent: self)
+    }
+    
+    func removeLoadingWheel() {
+        for child in self.children {
+            if child is ActivityIndicatorViewController {
+                child.willMove(toParent: nil)
+                child.view.removeFromSuperview()
+                child.removeFromParent()
+            }
         }
-        
-        return view
     }
 }
 
