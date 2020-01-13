@@ -143,8 +143,8 @@
 				EAFCC6BA23CB09C000DF8A16 /* FoldersNavigationController.swift */,
 				EAFB81B122DE2FE30062813D /* FolderIdViewController.swift */,
 				EA8131C122D854C2009D2806 /* AccountElementTableViewCell.swift */,
-				EAFCC6BC23CBC59F00DF8A16 /* ActivityIndicatorViewController.swift */,
 				EAAAC99B22C18B9800414284 /* AccountElementsViewController.swift */,
+				EAFCC6BC23CBC59F00DF8A16 /* ActivityIndicatorViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";

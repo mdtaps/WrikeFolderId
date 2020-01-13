@@ -15,6 +15,7 @@ protocol RefreshDelegate {
 
 @IBDesignable
 class LoginViewController: UIViewController, WKUIDelegate {
+    //MARK: Properties
     var mainNavigationController = FoldersNavigationController()
     
     //MARK: Outlets
@@ -24,11 +25,14 @@ class LoginViewController: UIViewController, WKUIDelegate {
     @IBAction func loginButtonPressed(_ sender: StyledButton) {
         getWrikeFolders()
     }
+    
+    
 }
 
 //MARK: Extensions
 extension LoginViewController: RefreshDelegate {
     func getWrikeFolders() {
+        addLoadingWheel()
         WrikeAPINetworkClient.shared.retrieveWrikeFolders(for: .GetAllFolders, returnType: WrikeAllFoldersResponseObject.self) { result in
             switch result {
             case .Failure(with: let failureString):
@@ -44,6 +48,8 @@ extension LoginViewController: RefreshDelegate {
     
     private func launchFolderView(using wrikeObject: WrikeAllFoldersResponseObject) {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        
+        appDelegate.wrikeObject = wrikeObject
 
         guard let rootFolder = wrikeObject.data.first else {
             //TODO: Throw error
@@ -53,8 +59,6 @@ extension LoginViewController: RefreshDelegate {
         let vc = AccountElementsViewController(wrikeFolder: rootFolder, refreshDelegate: self)
         vc.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Logout", style: .done, target: vc, action: #selector(AccountElementsViewController.logout))
         
-        appDelegate.wrikeObject = wrikeObject
-        
         mainNavigationController.viewControllers.removeAll()
         mainNavigationController.pushViewController(vc, animated: false)
         mainNavigationController.popToRootViewController(animated: false)
@@ -62,6 +66,7 @@ extension LoginViewController: RefreshDelegate {
         if mainNavigationController.presentingViewController == nil {
             self.present(mainNavigationController, animated: true, completion: nil)
         }
+        removeLoadingWheel()
     }
 }
 

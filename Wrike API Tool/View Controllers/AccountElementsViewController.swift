@@ -15,29 +15,27 @@ class AccountElementsViewController: UIViewController {
     //MARK: Properties
     var parentFolder: FolderData
     var refreshDelegate: RefreshDelegate
-    private let refreshControl = UIRefreshControl()
-    lazy var childFolders: [FolderData] = {
-        var folders = [FolderData]()
-
-        if !parentFolder.childIds.isEmpty {
-            for datum in appDelegate.wrikeObject!.data {
-                if parentFolder.childIds.contains(datum.id) {
-                    folders.append(datum)
-                }
-            }
-        }
-        
-        return folders
-    }()
-    
-    lazy var appDelegate = {
-        UIApplication.shared.delegate as! AppDelegate
-    }()
+    var childFolders: [FolderData]
+    let refreshControl = UIRefreshControl()
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
  
     //MARK: Initializers
     init(wrikeFolder: FolderData, refreshDelegate: RefreshDelegate) {
         self.refreshDelegate = refreshDelegate
         self.parentFolder = wrikeFolder
+        
+        var childFolders = [FolderData]()
+
+        if !parentFolder.childIds.isEmpty {
+            for datum in appDelegate.wrikeObject!.data {
+                if parentFolder.childIds.contains(datum.id) {
+                    childFolders.append(datum)
+                }
+            }
+        }
+        
+        self.childFolders = childFolders
+
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -119,13 +117,14 @@ extension AccountElementsViewController: CellClickDelegate {
         present(vc, animated: true, completion: nil)
     }
     
-    //TODO: Use new childFolders array
     internal func loadChildFolders(folderId: String) {
+        addLoadingWheel()
         for folder in childFolders {
             if folder.id == folderId {
                 if !folder.childIds.isEmpty {
                     let vc = AccountElementsViewController(wrikeFolder: folder, refreshDelegate: refreshDelegate)
                     navigationController?.pushViewController(vc, animated: true)
+                    removeLoadingWheel()
                 }
                 break
             }

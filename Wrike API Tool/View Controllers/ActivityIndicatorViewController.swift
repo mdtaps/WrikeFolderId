@@ -5,11 +5,12 @@
 //  Created by Mark Tapia on 1/12/20.
 //  Copyright © 2020 Mark Tapia. All rights reserved.
 //
+//Code borrowed from https://www.hackingwithswift.com/example-code/uikit/how-to-use-uiactivityindicatorview-to-show-a-spinner-when-work-is-happening
 
 import UIKit
 
 class ActivityIndicatorViewController: UIViewController {
-    var spinner = UIActivityIndicatorView(style: .gray)
+    var spinner = UIActivityIndicatorView(style: .whiteLarge)
 
     override func loadView() {
         view = UIView()
