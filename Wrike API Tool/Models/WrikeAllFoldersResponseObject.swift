@@ -8,20 +8,12 @@
 
 import Foundation
 
-protocol WrikeResponseObject: Decodable { }
-
-extension WrikeResponseObject {
-    static func getUnderlyingType() -> Self.Type {
-        return Self.self
-    }
-}
-
-struct WrikeAllFoldersResponseObject: WrikeResponseObject {
+struct WrikeAllFoldersResponseObject: Decodable {
     let kind: String
     let data: [FolderData]
 }
 
-struct FolderData: Codable {
+struct FolderData: Decodable {
     let id: String
     let title: String
     let color: String?
@@ -30,7 +22,7 @@ struct FolderData: Codable {
     let project: Project?
 }
 
-struct Project: Codable {
+struct Project: Decodable {
     let authorId: String?
     let ownerIds: [String]
     let customStatusId: String?

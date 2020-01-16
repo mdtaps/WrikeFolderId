@@ -8,11 +8,11 @@
 
 import Foundation
 
-struct WrikeFolderListResponseObject: WrikeResponseObject {
+struct WrikeFolderListResponseObject: Decodable {
     let kind: String
     let data: [FolderObject]
 
-    struct FolderObject: Codable {
+    struct FolderObject: Decodable {
         let id: String
         let accountId: String
         let title: String
@@ -36,12 +36,12 @@ struct WrikeFolderListResponseObject: WrikeResponseObject {
         let project: Project?
     }
     
-    struct MetaData: Codable {
+    struct MetaData: Decodable {
         let key: String
         let value: String
     }
     
-    struct CustomField: Codable {
+    struct CustomField: Decodable {
         let id: String
         let value: String
     }
