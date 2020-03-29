@@ -9,6 +9,7 @@
 import Foundation
 //TODO: Figure out which part of UIKit to import
 import UIKit
+import AuthenticationServices
 
 class WrikeLoginProcess {
     static let shared = WrikeLoginProcess()
@@ -45,9 +46,24 @@ class WrikeLoginProcess {
             
             let requestUrl = getWrikeOAuthUrl()
             
+            // Use the URL and callback scheme specified by the authorization provider.
+            let scheme = "mdtaps.com"
+
+            // Initialize the session.
+            let session = ASWebAuthenticationSession(url: requestUrl, callbackURLScheme: scheme)
+            { callbackURL, error in
+                // Handle the callback.
+            }
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            session.presentationContextProvider = appDelegate.loginDelegate
+
+            
+            session.start()
+            
+            //TODO: Remove
             //Open URL to login to Wrike via OAuth, returns Authorization Code to AppDelegate
             //for use in token creation
-            UIApplication.shared.open(requestUrl, options: [:], completionHandler: nil)
+            //UIApplication.shared.open(requestUrl, options: [:], completionHandler: nil)
         }
     }
     

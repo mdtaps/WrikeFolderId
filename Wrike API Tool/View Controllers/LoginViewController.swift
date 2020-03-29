@@ -8,6 +8,7 @@
 
 import UIKit
 import WebKit
+import AuthenticationServices
 
 protocol RefreshDelegate {
     func getWrikeFolders()
@@ -15,6 +16,11 @@ protocol RefreshDelegate {
 
 @IBDesignable
 class LoginViewController: UIViewController, WKUIDelegate {
+    override func viewDidLoad() {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        appDelegate.loginDelegate = self
+    }
+    
     //MARK: Properties
     var mainNavigationController = FoldersNavigationController()
     
@@ -25,8 +31,6 @@ class LoginViewController: UIViewController, WKUIDelegate {
     @IBAction func loginButtonPressed(_ sender: StyledButton) {
         getWrikeFolders()
     }
-    
-    
 }
 
 //MARK: Extensions
@@ -67,6 +71,12 @@ extension LoginViewController: RefreshDelegate {
             self.present(mainNavigationController, animated: true, completion: nil)
         }
         removeLoadingWheel()
+    }
+}
+
+extension LoginViewController: ASWebAuthenticationPresentationContextProviding {
+    func presentationAnchor(for session: ASWebAuthenticationSession) -> ASPresentationAnchor {
+        return view.window!
     }
 }
 
