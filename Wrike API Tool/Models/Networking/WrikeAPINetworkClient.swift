@@ -59,10 +59,18 @@ class WrikeAPINetworkClient {
         var request = URLRequest(url: url)
         let defaults = UserDefaults.standard
         
+        guard let tokenType = defaults.tokenType else {
+            fatalError("No token type set in User Defaults")
+        }
+        
+        guard let accessToken = defaults.accessToken else {
+            fatalError("No Access Token set in User Defaults")
+        }
+        
         request.httpMethod = httpMethod
         
-        //TODO: Check why nil sometimes gets returned
-        request.addValue(defaults.tokenType! + " " + defaults.accessToken!, forHTTPHeaderField: "Authorization")
+        //TODO: Check why nil sometimes gets returned after logout
+        request.addValue(tokenType + " " + accessToken, forHTTPHeaderField: "Authorization")
         return request
     }
 }

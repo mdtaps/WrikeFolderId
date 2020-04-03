@@ -45,20 +45,30 @@ class WrikeLoginProcess {
             }
             
             let requestUrl = getWrikeOAuthUrl()
+            print("Request URL: \(requestUrl)")
             
             // Use the URL and callback scheme specified by the authorization provider.
-            let scheme = "mdtaps.com"
+            let scheme = AuthorizationCodeRequest.Constants.Values.RedirectUri
 
             // Initialize the session.
-            let session = ASWebAuthenticationSession(url: requestUrl, callbackURLScheme: scheme)
-            { callbackURL, error in
-                // Handle the callback.
-            }
-            let appDelegate = UIApplication.shared.delegate as! AppDelegate
-            session.presentationContextProvider = appDelegate.loginDelegate
-
             
-            session.start()
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            appDelegate.session = ASWebAuthenticationSession(url: requestUrl, callbackURLScheme: scheme) { callbackURL, error in
+                //TODO: Handle error
+                print("callback called")
+                guard error == nil, let callbackURL = callbackURL else { return }
+                
+                print(callbackURL.absoluteString)
+
+                let queryItems = URLComponents(string: callbackURL.absoluteString)?.queryItems
+                let code = queryItems?.filter({ $0.name == "code" }).first?.value
+                
+                let defaults = UserDefaults.standard
+                defaults.set(code, forKey: "authCode")
+            }
+            appDelegate.session?.presentationContextProvider = appDelegate.loginDelegate
+
+            appDelegate.session?.start()
             
             //TODO: Remove
             //Open URL to login to Wrike via OAuth, returns Authorization Code to AppDelegate
