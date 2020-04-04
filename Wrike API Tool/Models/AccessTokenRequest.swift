@@ -24,6 +24,7 @@ struct AccessTokenResponseObject: Codable {
     }
     
     func writeToDefaults() {
+        print("Write to defaults called")
         let defaults = UserDefaults.standard
         let currentUnixTimeMinusOneMinute = Date().timeIntervalSince1970 - 60
         

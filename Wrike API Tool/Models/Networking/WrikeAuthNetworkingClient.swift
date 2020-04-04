@@ -22,12 +22,6 @@ class WrikeAuthNetworkingClient {
                 completion(.Failure(with: error.localizedDescription))
             }
             
-            if let data = data {
-                completion(.Success(with: data))
-            } else {
-                completion(.Failure(with: "No data returned"))
-            }
-            
             guard let httpResponse = response as? HTTPURLResponse else {
                 completion(.Failure(with: "No response from server"))
                 return
@@ -36,6 +30,12 @@ class WrikeAuthNetworkingClient {
             guard (200...299).contains(httpResponse.statusCode) else {
                 completion(.Failure(with: "Auth Request Invalid, status code of \(httpResponse.statusCode)"))
                 return
+            }
+            
+            if let data = data {
+                completion(.Success(with: data))
+            } else {
+                completion(.Failure(with: "No data returned"))
             }
         }
         

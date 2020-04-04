@@ -7,8 +7,6 @@
 //
 
 import Foundation
-//TODO: Figure out which part of UIKit to import
-import UIKit
 import AuthenticationServices
 
 class WrikeLoginProcess {
@@ -20,6 +18,7 @@ class WrikeLoginProcess {
     
     func loginToWrike(_ completion: @escaping (_ tokenIsSet: Bool) -> Void) {
         let tokenStatus = getTokenStatus()
+        print("Token status: \(tokenStatus)")
         
         switch tokenStatus {
         case .TokenReady:
@@ -45,36 +44,32 @@ class WrikeLoginProcess {
             }
             
             let requestUrl = getWrikeOAuthUrl()
-            print("Request URL: \(requestUrl)")
-            
+
             // Use the URL and callback scheme specified by the authorization provider.
             let scheme = AuthorizationCodeRequest.Constants.Values.RedirectUri
-
-            // Initialize the session.
             
             let appDelegate = UIApplication.shared.delegate as! AppDelegate
-            appDelegate.session = ASWebAuthenticationSession(url: requestUrl, callbackURLScheme: scheme) { callbackURL, error in
-                //TODO: Handle error
-                print("callback called")
-                guard error == nil, let callbackURL = callbackURL else { return }
-                
-                print(callbackURL.absoluteString)
+            appDelegate.webAuthSession = ASWebAuthenticationSession(url: requestUrl, callbackURLScheme: scheme) { callbackURL, error in
 
-                let queryItems = URLComponents(string: callbackURL.absoluteString)?.queryItems
-                let code = queryItems?.filter({ $0.name == "code" }).first?.value
+                if let error = error {
+                    appDelegate.loginDelegate?.removeLoadingWheel()
+                    print("Session ended with error: \(error.localizedDescription)")
+                    return
+                }
                 
-                let defaults = UserDefaults.standard
-                defaults.set(code, forKey: "authCode")
+                print("Callback URL called from webAuthSession: \(String(describing: callbackURL))")
             }
-            appDelegate.session?.presentationContextProvider = appDelegate.loginDelegate
-
-            appDelegate.session?.start()
-            
-            //TODO: Remove
-            //Open URL to login to Wrike via OAuth, returns Authorization Code to AppDelegate
-            //for use in token creation
-            //UIApplication.shared.open(requestUrl, options: [:], completionHandler: nil)
+            appDelegate.webAuthSession?.presentationContextProvider = appDelegate.loginDelegate
+            appDelegate.webAuthSession?.start()
         }
+    }
+}
+
+extension WrikeLoginProcess {
+    private enum TokenStatus {
+        case NoAccessToken
+        case TokenNeedsRefresh
+        case TokenReady
     }
     
     private func getWrikeOAuthUrl() -> URL {
@@ -95,9 +90,12 @@ class WrikeLoginProcess {
     }
     
     private func setLoginToken(using requestType: AuthorizationRequestType, completion: @escaping (_ result: Bool) -> Void) {
+        authCodeObserver?.invalidate()
+        
         WrikeAuthNetworkingClient.shared.getAccessToken(requestType: requestType) { result in
             switch result {
             case .Failure(with: let failureString):
+                print(failureString)
                 completion(false)
             case .Success(with: let accessTokenObject):
                 accessTokenObject.writeToDefaults()
@@ -121,11 +119,5 @@ class WrikeLoginProcess {
         }
         
         return .TokenReady
-    }
-    
-    enum TokenStatus {
-        case NoAccessToken
-        case TokenNeedsRefresh
-        case TokenReady
     }
 }

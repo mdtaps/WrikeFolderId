@@ -10,7 +10,6 @@ import Foundation
 import UIKit
 
 extension WrikeAPINetworkClient {
-    @available(iOS 13.0, *)
     func retrieveWrikeFolders<T: Decodable>(for requestMethod: APIRequestMethod, returnType: T.Type, _ completion: @escaping (_ response: Result<T>) -> Void) {
         
         WrikeLoginProcess.shared.loginToWrike { tokenIsSet in

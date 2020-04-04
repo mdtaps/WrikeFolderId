@@ -9,7 +9,6 @@
 import Foundation
 
 class WrikeAPINetworkClient {
-    
     static let shared = WrikeAPINetworkClient()
     
     private init() {}

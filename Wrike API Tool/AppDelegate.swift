@@ -15,7 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     var wrikeObject: WrikeAllFoldersResponseObject?
     var loginDelegate: LoginViewController?
-    var session: ASWebAuthenticationSession?
+    var webAuthSession: ASWebAuthenticationSession?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
@@ -65,7 +65,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             fatalError("No value set for Auth Code in AppDelegate")
         }
         
-        session?.cancel()
+        //Cancel ASWebAuthenticationSession after successfully receiving auth code.
+        //Necessary to handle here when redirect URL uses HTTPS protocol
+        //instead of the session closure.
+        webAuthSession?.cancel()
         let defaults = UserDefaults.standard
         defaults.set(authCode, forKey: "authCode")
                 
