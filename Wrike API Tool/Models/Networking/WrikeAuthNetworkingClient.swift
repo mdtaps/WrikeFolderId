@@ -17,6 +17,8 @@ class WrikeAuthNetworkingClient {
         let url = getUrl(requestType: requestType)
         let urlRequest = makeUrlRequest(using: url)
         
+        dump(urlRequest)
+        
         let task = URLSession.shared.dataTask(with: urlRequest) { (data, response, error) in
             if let error = error {
                 completion(.Failure(with: error.localizedDescription))
@@ -28,7 +30,7 @@ class WrikeAuthNetworkingClient {
             }
             
             guard (200...299).contains(httpResponse.statusCode) else {
-                completion(.Failure(with: "Auth Request Invalid, status code of \(httpResponse.statusCode)"))
+                completion(.Failure(with: "Auth Request Invalid, status code of \(httpResponse.statusCode), \(HTTPURLResponse.localizedString(forStatusCode: httpResponse.statusCode))"))
                 return
             }
             
@@ -66,10 +68,13 @@ class WrikeAuthNetworkingClient {
 
         let grantQueryKey: String
         let grantQueryValue: String
+        print("Request Type for Auth: \(requestType)")
         switch requestType {
         case .authorizationCode:
+            //TODO: Set grant query key to requestType, update request type to whatever it needs to be for raw value to work
+            //for both .authorizationCode and .refreshToken
             grantQueryKey = AccessTokenRequestParameters.Constants.Keys.Code
-            grantQueryValue = AccessTokenRequestParameters.Constants.Values.Code
+            grantQueryValue = UserDefaults.standard.authCode!
         case .refreshToken:
             grantQueryKey = requestType.rawValue
             grantQueryValue = UserDefaults.standard.refreshToken!

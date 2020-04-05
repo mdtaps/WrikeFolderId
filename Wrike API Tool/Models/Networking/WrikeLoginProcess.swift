@@ -14,11 +14,11 @@ class WrikeLoginProcess {
     
     private init() {}
     
+    let defaults = UserDefaults.standard
     var authCodeObserver: NSKeyValueObservation?
     
     func loginToWrike(_ completion: @escaping (_ tokenIsSet: Bool) -> Void) {
         let tokenStatus = getTokenStatus()
-        print("Token status: \(tokenStatus)")
         
         switch tokenStatus {
         case .TokenReady:
@@ -30,13 +30,14 @@ class WrikeLoginProcess {
         case .NoAccessToken:
             //Set observer for authCode value in UserDefaults.
             //Closure runs request for Wrike token once value is set
-            let defaults = UserDefaults.standard
                     
             authCodeObserver = defaults.observe(\.authCode!) { (defaults, _) in
                 guard defaults.authCode != nil else {
                     print("No value set for UserDefault authCode")
                     return
                 }
+                
+                print("AuthCode set for defaults is: \(defaults.authCode!)")
                 
                 self.setLoginToken(using: .authorizationCode) { result in
                     completion(true)
@@ -105,8 +106,6 @@ extension WrikeLoginProcess {
     }
     
     private func getTokenStatus() -> TokenStatus {
-        let defaults = UserDefaults.standard
-
         guard defaults.accessToken != nil else {
             return .NoAccessToken
         }

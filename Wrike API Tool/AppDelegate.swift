@@ -55,11 +55,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 return false
         }
         
+        print(incomingURL.absoluteString)
+        
         for param in params {
             if param.name == "code" {
                 authCode = param.value!
             }
         }
+        
+        print("AuthCode got set: \(authCode)")
         
         guard authCode != nil else {
             fatalError("No value set for Auth Code in AppDelegate")
