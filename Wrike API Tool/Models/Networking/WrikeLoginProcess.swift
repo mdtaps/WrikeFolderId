@@ -37,7 +37,6 @@ class WrikeLoginProcess {
                     return
                 }
                 
-                print("AuthCode set for defaults is: \(defaults.authCode!)")
                 
                 self.setLoginToken(using: .authorizationCode) { result in
                     completion(true)
@@ -57,8 +56,6 @@ class WrikeLoginProcess {
                     print("Session ended with error: \(error.localizedDescription)")
                     return
                 }
-                
-                print("Callback URL called from webAuthSession: \(String(describing: callbackURL))")
             }
             appDelegate.webAuthSession?.presentationContextProvider = appDelegate.loginDelegate
             appDelegate.webAuthSession?.start()

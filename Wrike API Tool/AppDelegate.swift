@@ -62,9 +62,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 authCode = param.value!
             }
         }
-        
-        print("AuthCode got set: \(authCode)")
-        
+                
         guard authCode != nil else {
             fatalError("No value set for Auth Code in AppDelegate")
         }

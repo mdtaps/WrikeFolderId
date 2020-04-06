@@ -24,7 +24,6 @@ struct AccessTokenResponseObject: Codable {
     }
     
     func writeToDefaults() {
-        print("Write to defaults called")
         let defaults = UserDefaults.standard
         let currentUnixTimeMinusOneMinute = Date().timeIntervalSince1970 - 60
         
@@ -50,9 +49,6 @@ struct AccessTokenRequestParameters: ClientKeyRequestor {
         struct Values {
             static var ClientId = getClientId()
             static var ClientSecret = getClientSecret()
-            static var Code: String = {
-                return UserDefaults.standard.authCode!
-            }()
         }
     }
 }

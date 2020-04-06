@@ -51,9 +51,7 @@ class WrikeAuthNetworkingClient {
         components.path = "/oauth2/token"
         
         components.queryItems = getQueryItems(using: requestType)
-        
-        print("Auth Request URL: \(components.url!)")
-        
+                
         return components.url!
     }
     
@@ -68,11 +66,9 @@ class WrikeAuthNetworkingClient {
 
         let grantQueryKey: String
         let grantQueryValue: String
-        print("Request Type for Auth: \(requestType)")
+        
         switch requestType {
         case .authorizationCode:
-            //TODO: Set grant query key to requestType, update request type to whatever it needs to be for raw value to work
-            //for both .authorizationCode and .refreshToken
             grantQueryKey = AccessTokenRequestParameters.Constants.Keys.Code
             grantQueryValue = UserDefaults.standard.authCode!
         case .refreshToken:
