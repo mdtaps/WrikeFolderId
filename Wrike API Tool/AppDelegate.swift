@@ -62,7 +62,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         guard let params = components.queryItems else {
-                fatalError("No parameters returned in URL from continueUserActivity")
+            return true
         }
                
         for param in params {
