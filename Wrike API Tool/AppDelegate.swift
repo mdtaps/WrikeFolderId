@@ -45,18 +45,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
     
+    //Handling Web to App handoff when login authorization has finished
     func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void) -> Bool {
         
         var authCode: String?
-        guard userActivity.activityType == NSUserActivityTypeBrowsingWeb,
-            let incomingURL = userActivity.webpageURL,
-            let components = NSURLComponents(url: incomingURL, resolvingAgainstBaseURL: true),
-            let params = components.queryItems else {
-                return false
+        guard userActivity.activityType == NSUserActivityTypeBrowsingWeb else {
+            fatalError("User Activity Type in continueUserActivity, \(userActivity.activityType), is incorrect")
         }
         
-        print(incomingURL.absoluteString)
+        guard let incomingURL = userActivity.webpageURL else {
+            fatalError("Incoming URL is null in continueUserActivity")
+        }
         
+        guard let components = NSURLComponents(url: incomingURL, resolvingAgainstBaseURL: true) else {
+            fatalError("No components returned in URL from continueUserActivity")
+        }
+        
+        guard let params = components.queryItems else {
+                fatalError("No parameters returned in URL from continueUserActivity")
+        }
+               
         for param in params {
             if param.name == "code" {
                 authCode = param.value!

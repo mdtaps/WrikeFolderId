@@ -48,6 +48,10 @@ class WrikeLoginProcess {
             // Use the URL and callback scheme specified by the authorization provider.
             let scheme = AuthorizationCodeRequest.Constants.Values.RedirectUri
             
+            print("Request URL: \(requestUrl.absoluteString)")
+            print("Scheme: \(scheme)")
+            
+            
             let appDelegate = UIApplication.shared.delegate as! AppDelegate
             appDelegate.webAuthSession = ASWebAuthenticationSession(url: requestUrl, callbackURLScheme: scheme) { callbackURL, error in
 
