@@ -63,6 +63,7 @@ extension LoginViewController: RefreshDelegate {
         let vc = AccountElementsViewController(wrikeFolder: rootFolder, refreshDelegate: self)
         vc.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Logout", style: .done, target: vc, action: #selector(AccountElementsViewController.logout))
         
+        //TODO: Why is this here?
         mainNavigationController.viewControllers.removeAll()
         mainNavigationController.pushViewController(vc, animated: false)
         mainNavigationController.popToRootViewController(animated: false)
