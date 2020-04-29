@@ -15,6 +15,7 @@ struct WrikeAPIRequestModel {
     var httpRequestMethod: HTTPRequestMethod
     
     //MARK: Initializers
+    //Init for custom API call
     init(urlPath: String,
          urlQueryItems: [URLQueryItem]? = nil,
          httpRequestMethod: HTTPRequestMethod = .GET) {
@@ -23,15 +24,16 @@ struct WrikeAPIRequestModel {
         self.httpRequestMethod = httpRequestMethod
     }
     
+    //Init for known request method
     init(using apiMethod: APIRequestMethod) {
         switch apiMethod {
         case .GetAllFolders:
-            self.init(urlPath: "/folders",
-                      httpRequestMethod: .GET)
+            self.init(urlPath: "/folders")
         case .GetFoldersFromListOfIds(let idsArray):
             let urlPath = "/folders/" + WrikeAPIRequestModel.getStringForUrlPath(using: idsArray)
-            self.init(urlPath: urlPath,
-                      httpRequestMethod: .GET)
+            self.init(urlPath: urlPath)
+        case .GetSpaces:
+            self.init(urlPath: "/spaces")
         }
     }
 }
@@ -39,6 +41,7 @@ struct WrikeAPIRequestModel {
 enum APIRequestMethod {
     case GetAllFolders
     case GetFoldersFromListOfIds(idsArray: [String])
+    case GetSpaces
 }
 
 enum HTTPRequestMethod: String {

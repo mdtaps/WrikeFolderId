@@ -13,6 +13,7 @@ extension WrikeAPINetworkClient {
     func retrieveWrikeFolders<T: Decodable>(for requestMethod: APIRequestMethod, returnType: T.Type, _ completion: @escaping (_ response: Result<T>) -> Void) {
         
         WrikeLoginProcess.shared.loginToWrike { tokenIsSet in
+            //Check for auth token
             switch tokenIsSet {
             case false:
                 completion(.Failure(with: "Token could not be set"))

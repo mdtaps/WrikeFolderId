@@ -29,6 +29,7 @@ class AccountElementTableViewCell: UITableViewCell {
     }
     
     @IBAction func elementTitleTapped(_ sender: UIButton) {
+        //TODO: Make Get Folder call
         if let folderId = folderId {
             delegate?.launchFolderIdView(folderId: folderId)
         }
