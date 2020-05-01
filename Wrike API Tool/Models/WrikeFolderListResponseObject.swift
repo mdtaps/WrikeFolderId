@@ -12,7 +12,7 @@ struct WrikeFolderListResponseObject: Decodable {
     let kind: String
     let data: [FolderObject]
 
-    struct FolderObject: Decodable {
+    class FolderObject: Decodable, IdentifiableWrikeObject {
         let id: String
         let accountId: String
         let title: String

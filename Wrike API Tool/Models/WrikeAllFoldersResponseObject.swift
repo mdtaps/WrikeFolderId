@@ -8,12 +8,18 @@
 
 import Foundation
 
+@objc protocol IdentifiableWrikeObject {
+    var id: String { get }
+    var title: String { get }
+    @objc optional var avatarUrl: String { get }
+}
+
 struct WrikeAllFoldersResponseObject: Decodable {
     let kind: String
     let data: [FolderData]
 }
 
-struct FolderData: Decodable {
+class FolderData: Decodable, IdentifiableWrikeObject {
     let id: String
     let title: String
     let color: String?

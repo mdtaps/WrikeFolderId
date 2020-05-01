@@ -10,9 +10,9 @@ import Foundation
 
 struct WrikeSpacesResponseObject: Decodable {
     let kind: String
-    let data: SpaceObject
+    let data: SpaceData
     
-    struct SpaceObject: Decodable {
+    class SpaceData: Decodable, IdentifiableWrikeObject {
         let id: String
         let title: String
         let avatarUrl: String
