@@ -37,7 +37,7 @@ class LoginViewController: UIViewController, WKUIDelegate {
 extension LoginViewController: RefreshDelegate {
     func getWrikeFolders() {
         addLoadingWheel()
-        WrikeAPINetworkClient.shared.retrieveWrikeFolders(for: .GetAllFolders, returnType: WrikeAllFoldersResponseObject.self) { result in
+        WrikeAPINetworkClient.shared.retrieveWrikeFolders(for: .GetSpaces, returnType: WrikeSpacesResponseObject.self) { result in
             switch result {
             case .Failure(with: let failureString):
                 //TODO: Display failure
@@ -50,20 +50,12 @@ extension LoginViewController: RefreshDelegate {
         }
     }
     
-    private func launchFolderView(using wrikeObject: WrikeAllFoldersResponseObject) {
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    private func launchFolderView(using wrikeObject: WrikeSpacesResponseObject) {
+        let spacesArray = wrikeObject.data
         
-        appDelegate.wrikeObject = wrikeObject
-
-        guard let rootFolder = wrikeObject.data.first else {
-            //TODO: Throw error
-            fatalError("No folders found")
-        }
-        
-        let vc = AccountElementsViewController(wrikeFolder: rootFolder, refreshDelegate: self)
+        let vc = SpacesViewController(spaceObjects: spacesArray)
         vc.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Logout", style: .done, target: vc, action: #selector(AccountElementsViewController.logout))
         
-        //TODO: Why is this here?
         mainNavigationController.viewControllers.removeAll()
         mainNavigationController.pushViewController(vc, animated: false)
         mainNavigationController.popToRootViewController(animated: false)
@@ -75,6 +67,7 @@ extension LoginViewController: RefreshDelegate {
     }
 }
 
+//Used for setting this VCs window as the anchor for the web auth window
 extension LoginViewController: ASWebAuthenticationPresentationContextProviding {
     func presentationAnchor(for session: ASWebAuthenticationSession) -> ASPresentationAnchor {
         return view.window!

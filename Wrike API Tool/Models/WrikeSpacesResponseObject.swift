@@ -10,19 +10,19 @@ import Foundation
 
 struct WrikeSpacesResponseObject: Decodable {
     let kind: String
-    let data: SpaceData
+    let data: [SpaceObject]
+}
     
-    class SpaceData: Decodable, IdentifiableWrikeObject {
-        let id: String
-        let title: String
-        let avatarUrl: String
-        let accessType: SpaceAccessType
-        let archived: Bool
-        
-        enum SpaceAccessType: String, Decodable {
-            case Public
-            case Personal
-            case Private
-        }
+class SpaceObject: Decodable, IdentifiableWrikeObject {
+    let id: String
+    let title: String
+    let avatarUrl: String
+    let accessType: SpaceAccessType
+    let archived: Bool
+    
+    enum SpaceAccessType: String, Decodable {
+        case Public
+        case Personal
+        case Private
     }
 }
