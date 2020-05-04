@@ -58,12 +58,19 @@ extension SpacesViewController: UITableViewDataSource, UITableViewDelegate {
             
             elementCell.elementTitleButton.setTitle(currentSpaceObject.title, for: .normal)
             do {
-                //TODO: Make this prettier
-                let imageView = try UIImageView(image: UIImage(data: Data(contentsOf: URL(string: currentSpaceObject.avatarUrl)!))!)
-                elementCell.clipboardImage = imageView
-                elementCell.clipboardImage.isHidden = false
+                //TODO: Turn this into an external function
+                print("AvatarUrl: \(currentSpaceObject.avatarUrl)")
+                let imageUrl = URL(string: currentSpaceObject.avatarUrl)!
+                let data = try Data(contentsOf: imageUrl)
+                let image = UIImage(data: data)!
+                
+                elementCell.elementImage.image = image
+                elementCell.elementImage.isHidden = false
             } catch {
-                elementCell.clipboardImage.isHidden = true
+                //TODO: Display default image for space
+                print(error.localizedDescription)
+                print("There was an error")
+                elementCell.elementImage.isHidden = true
             }
             
             return elementCell
