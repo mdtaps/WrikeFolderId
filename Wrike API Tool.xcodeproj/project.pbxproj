@@ -17,6 +17,8 @@
 		EA652895231F5D8400EEE5D4 /* UserDefaults+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA652894231F5D8400EEE5D4 /* UserDefaults+Extension.swift */; };
 		EA65289A231F7B1000EEE5D4 /* AuthorizationCodeRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA652899231F7B1000EEE5D4 /* AuthorizationCodeRequest.swift */; };
 		EA65289C231F7CB400EEE5D4 /* ClientKeyRequestor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA65289B231F7CB400EEE5D4 /* ClientKeyRequestor.swift */; };
+		EA7578AD245EA4260092973F /* SpacesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7578AB245EA4260092973F /* SpacesViewController.swift */; };
+		EA7578AE245EA4260092973F /* SpacesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA7578AC245EA4260092973F /* SpacesViewController.xib */; };
 		EA8131BC22C5750A009D2806 /* WrikeAllFoldersResponseObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA8131BB22C5750A009D2806 /* WrikeAllFoldersResponseObject.swift */; };
 		EA8131BE22CBFD75009D2806 /* WrikeAPINetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA8131BD22CBFD75009D2806 /* WrikeAPINetworkClient.swift */; };
 		EA8131C022CBFE92009D2806 /* WrikeAPINetworkClient+HelperFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA8131BF22CBFE92009D2806 /* WrikeAPINetworkClient+HelperFunctions.swift */; };
@@ -53,6 +55,8 @@
 		EA652894231F5D8400EEE5D4 /* UserDefaults+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Extension.swift"; sourceTree = "<group>"; };
 		EA652899231F7B1000EEE5D4 /* AuthorizationCodeRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationCodeRequest.swift; sourceTree = "<group>"; };
 		EA65289B231F7CB400EEE5D4 /* ClientKeyRequestor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientKeyRequestor.swift; sourceTree = "<group>"; };
+		EA7578AB245EA4260092973F /* SpacesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpacesViewController.swift; sourceTree = "<group>"; };
+		EA7578AC245EA4260092973F /* SpacesViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SpacesViewController.xib; sourceTree = "<group>"; };
 		EA8131BB22C5750A009D2806 /* WrikeAllFoldersResponseObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WrikeAllFoldersResponseObject.swift; sourceTree = "<group>"; };
 		EA8131BD22CBFD75009D2806 /* WrikeAPINetworkClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WrikeAPINetworkClient.swift; sourceTree = "<group>"; };
 		EA8131BF22CBFE92009D2806 /* WrikeAPINetworkClient+HelperFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WrikeAPINetworkClient+HelperFunctions.swift"; sourceTree = "<group>"; };
@@ -137,6 +141,7 @@
 				EAAAC98622BDB97600414284 /* Main.storyboard */,
 				EAAAC98B22BDB97900414284 /* LaunchScreen.storyboard */,
 				EA8131C222D854C2009D2806 /* AccountElementTableViewCell.xib */,
+				EA7578AC245EA4260092973F /* SpacesViewController.xib */,
 				EA2F15A624552A600099169B /* SpaceTableViewCell.xib */,
 				EAAAC99C22C18B9800414284 /* AccountElementsViewController.xib */,
 				EAFB81B222DE2FE30062813D /* FolderIdViewController.xib */,
@@ -151,6 +156,7 @@
 				EAFCC6BA23CB09C000DF8A16 /* FoldersNavigationController.swift */,
 				EAFB81B122DE2FE30062813D /* FolderIdViewController.swift */,
 				EAAAC99B22C18B9800414284 /* AccountElementsViewController.swift */,
+				EA7578AB245EA4260092973F /* SpacesViewController.swift */,
 				EAFCC6BC23CBC59F00DF8A16 /* ActivityIndicatorViewController.swift */,
 				EA8131C122D854C2009D2806 /* AccountElementTableViewCell.swift */,
 				EA2F15A524552A600099169B /* SpaceTableViewCell.swift */,
@@ -276,6 +282,7 @@
 				EA8131C422D854C2009D2806 /* AccountElementTableViewCell.xib in Resources */,
 				EAFB81B422DE2FE30062813D /* FolderIdViewController.xib in Resources */,
 				EAAAC98A22BDB97900414284 /* Assets.xcassets in Resources */,
+				EA7578AE245EA4260092973F /* SpacesViewController.xib in Resources */,
 				EA2F15A824552A600099169B /* SpaceTableViewCell.xib in Resources */,
 				EAAAC98822BDB97600414284 /* Main.storyboard in Resources */,
 			);
@@ -303,6 +310,7 @@
 				EAAAC98522BDB97600414284 /* LoginViewController.swift in Sources */,
 				EA8131BE22CBFD75009D2806 /* WrikeAPINetworkClient.swift in Sources */,
 				EAAAC98322BDB97600414284 /* AppDelegate.swift in Sources */,
+				EA7578AD245EA4260092973F /* SpacesViewController.swift in Sources */,
 				EAFCC6B923B45BB500DF8A16 /* WrikeAPIRequestModel+Extension.swift in Sources */,
 				EA1C36D12315054F00D87AAF /* AccessTokenRequest.swift in Sources */,
 				EAFB81B322DE2FE30062813D /* FolderIdViewController.swift in Sources */,

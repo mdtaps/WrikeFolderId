@@ -13,28 +13,17 @@ class AccountElementsViewController: UIViewController {
     @IBOutlet weak var elementsTableView: UITableView!
     
     //MARK: Properties
-    var parentFolder: FolderData
+    var parentObject: FolderObject
+    var wrikeObjects: [FolderObject]
     var refreshDelegate: RefreshDelegate
-    var childFolders: [FolderData]
     let refreshControl = UIRefreshControl()
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
  
     //MARK: Initializers
-    init(wrikeFolder: FolderData, refreshDelegate: RefreshDelegate) {
+    init(wrikeObjects: [FolderObject], parentObject: FolderObject, refreshDelegate: RefreshDelegate) {
         self.refreshDelegate = refreshDelegate
-        self.parentFolder = wrikeFolder
-        
-        var childFolders = [FolderData]()
-
-        if !parentFolder.childIds.isEmpty {
-            for datum in appDelegate.wrikeObject!.data {
-                if parentFolder.childIds.contains(datum.id) {
-                    childFolders.append(datum)
-                }
-            }
-        }
-        
-        self.childFolders = childFolders
+        self.wrikeObjects = wrikeObjects
+        self.parentObject = parentObject
 
         super.init(nibName: nil, bundle: nil)
     }
@@ -47,14 +36,10 @@ class AccountElementsViewController: UIViewController {
         super.viewDidLoad()
         elementsTableView.delegate = self
         elementsTableView.dataSource = self
+                
+        title = parentObject.title
         
-       if parentFolder.title == "Root" {
-            title = "Home"
-        } else {
-            title = parentFolder.title
-        }
-        
-        //Setting footerView keeps the table view from creating blank cells
+        //Setting footerView prevents the table view from creating blank cells
         //when there are not enough cells to fill the screen
         elementsTableView.tableFooterView = UIView()
         
@@ -72,7 +57,7 @@ class AccountElementsViewController: UIViewController {
 //MARK: Table View Delegate & Data Source Functions
 extension AccountElementsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return parentFolder.childIds.count
+        return wrikeObjects.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -87,22 +72,22 @@ extension AccountElementsViewController: UITableViewDelegate, UITableViewDataSou
         }
         
         elementCell.delegate = self
-        let currentFolder = childFolders[indexPath.row]
+        let currentFolder = wrikeObjects[indexPath.row]
         
-        elementCell.folderId = currentFolder.id
+        elementCell.folderObject = currentFolder
 
-                
         if currentFolder.childIds.isEmpty {
             elementCell.caretButton.isHidden = true
-            
         } else {
             elementCell.caretButton.isHidden = false
         }
         
-        if currentFolder.project == nil {
-            elementCell.clipboardImage.isHidden = true
+        if currentFolder.project != nil {
+            let image = UIImage(named: "clipboard")
+            elementCell.imageView?.image = image
+            elementCell.imageView?.isHidden = false
         } else {
-            elementCell.clipboardImage.isHidden = false
+            elementCell.imageView?.isHidden = true
         }
         
         elementCell.elementTitleButton.setTitle(currentFolder.title, for: .normal)
@@ -111,22 +96,22 @@ extension AccountElementsViewController: UITableViewDelegate, UITableViewDataSou
     }
 }
 
+//Handling interaction with the elements in the cell
 extension AccountElementsViewController: CellClickDelegate {
-    internal func launchFolderIdView(folderId: String) {
-        let vc = FolderIdViewController(folderId: folderId)
+    internal func launchFolderIdView(folderObject: FolderObject) {
+        let vc = FolderIdViewController(folderObject: folderObject)
         present(vc, animated: true, completion: nil)
     }
     
-    internal func loadChildFolders(folderId: String) {
-        addLoadingWheel()
-        for folder in childFolders {
-            if folder.id == folderId {
-                if !folder.childIds.isEmpty {
-                    let vc = AccountElementsViewController(wrikeFolder: folder, refreshDelegate: refreshDelegate)
-                    navigationController?.pushViewController(vc, animated: true)
-                    removeLoadingWheel()
-                }
-                break
+    internal func loadChildFolders(folderObject: FolderObject) {
+        let childIds = folderObject.childIds
+        WrikeAPINetworkClient.shared.retrieveWrikeFolders(for: .GetFoldersFromListOfIds(idsArray: childIds), returnType: WrikeFolderListResponseObject.self) { response in
+            switch response {
+            case .Failure(with: let failureString):
+                print("Get folders from list of ids failed with: \(failureString)")
+            case .Success(with: let folderList):
+                print("Success!")
+                dump(folderList)
             }
         }
     }

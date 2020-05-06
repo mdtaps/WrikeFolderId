@@ -15,6 +15,4 @@ class FoldersNavigationController: UINavigationController {
 
         self.modalPresentationStyle = .fullScreen
     }
-    
-    
 }

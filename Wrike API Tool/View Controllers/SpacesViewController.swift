@@ -53,6 +53,8 @@ extension SpacesViewController: UITableViewDataSource, UITableViewDelegate {
             elementCell = nib?.first! as! AccountElementTableViewCell
         }
         
+        elementCell.delegate = self
+        
         if indexPath.row < spaceObjects.count {
             let currentSpaceObject = spaceObjects[indexPath.row]
             
@@ -80,6 +82,21 @@ extension SpacesViewController: UITableViewDataSource, UITableViewDelegate {
             return elementCell
         }
     }
+}
+
+extension SpacesViewController: CellClickDelegate {
+    internal func launchFolderIdView(folderId: String) {
+        let vc = FolderIdViewController(folderId: folderId)
+        present(vc, animated: true, completion: nil)
+    }
     
+    internal func loadChildFolders(folderId: String) {
+        
+    }
     
+    private func clearUserDefaultsAuthData() {
+        let domain = Bundle.main.bundleIdentifier!
+        UserDefaults.standard.removePersistentDomain(forName: domain)
+        UserDefaults.standard.synchronize()
+    }
 }

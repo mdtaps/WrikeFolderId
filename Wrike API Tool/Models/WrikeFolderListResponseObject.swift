@@ -11,38 +11,38 @@ import Foundation
 struct WrikeFolderListResponseObject: Decodable {
     let kind: String
     let data: [FolderObject]
+}
 
-    class FolderObject: Decodable, IdentifiableWrikeObject {
-        let id: String
-        let accountId: String
-        let title: String
-        let creationDate: String
-        let updatedDate: String
-        let briefDescription: String?
-        let description: String
-        let color: String?
-        let sharedIds: [String]
-        let parentIds: [String]
-        let childIds: [String]
-        let superParentIds: [String]
-        let scope: String
-        let hasAttachments: Bool
-        let attachmentCount: Int?
-        let permalink: String
-        let workflowId: String
-        let metadata: [MetaData]?
-        let customFields: [CustomField]?
-        let customColumnIds: [String]?
-        let project: Project?
-    }
-    
-    struct MetaData: Decodable {
-        let key: String
-        let value: String
-    }
-    
-    struct CustomField: Decodable {
-        let id: String
-        let value: String
-    }
+class FolderObject: Decodable, IdentifiableWrikeObject {
+    let id: String
+    let accountId: String
+    let title: String
+    let creationDate: String
+    let updatedDate: String
+    let briefDescription: String?
+    let description: String
+    let color: String?
+    let sharedIds: [String]
+    let parentIds: [String]
+    let childIds: [String]
+    let superParentIds: [String]
+    let scope: String
+    let hasAttachments: Bool
+    let attachmentCount: Int?
+    let permalink: String
+    let workflowId: String
+    let metadata: [MetaData]?
+    let customFields: [CustomField]?
+    let customColumnIds: [String]?
+    let project: Project?
+}
+
+struct MetaData: Decodable {
+    let key: String
+    let value: String
+}
+
+struct CustomField: Decodable {
+    let id: String
+    let value: String
 }

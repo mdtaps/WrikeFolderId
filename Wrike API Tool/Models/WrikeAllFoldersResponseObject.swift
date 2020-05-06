@@ -8,6 +8,8 @@
 
 import Foundation
 
+//Protocol used by all response objects to group
+//them. For use in displaying and identifying.
 @objc protocol IdentifiableWrikeObject {
     var id: String { get }
     var title: String { get }
