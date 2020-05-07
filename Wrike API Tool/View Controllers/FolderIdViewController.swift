@@ -14,10 +14,10 @@ class FolderIdViewController: UIViewController {
     @IBOutlet weak var copyButton: StyledButton!
     @IBOutlet weak var folderIdLabel: UILabel!
     
-    var folderId: String
+    var folderObject: FolderObject
     
-    init(folderId: String) {
-        self.folderId = folderId
+    init(folderObject: FolderObject) {
+        self.folderObject = folderObject
         
         super.init(nibName: nil, bundle: nil)
     }
@@ -29,11 +29,11 @@ class FolderIdViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        folderIdLabel.text = folderId
+        folderIdLabel.text = folderObject.title
     }
     
     @IBAction func copyButtonPressed(_ sender: StyledButton) {
-        UIPasteboard.general.string = folderId
+        UIPasteboard.general.string = folderObject.title
     }
     
     @IBAction func backButtonPressed(_ sender: UIButton) {
