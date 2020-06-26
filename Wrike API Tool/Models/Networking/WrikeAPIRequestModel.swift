@@ -34,6 +34,8 @@ struct WrikeAPIRequestModel {
             self.init(urlPath: urlPath)
         case .GetSpaces:
             self.init(urlPath: "/spaces")
+        case .GetFoldersFromSpaceId(let spaceId):
+            self.init(urlPath: "/spaces/" + spaceId + "/folders")
         }
     }
 }
@@ -42,6 +44,7 @@ enum APIRequestMethod {
     case GetAllFolders
     case GetFoldersFromListOfIds(idsArray: [String])
     case GetSpaces
+    case GetFoldersFromSpaceId(spaceId: String)
 }
 
 enum HTTPRequestMethod: String {

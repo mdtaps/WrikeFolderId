@@ -57,6 +57,7 @@ extension SpacesViewController: UITableViewDataSource, UITableViewDelegate {
         
         if indexPath.row < spaceObjects.count {
             let currentSpaceObject = spaceObjects[indexPath.row]
+            elementCell.wrikeObject = currentSpaceObject
             
             elementCell.elementTitleButton.setTitle(currentSpaceObject.title, for: .normal)
             do {
@@ -85,13 +86,22 @@ extension SpacesViewController: UITableViewDataSource, UITableViewDelegate {
 }
 
 extension SpacesViewController: CellClickDelegate {
-    internal func launchFolderIdView(folderId: String) {
-        let vc = FolderIdViewController(folderId: folderId)
+    internal func launchFolderIdView(wrikeObject: IdentifiableWrikeObject) {
+        let vc = FolderIdViewController(wrikeObject: wrikeObject)
         present(vc, animated: true, completion: nil)
     }
     
-    internal func loadChildFolders(folderId: String) {
-        
+    internal func loadChildFolders(wrikeObject: IdentifiableWrikeObject) {
+        let spaceId = wrikeObject.id
+        WrikeAPINetworkClient.shared.retrieveWrikeFolders(for: .GetFoldersFromSpaceId(spaceId: spaceId), returnType: WrikeFolderListResponseObject.self) { result in
+            switch result {
+            case .Failure(with: let failureString):
+                print("Get folder call failed with cause: \(failureString)")
+            case .Success(with: let folderResponse):
+                print("Success retreiving folders")
+                dump(folderResponse)
+            }
+        }
     }
     
     private func clearUserDefaultsAuthData() {
