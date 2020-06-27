@@ -102,7 +102,9 @@ extension SpacesViewController: CellClickDelegate {
             case .Success(with: let folderResponse):
                 let folders = folderResponse.data
                 let vc = AccountElementsViewController(wrikeObjects: folders, parentObject: wrikeObject, refreshDelegate: self.refreshDelegate)
-                self.present(vc, animated: true, completion: nil)
+                DispatchQueue.main.async {
+                    self.navigationController?.pushViewController(vc, animated: true)
+                }
             }
         }
     }
