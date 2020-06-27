@@ -53,7 +53,7 @@ extension LoginViewController: RefreshDelegate {
     private func launchFolderView(using wrikeObject: WrikeSpacesResponseObject) {
         let spacesArray = wrikeObject.data
         
-        let vc = SpacesViewController(spaceObjects: spacesArray)
+        let vc = SpacesViewController(spaceObjects: spacesArray, refreshDelegate: self)
         vc.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Logout", style: .done, target: vc, action: #selector(AccountElementsViewController.logout))
         
         mainNavigationController.viewControllers.removeAll()
