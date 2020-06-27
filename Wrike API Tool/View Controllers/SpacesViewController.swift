@@ -93,7 +93,7 @@ extension SpacesViewController: CellClickDelegate {
     
     internal func loadChildFolders(wrikeObject: IdentifiableWrikeObject) {
         let spaceId = wrikeObject.id
-        WrikeAPINetworkClient.shared.retrieveWrikeFolders(for: .GetFoldersFromSpaceId(spaceId: spaceId), returnType: WrikeFolderListResponseObject.self) { result in
+        WrikeAPINetworkClient.shared.retrieveWrikeFolders(for: .GetFoldersFromSpaceId(spaceId: spaceId), returnType: WrikeAllFoldersResponseObject.self) { result in
             switch result {
             case .Failure(with: let failureString):
                 print("Get folder call failed with cause: \(failureString)")
