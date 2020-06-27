@@ -13,9 +13,11 @@ class SpacesViewController: UIViewController {
     @IBOutlet weak var spacesTableView: UITableView!
     
     let spaceObjects: [SpaceObject]
+    let refreshDelegate: RefreshDelegate
     
-    init(spaceObjects: [SpaceObject]) {
+    init(spaceObjects: [SpaceObject], refreshDelegate: RefreshDelegate) {
         self.spaceObjects = spaceObjects
+        self.refreshDelegate = refreshDelegate
         
         super.init(nibName: nil, bundle: nil)
     }
@@ -98,8 +100,9 @@ extension SpacesViewController: CellClickDelegate {
             case .Failure(with: let failureString):
                 print("Get folder call failed with cause: \(failureString)")
             case .Success(with: let folderResponse):
-                print("Success retreiving folders")
-                dump(folderResponse)
+                let folders = folderResponse.data
+                let vc = AccountElementsViewController(wrikeObjects: folders, parentObject: wrikeObject, refreshDelegate: self.refreshDelegate)
+                self.present(vc, animated: true, completion: nil)
             }
         }
     }
