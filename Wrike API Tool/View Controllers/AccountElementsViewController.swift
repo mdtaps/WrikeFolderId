@@ -13,14 +13,14 @@ class AccountElementsViewController: UIViewController {
     @IBOutlet weak var elementsTableView: UITableView!
     
     //MARK: Properties
-    var parentObject: FolderObject
-    var wrikeObjects: [FolderObject]
+    var parentObject: IdentifiableWrikeObject
+    var wrikeObjects: [WrikeFolderObject]
     var refreshDelegate: RefreshDelegate
     let refreshControl = UIRefreshControl()
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
  
     //MARK: Initializers
-    init(wrikeObjects: [FolderObject], parentObject: FolderObject, refreshDelegate: RefreshDelegate) {
+    init(wrikeObjects: [WrikeFolderObject], parentObject: IdentifiableWrikeObject, refreshDelegate: RefreshDelegate) {
         self.refreshDelegate = refreshDelegate
         self.wrikeObjects = wrikeObjects
         self.parentObject = parentObject
@@ -41,9 +41,12 @@ class AccountElementsViewController: UIViewController {
         
         //Setting footerView prevents the table view from creating blank cells
         //when there are not enough cells to fill the screen
+        
+        //TODO: Set up an ElementsTableViewController file to handle this
         elementsTableView.tableFooterView = UIView()
         
         elementsTableView.refreshControl = refreshControl
+        //TODO: See if I can call straight to the delegate
         refreshControl.addTarget(self, action: #selector(refreshWrikeFolderData), for: .valueChanged)
     }
     
@@ -72,16 +75,16 @@ extension AccountElementsViewController: UITableViewDelegate, UITableViewDataSou
         }
         
         elementCell.delegate = self
-        let currentFolder = wrikeObjects[indexPath.row]
+        let currentFolder = wrikeObjects[indexPath.row] 
         
-        elementCell.folderObject = currentFolder
+        elementCell.wrikeObject = currentFolder
 
         if currentFolder.childIds.isEmpty {
             elementCell.caretButton.isHidden = true
         } else {
             elementCell.caretButton.isHidden = false
         }
-        
+
         if currentFolder.project != nil {
             let image = UIImage(named: "clipboard")
             elementCell.imageView?.image = image
@@ -98,22 +101,34 @@ extension AccountElementsViewController: UITableViewDelegate, UITableViewDataSou
 
 //Handling interaction with the elements in the cell
 extension AccountElementsViewController: CellClickDelegate {
-    internal func launchFolderIdView(folderObject: FolderObject) {
-        let vc = FolderIdViewController(folderObject: folderObject)
+    internal func launchFolderIdView(wrikeObject: IdentifiableWrikeObject) {
+        let vc = FolderIdViewController(wrikeObject: wrikeObject)
         present(vc, animated: true, completion: nil)
     }
     
-    internal func loadChildFolders(folderObject: FolderObject) {
+    internal func loadChildFolders(wrikeObject: IdentifiableWrikeObject) {
+        let folderObject = wrikeObject as! WrikeFolderObject
         let childIds = folderObject.childIds
-        WrikeAPINetworkClient.shared.retrieveWrikeFolders(for: .GetFoldersFromListOfIds(idsArray: childIds), returnType: WrikeFolderListResponseObject.self) { response in
-            switch response {
-            case .Failure(with: let failureString):
-                print("Get folders from list of ids failed with: \(failureString)")
-            case .Success(with: let folderList):
-                print("Success!")
-                dump(folderList)
+        let childFolders = generateWrikeFoldersList(from: childIds)
+        let vc = AccountElementsViewController(wrikeObjects: childFolders, parentObject: folderObject, refreshDelegate: refreshDelegate)
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    private func generateWrikeFoldersList(from childIds: [String]) -> [WrikeFolderObject] {
+        let childIdsSplitIntoGroupsOfOneHundred = childIds.chunked(into: 100)
+        var allWrikeFolders = [WrikeFolderObject]()
+        for childIdGroup in childIdsSplitIntoGroupsOfOneHundred {
+            WrikeAPINetworkClient.shared.retrieveWrikeFolders(for: .GetFoldersFromListOfIds(idsArray: childIdGroup), returnType: WrikeFolderListResponseObject.self) { response in
+                switch response {
+                case .Failure(with: let failureString):
+                    print("Get folders from list of ids failed with: \(failureString)")
+                case .Success(with: let folderList):
+                    allWrikeFolders.append(contentsOf: folderList.data)
+                }
             }
         }
+        dump(allWrikeFolders)
+        return allWrikeFolders
     }
     
     private func clearUserDefaultsAuthData() {
@@ -123,7 +138,6 @@ extension AccountElementsViewController: CellClickDelegate {
     }
     
      @objc private func refreshWrikeFolderData() {
-        //TODO: Call refresh
         refreshDelegate.getWrikeFolders()
     }
 }

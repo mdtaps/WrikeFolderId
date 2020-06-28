@@ -9,8 +9,8 @@
 import UIKit
 
 protocol CellClickDelegate {
-    func launchFolderIdView(folderObject: FolderObject)
-    func loadChildFolders(folderObject: FolderObject)
+    func launchFolderIdView(wrikeObject: IdentifiableWrikeObject)
+    func loadChildFolders(wrikeObject: IdentifiableWrikeObject)
 }
 
 class AccountElementTableViewCell: UITableViewCell {
@@ -19,7 +19,7 @@ class AccountElementTableViewCell: UITableViewCell {
     @IBOutlet weak var elementImage: UIImageView!
     
     var delegate: CellClickDelegate?
-    var folderObject: FolderObject?
+    var wrikeObject: IdentifiableWrikeObject?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -30,14 +30,14 @@ class AccountElementTableViewCell: UITableViewCell {
     
     @IBAction func elementTitleTapped(_ sender: UIButton) {
         //TODO: Make Get Folder call
-        if let folderObject = folderObject {
-            delegate?.launchFolderIdView(folderObject: folderObject)
+        if let wrikeObject = wrikeObject {
+            delegate?.launchFolderIdView(wrikeObject: wrikeObject)
         }
     }
     
     @IBAction func caretTapped(_ sender: UIButton) {
-        if let folderObject = folderObject {
-            delegate?.loadChildFolders(folderObject: folderObject)
+        if let wrikeObject = wrikeObject {
+            delegate?.loadChildFolders(wrikeObject: wrikeObject)
         }
     }
 }

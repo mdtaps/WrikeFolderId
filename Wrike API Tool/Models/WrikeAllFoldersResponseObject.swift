@@ -8,20 +8,12 @@
 
 import Foundation
 
-//Protocol used by all response objects to group
-//them. For use in displaying and identifying.
-@objc protocol IdentifiableWrikeObject {
-    var id: String { get }
-    var title: String { get }
-    @objc optional var avatarUrl: String { get }
-}
-
 struct WrikeAllFoldersResponseObject: Decodable {
     let kind: String
     let data: [FolderData]
 }
 
-class FolderData: Decodable, IdentifiableWrikeObject {
+class FolderData: Decodable, WrikeFolderObject {
     let id: String
     let title: String
     let color: String?

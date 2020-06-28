@@ -50,7 +50,7 @@ class WrikeAPINetworkClient {
         components.host = defaults.host ?? "www.wrike.com"
         components.path = "/api/v4" + urlPath
         
-        
+        print(components.url!.absoluteString)
         return components.url!
     }
     

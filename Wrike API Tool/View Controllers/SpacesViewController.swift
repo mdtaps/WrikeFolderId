@@ -72,9 +72,6 @@ extension SpacesViewController: UITableViewDataSource, UITableViewDelegate {
                 elementCell.elementImage.image = image
                 elementCell.elementImage.isHidden = false
             } catch {
-                //TODO: Display default image for space
-                print(error.localizedDescription)
-                print("There was an error")
                 elementCell.elementImage.isHidden = true
             }
             
@@ -101,11 +98,18 @@ extension SpacesViewController: CellClickDelegate {
                 print("Get folder call failed with cause: \(failureString)")
             case .Success(with: let folderResponse):
                 let folders = folderResponse.data
-                let vc = AccountElementsViewController(wrikeObjects: folders, parentObject: wrikeObject, refreshDelegate: self.refreshDelegate)
-                DispatchQueue.main.async {
-                    self.navigationController?.pushViewController(vc, animated: true)
-                }
+                self.presentFoldersList(from: folders, parentObject: wrikeObject)
             }
+        }
+    }
+    
+    private func presentFoldersList(from childFolders: [IdentifiableWrikeObject], parentObject: IdentifiableWrikeObject) {
+        var childFolders = childFolders as! [WrikeFolderObject]
+        //Removing first item since Wrike returns the parent Space in the folders list
+        childFolders.removeFirst()
+        let vc = AccountElementsViewController(wrikeObjects: childFolders, parentObject: parentObject, refreshDelegate: self.refreshDelegate)
+        DispatchQueue.main.async {
+            self.navigationController?.pushViewController(vc, animated: true)
         }
     }
     
