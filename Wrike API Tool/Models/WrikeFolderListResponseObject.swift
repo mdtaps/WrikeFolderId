@@ -17,7 +17,7 @@ class FolderObject: Decodable, WrikeFolderObject {
     let id: String
     let accountId: String
     let title: String
-    let creationDate: String
+    let createdDate: String
     let updatedDate: String
     let briefDescription: String?
     let description: String

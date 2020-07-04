@@ -107,28 +107,34 @@ extension AccountElementsViewController: CellClickDelegate {
     }
     
     internal func loadChildFolders(wrikeObject: IdentifiableWrikeObject) {
+        let dispatchGroup = DispatchGroup()
         let folderObject = wrikeObject as! WrikeFolderObject
         let childIds = folderObject.childIds
-        let childFolders = generateWrikeFoldersList(from: childIds)
-        let vc = AccountElementsViewController(wrikeObjects: childFolders, parentObject: folderObject, refreshDelegate: refreshDelegate)
-        navigationController?.pushViewController(vc, animated: true)
-    }
-    
-    private func generateWrikeFoldersList(from childIds: [String]) -> [WrikeFolderObject] {
         let childIdsSplitIntoGroupsOfOneHundred = childIds.chunked(into: 100)
         var allWrikeFolders = [WrikeFolderObject]()
+        
         for childIdGroup in childIdsSplitIntoGroupsOfOneHundred {
+            dispatchGroup.enter()
             WrikeAPINetworkClient.shared.retrieveWrikeFolders(for: .GetFoldersFromListOfIds(idsArray: childIdGroup), returnType: WrikeFolderListResponseObject.self) { response in
                 switch response {
                 case .Failure(with: let failureString):
                     print("Get folders from list of ids failed with: \(failureString)")
+                    dispatchGroup.leave()
                 case .Success(with: let folderList):
                     allWrikeFolders.append(contentsOf: folderList.data)
+                    dispatchGroup.leave()
                 }
             }
         }
-        dump(allWrikeFolders)
-        return allWrikeFolders
+        dispatchGroup.notify(queue: .main) {
+            self.launchFolderViewController(childFolders: allWrikeFolders, parentFolder: folderObject)
+        }
+        
+    }
+    
+    private func launchFolderViewController(childFolders: [WrikeFolderObject], parentFolder: WrikeFolderObject) {
+        let vc = AccountElementsViewController(wrikeObjects: childFolders, parentObject: parentFolder, refreshDelegate: refreshDelegate)
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     private func clearUserDefaultsAuthData() {
