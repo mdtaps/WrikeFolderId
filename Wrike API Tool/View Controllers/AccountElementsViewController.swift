@@ -49,12 +49,7 @@ class AccountElementsViewController: UIViewController {
         //TODO: See if I can call straight to the delegate
         refreshControl.addTarget(self, action: #selector(refreshWrikeFolderData), for: .valueChanged)
     }
-    
-    //MARK: Functions
-    @objc func logout() {
-        clearUserDefaultsAuthData()
-        dismiss(animated: true, completion: nil)
-    }
+
 }
 
 //MARK: Table View Delegate & Data Source Functions
@@ -135,12 +130,6 @@ extension AccountElementsViewController: CellClickDelegate {
     private func launchFolderViewController(childFolders: [WrikeFolderObject], parentFolder: WrikeFolderObject) {
         let vc = AccountElementsViewController(wrikeObjects: childFolders, parentObject: parentFolder, refreshDelegate: refreshDelegate)
         navigationController?.pushViewController(vc, animated: true)
-    }
-    
-    private func clearUserDefaultsAuthData() {
-        let domain = Bundle.main.bundleIdentifier!
-        UserDefaults.standard.removePersistentDomain(forName: domain)
-        UserDefaults.standard.synchronize()
     }
     
      @objc private func refreshWrikeFolderData() {

@@ -37,24 +37,41 @@ class LoginViewController: UIViewController, WKUIDelegate {
 extension LoginViewController: RefreshDelegate {
     func getWrikeFolders() {
         addLoadingWheel()
+        let dispatchGroup = DispatchGroup()
+        var wrikeObjects = [IdentifiableWrikeObject]()
+        
+        dispatchGroup.enter()
         WrikeAPINetworkClient.shared.retrieveWrikeFolders(for: .GetSpaces, returnType: WrikeSpacesResponseObject.self) { result in
             switch result {
             case .Failure(with: let failureString):
                 //TODO: Display failure
                 fatalError(failureString)
-            case .Success(with: let object):
-                DispatchQueue.main.async {
-                    self.launchFolderView(using: object)
-                }
+            case .Success(with: let wrikeObject):
+                wrikeObjects.append(contentsOf: wrikeObject.data)
+                dispatchGroup.leave()
             }
+        }
+        
+        dispatchGroup.enter()
+        WrikeAPINetworkClient.shared.retrieveWrikeFolders(for: .GetAllFolders, returnType: WrikeAllFoldersResponseObject.self) { result in
+            switch result {
+            case .Failure(with: let failureString):
+                fatalError(failureString)
+            case .Success(with: let wrikeObject):
+                wrikeObjects.append(wrikeObject.data.first!)
+                dispatchGroup.leave()
+            }
+        }
+        
+        dispatchGroup.notify(queue: .main) {
+            self.removeLoadingWheel()
+            self.launchFolderView(using: wrikeObjects)
         }
     }
     
-    private func launchFolderView(using wrikeObject: WrikeSpacesResponseObject) {
-        let spacesArray = wrikeObject.data
-        
-        let vc = SpacesViewController(spaceObjects: spacesArray, refreshDelegate: self)
-        vc.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Logout", style: .done, target: vc, action: #selector(AccountElementsViewController.logout))
+    private func launchFolderView(using spaceObjects: [IdentifiableWrikeObject]) {
+        let vc = SpacesViewController(spaceObjects: spaceObjects, refreshDelegate: self)
+        vc.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Logout", style: .done, target: vc, action: #selector(SpacesViewController.logout))
         
         mainNavigationController.viewControllers.removeAll()
         mainNavigationController.pushViewController(vc, animated: false)
@@ -65,6 +82,7 @@ extension LoginViewController: RefreshDelegate {
         }
         removeLoadingWheel()
     }
+    
 }
 
 //Used for setting this VCs window as the anchor for the web auth window

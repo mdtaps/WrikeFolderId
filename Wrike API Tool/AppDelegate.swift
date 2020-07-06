@@ -84,5 +84,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 
         return true
      }
+    
+    func clearUserDefaultsAuthData() {
+        let domain = Bundle.main.bundleIdentifier!
+        UserDefaults.standard.removePersistentDomain(forName: domain)
+        UserDefaults.standard.synchronize()
+    }
 }
 

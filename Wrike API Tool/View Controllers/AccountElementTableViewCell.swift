@@ -38,6 +38,6 @@ class AccountElementTableViewCell: UITableViewCell {
     @IBAction func caretTapped(_ sender: UIButton) {
         if let wrikeObject = wrikeObject {
             delegate?.loadChildFolders(wrikeObject: wrikeObject)
-        }
+        } 
     }
 }

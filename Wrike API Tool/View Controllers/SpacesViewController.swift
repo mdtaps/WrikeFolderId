@@ -12,10 +12,10 @@ class SpacesViewController: UIViewController {
     //MARK: Outlets
     @IBOutlet weak var spacesTableView: UITableView!
     
-    let spaceObjects: [SpaceObject]
+    let spaceObjects: [IdentifiableWrikeObject]
     let refreshDelegate: RefreshDelegate
     
-    init(spaceObjects: [SpaceObject], refreshDelegate: RefreshDelegate) {
+    init(spaceObjects: [IdentifiableWrikeObject], refreshDelegate: RefreshDelegate) {
         self.spaceObjects = spaceObjects
         self.refreshDelegate = refreshDelegate
         
@@ -36,12 +36,19 @@ class SpacesViewController: UIViewController {
         //when there are not enough cells to fill the screen
         spacesTableView.tableFooterView = UIView()
     }
+    
+    //MARK: Functions
+    @objc func logout() {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        appDelegate.clearUserDefaultsAuthData()
+        dismiss(animated: true, completion: nil)
+    }
 }
 
 extension SpacesViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         //Add 1 for Shared With Me cell
-        return spaceObjects.count + 1
+        return spaceObjects.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -57,28 +64,27 @@ extension SpacesViewController: UITableViewDataSource, UITableViewDelegate {
         
         elementCell.delegate = self
         
-        if indexPath.row < spaceObjects.count {
-            let currentSpaceObject = spaceObjects[indexPath.row]
+        print(indexPath.row)
+        if let currentSpaceObject = spaceObjects[indexPath.row] as? SpaceObject {
             elementCell.wrikeObject = currentSpaceObject
-            
+             
             elementCell.elementTitleButton.setTitle(currentSpaceObject.title, for: .normal)
             do {
-                //TODO: Turn this into an external function
-                print("AvatarUrl: \(currentSpaceObject.avatarUrl)")
-                let imageUrl = URL(string: currentSpaceObject.avatarUrl)!
-                let data = try Data(contentsOf: imageUrl)
-                let image = UIImage(data: data)!
-                
-                elementCell.elementImage.image = image
-                elementCell.elementImage.isHidden = false
+             //TODO: Turn this into an external function
+             let imageUrl = URL(string: currentSpaceObject.avatarUrl)!
+             let data = try Data(contentsOf: imageUrl)
+             let image = UIImage(data: data)!
+             
+             elementCell.elementImage.image = image
+             elementCell.elementImage.isHidden = false
             } catch {
-                elementCell.elementImage.isHidden = true
+             elementCell.elementImage.isHidden = true
             }
-            
+
             return elementCell
+            
         } else {
             elementCell.elementTitleButton.setTitle("Shared With Me", for: .normal)
-            
             return elementCell
         }
     }
@@ -113,9 +119,5 @@ extension SpacesViewController: CellClickDelegate {
         }
     }
     
-    private func clearUserDefaultsAuthData() {
-        let domain = Bundle.main.bundleIdentifier!
-        UserDefaults.standard.removePersistentDomain(forName: domain)
-        UserDefaults.standard.synchronize()
-    }
+
 }
