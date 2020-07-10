@@ -64,7 +64,6 @@ extension SpacesViewController: UITableViewDataSource, UITableViewDelegate {
         
         elementCell.delegate = self
         
-        print(indexPath.row)
         if let currentSpaceObject = spaceObjects[indexPath.row] as? SpaceObject {
             elementCell.wrikeObject = currentSpaceObject
              
@@ -83,10 +82,14 @@ extension SpacesViewController: UITableViewDataSource, UITableViewDelegate {
 
             return elementCell
             
-        } else {
+        } else if let rootFolder = spaceObjects[indexPath.row] as? FolderData {
+            elementCell.wrikeObject = rootFolder
+            elementCell.elementImage.isHidden = true
             elementCell.elementTitleButton.setTitle("Shared With Me", for: .normal)
             return elementCell
         }
+        
+        return elementCell
     }
 }
 
@@ -97,27 +100,48 @@ extension SpacesViewController: CellClickDelegate {
     }
     
     internal func loadChildFolders(wrikeObject: IdentifiableWrikeObject) {
-        let spaceId = wrikeObject.id
-        WrikeAPINetworkClient.shared.retrieveWrikeFolders(for: .GetFoldersFromSpaceId(spaceId: spaceId), returnType: WrikeAllFoldersResponseObject.self) { result in
+        WrikeAPINetworkClient.shared.retrieveWrikeFolders(for: .GetFoldersFromSpaceId(spaceId: wrikeObject.id),
+                                                          returnType: WrikeAllFoldersResponseObject.self) { result in
             switch result {
             case .Failure(with: let failureString):
                 print("Get folder call failed with cause: \(failureString)")
             case .Success(with: let folderResponse):
-                let folders = folderResponse.data
-                self.presentFoldersList(from: folders, parentObject: wrikeObject)
+                self.loadChildren(from: folderResponse.data.first!.childIds, withParent: folderResponse.data.first!)
             }
         }
     }
     
-    private func presentFoldersList(from childFolders: [IdentifiableWrikeObject], parentObject: IdentifiableWrikeObject) {
+    private func loadChildren(from folderIdArray: [String], withParent parentWrikeObject: IdentifiableWrikeObject) {
+        //TODO: Break this into its own function
+        let dispatchGroup = DispatchGroup()
+        let childIdsSplitIntoGroupsOfOneHundred = folderIdArray.chunked(into: 100)
+        var allWrikeFolders = [WrikeFolderObject]()
+        
+        for childIdGroup in childIdsSplitIntoGroupsOfOneHundred {
+            dispatchGroup.enter()
+            WrikeAPINetworkClient.shared.retrieveWrikeFolders(for: .GetFoldersFromListOfIds(idsArray: childIdGroup), returnType: WrikeFolderListResponseObject.self) { response in
+                switch response {
+                case .Failure(with: let failureString):
+                    print("Get folders from list of ids failed with: \(failureString)")
+                    dispatchGroup.leave()
+                case .Success(with: let folderList):
+                    allWrikeFolders.append(contentsOf: folderList.data)
+                    dispatchGroup.leave()
+                }
+            }
+        }
+        
+        dispatchGroup.notify(queue: .main) {
+            self.presentFoldersList(from: allWrikeFolders, parentObject: parentWrikeObject)
+        }
+    }
+    
+    private func presentFoldersList(from childFolders: [IdentifiableWrikeObject],
+                                    parentObject: IdentifiableWrikeObject) {
         var childFolders = childFolders as! [WrikeFolderObject]
-        //Removing first item since Wrike returns the parent Space in the folders list
-        childFolders.removeFirst()
         let vc = AccountElementsViewController(wrikeObjects: childFolders, parentObject: parentObject, refreshDelegate: self.refreshDelegate)
         DispatchQueue.main.async {
             self.navigationController?.pushViewController(vc, animated: true)
         }
     }
-    
-
 }

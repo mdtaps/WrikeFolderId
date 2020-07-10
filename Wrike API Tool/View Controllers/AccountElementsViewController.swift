@@ -121,6 +121,7 @@ extension AccountElementsViewController: CellClickDelegate {
                 }
             }
         }
+        
         dispatchGroup.notify(queue: .main) {
             self.launchFolderViewController(childFolders: allWrikeFolders, parentFolder: folderObject)
         }
