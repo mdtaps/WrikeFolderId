@@ -138,7 +138,7 @@ extension SpacesViewController: CellClickDelegate {
     
     private func presentFoldersList(from childFolders: [IdentifiableWrikeObject],
                                     parentObject: IdentifiableWrikeObject) {
-        var childFolders = childFolders as! [WrikeFolderObject]
+        let childFolders = childFolders as! [WrikeFolderObject]
         let vc = AccountElementsViewController(wrikeObjects: childFolders, parentObject: parentObject, refreshDelegate: self.refreshDelegate)
         DispatchQueue.main.async {
             self.navigationController?.pushViewController(vc, animated: true)

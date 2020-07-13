@@ -62,7 +62,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         guard let params = components.queryItems else {
-            return true
+            fatalError("No query items returned")
         }
                
         for param in params {

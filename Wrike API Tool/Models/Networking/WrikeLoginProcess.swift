@@ -58,6 +58,7 @@ class WrikeLoginProcess {
                 if let error = error {
                     appDelegate.loginDelegate?.removeLoadingWheel()
                     print("Session ended with error: \(error.localizedDescription)")
+                    dump("Error: \(error)")
                     return
                 }
             }

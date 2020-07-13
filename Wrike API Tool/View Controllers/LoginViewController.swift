@@ -11,7 +11,7 @@ import WebKit
 import AuthenticationServices
 
 protocol RefreshDelegate {
-    func getWrikeFolders()
+    func loginToWrike()
 }
 
 @IBDesignable
@@ -29,60 +29,34 @@ class LoginViewController: UIViewController, WKUIDelegate {
     
     //MARK: Actions
     @IBAction func loginButtonPressed(_ sender: StyledButton) {
-        getWrikeFolders()
+        loginToWrike()
     }
 }
 
 //MARK: Extensions
 extension LoginViewController: RefreshDelegate {
-    func getWrikeFolders() {
+    func loginToWrike() {
         addLoadingWheel()
-        let dispatchGroup = DispatchGroup()
-        var wrikeObjects = [IdentifiableWrikeObject]()
         
-        dispatchGroup.enter()
-        WrikeAPINetworkClient.shared.retrieveWrikeFolders(for: .GetSpaces, returnType: WrikeSpacesResponseObject.self) { result in
-            switch result {
-            case .Failure(with: let failureString):
-                //TODO: Display failure
-                fatalError(failureString)
-            case .Success(with: let wrikeObject):
-                wrikeObjects.append(contentsOf: wrikeObject.data)
-                dispatchGroup.leave()
-            }
-        }
-        
-        dispatchGroup.enter()
-        WrikeAPINetworkClient.shared.retrieveWrikeFolders(for: .GetAllFolders, returnType: WrikeAllFoldersResponseObject.self) { result in
-            switch result {
-            case .Failure(with: let failureString):
-                fatalError(failureString)
-            case .Success(with: let wrikeObject):
-                wrikeObjects.append(wrikeObject.data.first!)
-                dispatchGroup.leave()
-            }
-        }
-        
-        dispatchGroup.notify(queue: .main) {
-            self.removeLoadingWheel()
-            self.launchFolderView(using: wrikeObjects)
-        }
+        let login = LoginModel(folderViewLaunch: launchFolderView(using:))
+        login.gatherWrikeSpacesandTriggerLaunch()
     }
     
     private func launchFolderView(using spaceObjects: [IdentifiableWrikeObject]) {
-        let vc = SpacesViewController(spaceObjects: spaceObjects, refreshDelegate: self)
-        vc.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Logout", style: .done, target: vc, action: #selector(SpacesViewController.logout))
-        
-        mainNavigationController.viewControllers.removeAll()
-        mainNavigationController.pushViewController(vc, animated: false)
-        mainNavigationController.popToRootViewController(animated: false)
+        DispatchQueue.main.async {
+            let vc = SpacesViewController(spaceObjects: spaceObjects, refreshDelegate: self)
+            vc.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Logout", style: .done, target: vc, action: #selector(SpacesViewController.logout))
+            
+            self.mainNavigationController.viewControllers.removeAll()
+            self.mainNavigationController.pushViewController(vc, animated: false)
+            self.mainNavigationController.popToRootViewController(animated: false)
 
-        if mainNavigationController.presentingViewController == nil {
-            self.present(mainNavigationController, animated: true, completion: nil)
+            if self.mainNavigationController.presentingViewController == nil {
+                self.present(self.mainNavigationController, animated: true, completion: nil)
+            }
+            self.removeLoadingWheel()
         }
-        removeLoadingWheel()
     }
-    
 }
 
 //Used for setting this VCs window as the anchor for the web auth window

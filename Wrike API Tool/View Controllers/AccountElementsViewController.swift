@@ -134,6 +134,6 @@ extension AccountElementsViewController: CellClickDelegate {
     }
     
      @objc private func refreshWrikeFolderData() {
-        refreshDelegate.getWrikeFolders()
+        refreshDelegate.loginToWrike()
     }
 }

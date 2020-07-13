@@ -14,6 +14,7 @@
 		EA2F15A42454016E0099169B /* WrikeSpacesResponseObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2F15A32454016E0099169B /* WrikeSpacesResponseObject.swift */; };
 		EA2F15A724552A600099169B /* SpaceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2F15A524552A600099169B /* SpaceTableViewCell.swift */; };
 		EA2F15A824552A600099169B /* SpaceTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA2F15A624552A600099169B /* SpaceTableViewCell.xib */; };
+		EA60C22024BBACAE00B3DDC5 /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA60C21F24BBACAE00B3DDC5 /* LoginModel.swift */; };
 		EA652895231F5D8400EEE5D4 /* UserDefaults+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA652894231F5D8400EEE5D4 /* UserDefaults+Extension.swift */; };
 		EA65289A231F7B1000EEE5D4 /* AuthorizationCodeRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA652899231F7B1000EEE5D4 /* AuthorizationCodeRequest.swift */; };
 		EA65289C231F7CB400EEE5D4 /* ClientKeyRequestor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA65289B231F7CB400EEE5D4 /* ClientKeyRequestor.swift */; };
@@ -54,6 +55,7 @@
 		EA2F15A32454016E0099169B /* WrikeSpacesResponseObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WrikeSpacesResponseObject.swift; sourceTree = "<group>"; };
 		EA2F15A524552A600099169B /* SpaceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceTableViewCell.swift; sourceTree = "<group>"; };
 		EA2F15A624552A600099169B /* SpaceTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SpaceTableViewCell.xib; sourceTree = "<group>"; };
+		EA60C21F24BBACAE00B3DDC5 /* LoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
 		EA652894231F5D8400EEE5D4 /* UserDefaults+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Extension.swift"; sourceTree = "<group>"; };
 		EA652899231F7B1000EEE5D4 /* AuthorizationCodeRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationCodeRequest.swift; sourceTree = "<group>"; };
 		EA65289B231F7CB400EEE5D4 /* ClientKeyRequestor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientKeyRequestor.swift; sourceTree = "<group>"; };
@@ -159,6 +161,7 @@
 			isa = PBXGroup;
 			children = (
 				EAAAC98422BDB97600414284 /* LoginViewController.swift */,
+				EA60C21F24BBACAE00B3DDC5 /* LoginModel.swift */,
 				EA7578AB245EA4260092973F /* SpacesViewController.swift */,
 				EAAAC99B22C18B9800414284 /* AccountElementsViewController.swift */,
 				EAFCC6BC23CBC59F00DF8A16 /* ActivityIndicatorViewController.swift */,
@@ -302,6 +305,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EA1D125423A208800013A58D /* WrikeLoginProcess.swift in Sources */,
+				EA60C22024BBACAE00B3DDC5 /* LoginModel.swift in Sources */,
 				EAAAC99D22C18B9800414284 /* AccountElementsViewController.swift in Sources */,
 				EA8131C322D854C2009D2806 /* AccountElementTableViewCell.swift in Sources */,
 				EAFCC6BD23CBC59F00DF8A16 /* ActivityIndicatorViewController.swift in Sources */,
