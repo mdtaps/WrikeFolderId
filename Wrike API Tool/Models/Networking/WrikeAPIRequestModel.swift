@@ -33,7 +33,7 @@ struct WrikeAPIRequestModel {
             let urlPath = "/folders/" + WrikeAPIRequestModel.getStringForUrlPath(using: idsArray)
             self.init(urlPath: urlPath)
         case .GetSpaces:
-            self.init(urlPath: "/spaces")
+            self.init(urlPath: "/spaces", urlQueryItems: [URLQueryItem(name: "userIsMember", value: "true")])
         case .GetFoldersFromSpaceId(let spaceId):
             self.init(urlPath: "/spaces/" + spaceId + "/folders")
         }

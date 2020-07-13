@@ -14,7 +14,7 @@ class WrikeAPINetworkClient {
     private init() {}
     
     func wrikeGETRequest(using requestData: WrikeAPIRequestModel, _ completion: @escaping (_ requestResult: Result<Data>) -> Void) {
-        let url = getUrl(using: requestData.urlPath)
+        let url = getUrl(from: requestData)
         let urlRequest = makeURLRequest(using: url, withMethod: requestData.httpRequestMethod.rawValue)
         
         let task = URLSession.shared.dataTask(with: urlRequest) { (data, response, error) in
@@ -42,13 +42,14 @@ class WrikeAPINetworkClient {
         task.resume()
     }
     
-    func getUrl(using urlPath: String) -> URL {
+    func getUrl(from requestData: WrikeAPIRequestModel) -> URL {
         var components = URLComponents()
         let defaults = UserDefaults.standard
         
         components.scheme = "https"
         components.host = defaults.host ?? "www.wrike.com"
-        components.path = "/api/v4" + urlPath
+        components.path = "/api/v4" + requestData.urlPath
+        components.queryItems = requestData.urlQueryItems
         
         print(components.url!.absoluteString)
         return components.url!

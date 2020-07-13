@@ -14,6 +14,7 @@ class SpacesViewController: UIViewController {
     
     let spaceObjects: [IdentifiableWrikeObject]
     let refreshDelegate: RefreshDelegate
+    let imageLoader = ImageLoader()
     
     init(spaceObjects: [IdentifiableWrikeObject], refreshDelegate: RefreshDelegate) {
         self.spaceObjects = spaceObjects
@@ -47,7 +48,6 @@ class SpacesViewController: UIViewController {
 
 extension SpacesViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        //Add 1 for Shared With Me cell
         return spaceObjects.count
     }
     
@@ -66,18 +66,11 @@ extension SpacesViewController: UITableViewDataSource, UITableViewDelegate {
         
         if let currentSpaceObject = spaceObjects[indexPath.row] as? SpaceObject {
             elementCell.wrikeObject = currentSpaceObject
-             
             elementCell.elementTitleButton.setTitle(currentSpaceObject.title, for: .normal)
-            do {
-             //TODO: Turn this into an external function
-             let imageUrl = URL(string: currentSpaceObject.avatarUrl)!
-             let data = try Data(contentsOf: imageUrl)
-             let image = UIImage(data: data)!
-             
-             elementCell.elementImage.image = image
-             elementCell.elementImage.isHidden = false
-            } catch {
-             elementCell.elementImage.isHidden = true
+            
+            imageLoader.downloadImage(from: currentSpaceObject.avatarUrl) { image in
+                elementCell.elementImage.image = image
+                elementCell.elementImage.isHidden = false
             }
 
             return elementCell

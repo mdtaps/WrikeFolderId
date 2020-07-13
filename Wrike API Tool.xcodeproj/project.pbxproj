@@ -15,6 +15,7 @@
 		EA2F15A724552A600099169B /* SpaceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2F15A524552A600099169B /* SpaceTableViewCell.swift */; };
 		EA2F15A824552A600099169B /* SpaceTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA2F15A624552A600099169B /* SpaceTableViewCell.xib */; };
 		EA60C22024BBACAE00B3DDC5 /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA60C21F24BBACAE00B3DDC5 /* LoginModel.swift */; };
+		EA60C22624BC0C7C00B3DDC5 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA60C22524BC0C7C00B3DDC5 /* ImageLoader.swift */; };
 		EA652895231F5D8400EEE5D4 /* UserDefaults+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA652894231F5D8400EEE5D4 /* UserDefaults+Extension.swift */; };
 		EA65289A231F7B1000EEE5D4 /* AuthorizationCodeRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA652899231F7B1000EEE5D4 /* AuthorizationCodeRequest.swift */; };
 		EA65289C231F7CB400EEE5D4 /* ClientKeyRequestor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA65289B231F7CB400EEE5D4 /* ClientKeyRequestor.swift */; };
@@ -56,6 +57,7 @@
 		EA2F15A524552A600099169B /* SpaceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceTableViewCell.swift; sourceTree = "<group>"; };
 		EA2F15A624552A600099169B /* SpaceTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SpaceTableViewCell.xib; sourceTree = "<group>"; };
 		EA60C21F24BBACAE00B3DDC5 /* LoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
+		EA60C22524BC0C7C00B3DDC5 /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
 		EA652894231F5D8400EEE5D4 /* UserDefaults+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Extension.swift"; sourceTree = "<group>"; };
 		EA652899231F7B1000EEE5D4 /* AuthorizationCodeRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationCodeRequest.swift; sourceTree = "<group>"; };
 		EA65289B231F7CB400EEE5D4 /* ClientKeyRequestor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientKeyRequestor.swift; sourceTree = "<group>"; };
@@ -103,6 +105,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		EA60C22124BC06C400B3DDC5 /* Wrike Response Object Models */ = {
+			isa = PBXGroup;
+			children = (
+				EAC7A1EE24A8716100C51AAA /* WrikeResponseObjectProtocols.swift */,
+				EA8131BB22C5750A009D2806 /* WrikeAllFoldersResponseObject.swift */,
+				EAFCC6B423AEB3A600DF8A16 /* WrikeFolderListResponseObject.swift */,
+				EA2F15A32454016E0099169B /* WrikeSpacesResponseObject.swift */,
+			);
+			path = "Wrike Response Object Models";
+			sourceTree = "<group>";
+		};
+		EA60C22224BC083A00B3DDC5 /* OAuth Models */ = {
+			isa = PBXGroup;
+			children = (
+				EA1C36D02315054F00D87AAF /* AccessTokenRequest.swift */,
+				EA652899231F7B1000EEE5D4 /* AuthorizationCodeRequest.swift */,
+			);
+			path = "OAuth Models";
+			sourceTree = "<group>";
+		};
 		EA652896231F5ED500EEE5D4 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -130,12 +152,10 @@
 		EA652898231F5F4300EEE5D4 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				EAC7A1EE24A8716100C51AAA /* WrikeResponseObjectProtocols.swift */,
-				EA8131BB22C5750A009D2806 /* WrikeAllFoldersResponseObject.swift */,
-				EAFCC6B423AEB3A600DF8A16 /* WrikeFolderListResponseObject.swift */,
-				EA2F15A32454016E0099169B /* WrikeSpacesResponseObject.swift */,
-				EA1C36D02315054F00D87AAF /* AccessTokenRequest.swift */,
-				EA652899231F7B1000EEE5D4 /* AuthorizationCodeRequest.swift */,
+				EA60C22524BC0C7C00B3DDC5 /* ImageLoader.swift */,
+				EA60C21F24BBACAE00B3DDC5 /* LoginModel.swift */,
+				EA60C22124BC06C400B3DDC5 /* Wrike Response Object Models */,
+				EA60C22224BC083A00B3DDC5 /* OAuth Models */,
 				EA65289B231F7CB400EEE5D4 /* ClientKeyRequestor.swift */,
 				EA652896231F5ED500EEE5D4 /* Extensions */,
 				EA652897231F5EF200EEE5D4 /* Networking */,
@@ -161,7 +181,6 @@
 			isa = PBXGroup;
 			children = (
 				EAAAC98422BDB97600414284 /* LoginViewController.swift */,
-				EA60C21F24BBACAE00B3DDC5 /* LoginModel.swift */,
 				EA7578AB245EA4260092973F /* SpacesViewController.swift */,
 				EAAAC99B22C18B9800414284 /* AccountElementsViewController.swift */,
 				EAFCC6BC23CBC59F00DF8A16 /* ActivityIndicatorViewController.swift */,
@@ -307,6 +326,7 @@
 				EA1D125423A208800013A58D /* WrikeLoginProcess.swift in Sources */,
 				EA60C22024BBACAE00B3DDC5 /* LoginModel.swift in Sources */,
 				EAAAC99D22C18B9800414284 /* AccountElementsViewController.swift in Sources */,
+				EA60C22624BC0C7C00B3DDC5 /* ImageLoader.swift in Sources */,
 				EA8131C322D854C2009D2806 /* AccountElementTableViewCell.swift in Sources */,
 				EAFCC6BD23CBC59F00DF8A16 /* ActivityIndicatorViewController.swift in Sources */,
 				EA8131BC22C5750A009D2806 /* WrikeAllFoldersResponseObject.swift in Sources */,
