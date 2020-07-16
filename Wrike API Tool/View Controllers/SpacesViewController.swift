@@ -93,13 +93,25 @@ extension SpacesViewController: CellClickDelegate {
     }
     
     internal func loadChildFolders(wrikeObject: IdentifiableWrikeObject) {
-        WrikeAPINetworkClient.shared.retrieveWrikeFolders(for: .GetFoldersFromSpaceId(spaceId: wrikeObject.id),
-                                                          returnType: WrikeAllFoldersResponseObject.self) { result in
-            switch result {
-            case .Failure(with: let failureString):
-                print("Get folder call failed with cause: \(failureString)")
-            case .Success(with: let folderResponse):
-                self.loadChildren(from: folderResponse.data.first!.childIds, withParent: folderResponse.data.first!)
+        if wrikeObject.title == "Root" {
+            WrikeAPINetworkClient.shared.retrieveWrikeFolders(for: .GetAllFolders,
+                                                              returnType: WrikeAllFoldersResponseObject.self) { result in
+                switch result {
+                case .Failure(with: let failureString):
+                    print("Get folder call failed with cause: \(failureString)")
+                case .Success(with: let folderResponse):
+                    self.loadChildren(from: folderResponse.data.first!.childIds, withParent: wrikeObject)
+                }
+            }
+        } else {
+            WrikeAPINetworkClient.shared.retrieveWrikeFolders(for: .GetFoldersFromSpaceId(spaceId: wrikeObject.id),
+                                                              returnType: WrikeAllFoldersResponseObject.self) { result in
+                switch result {
+                case .Failure(with: let failureString):
+                    print("Get folder call failed with cause: \(failureString)")
+                case .Success(with: let folderResponse):
+                    self.loadChildren(from: folderResponse.data.first!.childIds, withParent: wrikeObject)
+                }
             }
         }
     }
