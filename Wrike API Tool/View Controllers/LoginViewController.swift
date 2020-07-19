@@ -19,6 +19,7 @@ class LoginViewController: UIViewController, WKUIDelegate {
     override func viewDidLoad() {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         appDelegate.loginDelegate = self
+        setUpLoggedInMessage()
     }
     
     //MARK: Properties
@@ -26,10 +27,17 @@ class LoginViewController: UIViewController, WKUIDelegate {
     
     //MARK: Outlets
     @IBOutlet weak var loginButton: StyledButton!
+    @IBOutlet weak var loggedInLabel: UILabel!
+    @IBOutlet weak var accountTitleLabel: UILabel!
+    
     
     //MARK: Actions
     @IBAction func loginButtonPressed(_ sender: StyledButton) {
         loginToWrike()
+    }
+    
+    func setUpLoggedInMessage() {
+        
     }
 }
 
