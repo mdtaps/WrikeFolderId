@@ -17,6 +17,9 @@
 		EA60C22024BBACAE00B3DDC5 /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA60C21F24BBACAE00B3DDC5 /* LoginModel.swift */; };
 		EA60C22624BC0C7C00B3DDC5 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA60C22524BC0C7C00B3DDC5 /* ImageLoader.swift */; };
 		EA60C22824C0276300B3DDC5 /* SpacesNetworkModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA60C22724C0276300B3DDC5 /* SpacesNetworkModel.swift */; };
+		EA60C22A24C3EA3F00B3DDC5 /* WrikeAccountResponseObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA60C22924C3EA3F00B3DDC5 /* WrikeAccountResponseObject.swift */; };
+		EA60C22C24C3ECE900B3DDC5 /* WrikeCustomFieldResponseObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA60C22B24C3ECE900B3DDC5 /* WrikeCustomFieldResponseObject.swift */; };
+		EA60C22E24C3ED9000B3DDC5 /* WrikeMetaDataObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA60C22D24C3ED9000B3DDC5 /* WrikeMetaDataObject.swift */; };
 		EA652895231F5D8400EEE5D4 /* UserDefaults+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA652894231F5D8400EEE5D4 /* UserDefaults+Extension.swift */; };
 		EA65289A231F7B1000EEE5D4 /* AuthorizationCodeRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA652899231F7B1000EEE5D4 /* AuthorizationCodeRequest.swift */; };
 		EA65289C231F7CB400EEE5D4 /* ClientKeyRequestor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA65289B231F7CB400EEE5D4 /* ClientKeyRequestor.swift */; };
@@ -60,6 +63,9 @@
 		EA60C21F24BBACAE00B3DDC5 /* LoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
 		EA60C22524BC0C7C00B3DDC5 /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
 		EA60C22724C0276300B3DDC5 /* SpacesNetworkModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpacesNetworkModel.swift; sourceTree = "<group>"; };
+		EA60C22924C3EA3F00B3DDC5 /* WrikeAccountResponseObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WrikeAccountResponseObject.swift; sourceTree = "<group>"; };
+		EA60C22B24C3ECE900B3DDC5 /* WrikeCustomFieldResponseObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WrikeCustomFieldResponseObject.swift; sourceTree = "<group>"; };
+		EA60C22D24C3ED9000B3DDC5 /* WrikeMetaDataObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WrikeMetaDataObject.swift; sourceTree = "<group>"; };
 		EA652894231F5D8400EEE5D4 /* UserDefaults+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Extension.swift"; sourceTree = "<group>"; };
 		EA652899231F7B1000EEE5D4 /* AuthorizationCodeRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationCodeRequest.swift; sourceTree = "<group>"; };
 		EA65289B231F7CB400EEE5D4 /* ClientKeyRequestor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientKeyRequestor.swift; sourceTree = "<group>"; };
@@ -114,6 +120,9 @@
 				EA8131BB22C5750A009D2806 /* WrikeAllFoldersResponseObject.swift */,
 				EAFCC6B423AEB3A600DF8A16 /* WrikeFolderListResponseObject.swift */,
 				EA2F15A32454016E0099169B /* WrikeSpacesResponseObject.swift */,
+				EA60C22924C3EA3F00B3DDC5 /* WrikeAccountResponseObject.swift */,
+				EA60C22B24C3ECE900B3DDC5 /* WrikeCustomFieldResponseObject.swift */,
+				EA60C22D24C3ED9000B3DDC5 /* WrikeMetaDataObject.swift */,
 			);
 			path = "Wrike Response Object Models";
 			sourceTree = "<group>";
@@ -332,10 +341,12 @@
 				EA60C22624BC0C7C00B3DDC5 /* ImageLoader.swift in Sources */,
 				EA8131C322D854C2009D2806 /* AccountElementTableViewCell.swift in Sources */,
 				EAFCC6BD23CBC59F00DF8A16 /* ActivityIndicatorViewController.swift in Sources */,
+				EA60C22C24C3ECE900B3DDC5 /* WrikeCustomFieldResponseObject.swift in Sources */,
 				EA8131BC22C5750A009D2806 /* WrikeAllFoldersResponseObject.swift in Sources */,
 				EA65289C231F7CB400EEE5D4 /* ClientKeyRequestor.swift in Sources */,
 				EA1C36CB22F40D2000D87AAF /* WrikeAuthNetworkingClient.swift in Sources */,
 				EAAAC99522BDBA2800414284 /* StyledButton.swift in Sources */,
+				EA60C22E24C3ED9000B3DDC5 /* WrikeMetaDataObject.swift in Sources */,
 				EA8131C622D93CC4009D2806 /* Extensions.swift in Sources */,
 				EA8131C022CBFE92009D2806 /* WrikeAPINetworkClient+HelperFunctions.swift in Sources */,
 				EA2F15A724552A600099169B /* SpaceTableViewCell.swift in Sources */,
@@ -356,6 +367,7 @@
 				EA60C22824C0276300B3DDC5 /* SpacesNetworkModel.swift in Sources */,
 				EAFCC6B523AEB3A600DF8A16 /* WrikeFolderListResponseObject.swift in Sources */,
 				EA1C36CD22F92BF000D87AAF /* WrikeAuthNetworkingClient+Functions.swift in Sources */,
+				EA60C22A24C3EA3F00B3DDC5 /* WrikeAccountResponseObject.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
