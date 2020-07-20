@@ -29,6 +29,8 @@ class LoginViewController: UIViewController, WKUIDelegate {
     @IBOutlet weak var loginButton: StyledButton!
     @IBOutlet weak var loggedInLabel: UILabel!
     @IBOutlet weak var accountTitleLabel: UILabel!
+    @IBAction func logoutButtonPressed(_ sender: UIButton) {
+    }
     
     
     //MARK: Actions

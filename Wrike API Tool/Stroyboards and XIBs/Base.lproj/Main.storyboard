@@ -37,19 +37,27 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Logged In To Account:" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="8ri-5v-uZi">
                                 <rect key="frame" x="16" y="547" width="382" height="29"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
-                                <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Account Name" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QDp-xm-gtD">
                                 <rect key="frame" x="16" y="592" width="382" height="24"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CdJ-sG-Uka">
+                                <rect key="frame" x="333" y="44" width="61" height="34"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                <state key="normal" title="Logout"/>
+                                <connections>
+                                    <action selector="logoutButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Hta-ah-juw"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="CdJ-sG-Uka" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="2TP-Br-FDb"/>
                             <constraint firstItem="WrY-mT-ken" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.75" id="4pY-17-eXK"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="CdJ-sG-Uka" secondAttribute="trailing" constant="20" id="DxJ-fP-jfd"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="8ri-5v-uZi" secondAttribute="trailing" constant="16" id="MFg-3g-uYK"/>
                             <constraint firstItem="QDp-xm-gtD" firstAttribute="top" secondItem="8ri-5v-uZi" secondAttribute="bottom" constant="16" id="PlA-YS-Chg"/>
                             <constraint firstItem="8ri-5v-uZi" firstAttribute="top" secondItem="WrY-mT-ken" secondAttribute="bottom" constant="72" id="S2G-gG-DMP"/>
