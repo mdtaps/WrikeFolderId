@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 class LoginModel {
     var initialSpaces = [IdentifiableWrikeObject]()
@@ -15,13 +16,15 @@ class LoginModel {
     init(folderViewLaunch: @escaping ([IdentifiableWrikeObject]) -> ()) {
         self.folderViewLaunch = folderViewLaunch
     }
-    
+}
+
+extension LoginModel {
     func gatherWrikeSpacesandTriggerLaunch() {
         addInitialSpaces()
     }
     
-    func addInitialSpaces() {
-        WrikeAPINetworkClient.shared.retrieveWrikeFolders(for: .GetSpaces, returnType: WrikeSpacesResponseObject.self) { result in
+    private func addInitialSpaces() {
+        WrikeAPINetworkClient.shared.retrieveWrikeData(for: .GetSpaces, returnType: WrikeSpacesResponseObject.self) { result in
             switch result {
             case .Failure(with: let failureString):
                 //TODO: Display failure
@@ -33,8 +36,8 @@ class LoginModel {
         }
     }
     
-    func addSharedWithMeSpace() {
-        WrikeAPINetworkClient.shared.retrieveWrikeFolders(for: .GetAllFolders, returnType: WrikeAllFoldersResponseObject.self) { result in
+    private func addSharedWithMeSpace() {
+        WrikeAPINetworkClient.shared.retrieveWrikeData(for: .GetAllFolders, returnType: WrikeAllFoldersResponseObject.self) { result in
             switch result {
             case .Failure(with: let failureString):
                 fatalError(failureString)

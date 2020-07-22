@@ -110,7 +110,7 @@ extension AccountElementsViewController: CellClickDelegate {
         
         for childIdGroup in childIdsSplitIntoGroupsOfOneHundred {
             dispatchGroup.enter()
-            WrikeAPINetworkClient.shared.retrieveWrikeFolders(for: .GetFoldersFromListOfIds(idsArray: childIdGroup), returnType: WrikeFolderListResponseObject.self) { response in
+            WrikeAPINetworkClient.shared.retrieveWrikeData(for: .GetFoldersFromListOfIds(idsArray: childIdGroup), returnType: WrikeFolderListResponseObject.self) { response in
                 switch response {
                 case .Failure(with: let failureString):
                     print("Get folders from list of ids failed with: \(failureString)")

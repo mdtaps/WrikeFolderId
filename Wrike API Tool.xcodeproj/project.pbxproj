@@ -14,9 +14,9 @@
 		EA2F15A42454016E0099169B /* WrikeSpacesResponseObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2F15A32454016E0099169B /* WrikeSpacesResponseObject.swift */; };
 		EA2F15A724552A600099169B /* SpaceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2F15A524552A600099169B /* SpaceTableViewCell.swift */; };
 		EA2F15A824552A600099169B /* SpaceTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA2F15A624552A600099169B /* SpaceTableViewCell.xib */; };
+		EA52D6BF24C6A6C300C51DD3 /* LoggedInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA52D6BE24C6A6C300C51DD3 /* LoggedInView.swift */; };
 		EA60C22024BBACAE00B3DDC5 /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA60C21F24BBACAE00B3DDC5 /* LoginModel.swift */; };
 		EA60C22624BC0C7C00B3DDC5 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA60C22524BC0C7C00B3DDC5 /* ImageLoader.swift */; };
-		EA60C22824C0276300B3DDC5 /* SpacesNetworkModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA60C22724C0276300B3DDC5 /* SpacesNetworkModel.swift */; };
 		EA60C22A24C3EA3F00B3DDC5 /* WrikeAccountResponseObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA60C22924C3EA3F00B3DDC5 /* WrikeAccountResponseObject.swift */; };
 		EA60C22C24C3ECE900B3DDC5 /* WrikeCustomFieldResponseObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA60C22B24C3ECE900B3DDC5 /* WrikeCustomFieldResponseObject.swift */; };
 		EA60C22E24C3ED9000B3DDC5 /* WrikeMetaDataObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA60C22D24C3ED9000B3DDC5 /* WrikeMetaDataObject.swift */; };
@@ -60,9 +60,9 @@
 		EA2F15A32454016E0099169B /* WrikeSpacesResponseObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WrikeSpacesResponseObject.swift; sourceTree = "<group>"; };
 		EA2F15A524552A600099169B /* SpaceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceTableViewCell.swift; sourceTree = "<group>"; };
 		EA2F15A624552A600099169B /* SpaceTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SpaceTableViewCell.xib; sourceTree = "<group>"; };
+		EA52D6BE24C6A6C300C51DD3 /* LoggedInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggedInView.swift; sourceTree = "<group>"; };
 		EA60C21F24BBACAE00B3DDC5 /* LoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
 		EA60C22524BC0C7C00B3DDC5 /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
-		EA60C22724C0276300B3DDC5 /* SpacesNetworkModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpacesNetworkModel.swift; sourceTree = "<group>"; };
 		EA60C22924C3EA3F00B3DDC5 /* WrikeAccountResponseObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WrikeAccountResponseObject.swift; sourceTree = "<group>"; };
 		EA60C22B24C3ECE900B3DDC5 /* WrikeCustomFieldResponseObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WrikeCustomFieldResponseObject.swift; sourceTree = "<group>"; };
 		EA60C22D24C3ED9000B3DDC5 /* WrikeMetaDataObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WrikeMetaDataObject.swift; sourceTree = "<group>"; };
@@ -163,7 +163,6 @@
 		EA652898231F5F4300EEE5D4 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				EA60C22724C0276300B3DDC5 /* SpacesNetworkModel.swift */,
 				EA60C22524BC0C7C00B3DDC5 /* ImageLoader.swift */,
 				EA60C21F24BBACAE00B3DDC5 /* LoginModel.swift */,
 				EA60C22124BC06C400B3DDC5 /* Wrike Response Object Models */,
@@ -207,6 +206,7 @@
 		EA8131C922DAF649009D2806 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				EA52D6BE24C6A6C300C51DD3 /* LoggedInView.swift */,
 				EAAAC99422BDBA2800414284 /* StyledButton.swift */,
 			);
 			path = Views;
@@ -364,7 +364,7 @@
 				EA652895231F5D8400EEE5D4 /* UserDefaults+Extension.swift in Sources */,
 				EA65289A231F7B1000EEE5D4 /* AuthorizationCodeRequest.swift in Sources */,
 				EAFCC6BB23CB09C000DF8A16 /* FoldersNavigationController.swift in Sources */,
-				EA60C22824C0276300B3DDC5 /* SpacesNetworkModel.swift in Sources */,
+				EA52D6BF24C6A6C300C51DD3 /* LoggedInView.swift in Sources */,
 				EAFCC6B523AEB3A600DF8A16 /* WrikeFolderListResponseObject.swift in Sources */,
 				EA1C36CD22F92BF000D87AAF /* WrikeAuthNetworkingClient+Functions.swift in Sources */,
 				EA60C22A24C3EA3F00B3DDC5 /* WrikeAccountResponseObject.swift in Sources */,

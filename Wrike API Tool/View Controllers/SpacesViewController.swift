@@ -94,7 +94,7 @@ extension SpacesViewController: CellClickDelegate {
     
     internal func loadChildFolders(wrikeObject: IdentifiableWrikeObject) {
         if wrikeObject.title == "Root" {
-            WrikeAPINetworkClient.shared.retrieveWrikeFolders(for: .GetAllFolders,
+            WrikeAPINetworkClient.shared.retrieveWrikeData(for: .GetAllFolders,
                                                               returnType: WrikeAllFoldersResponseObject.self) { result in
                 switch result {
                 case .Failure(with: let failureString):
@@ -104,7 +104,7 @@ extension SpacesViewController: CellClickDelegate {
                 }
             }
         } else {
-            WrikeAPINetworkClient.shared.retrieveWrikeFolders(for: .GetFoldersFromSpaceId(spaceId: wrikeObject.id),
+            WrikeAPINetworkClient.shared.retrieveWrikeData(for: .GetFoldersFromSpaceId(spaceId: wrikeObject.id),
                                                               returnType: WrikeAllFoldersResponseObject.self) { result in
                 switch result {
                 case .Failure(with: let failureString):
@@ -124,7 +124,7 @@ extension SpacesViewController: CellClickDelegate {
         
         for childIdGroup in childIdsSplitIntoGroupsOfOneHundred {
             dispatchGroup.enter()
-            WrikeAPINetworkClient.shared.retrieveWrikeFolders(for: .GetFoldersFromListOfIds(idsArray: childIdGroup), returnType: WrikeFolderListResponseObject.self) { response in
+            WrikeAPINetworkClient.shared.retrieveWrikeData(for: .GetFoldersFromListOfIds(idsArray: childIdGroup), returnType: WrikeFolderListResponseObject.self) { response in
                 switch response {
                 case .Failure(with: let failureString):
                     print("Get folders from list of ids failed with: \(failureString)")

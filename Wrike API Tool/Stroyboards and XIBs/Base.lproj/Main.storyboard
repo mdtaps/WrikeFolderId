@@ -39,7 +39,7 @@
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Account Name" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QDp-xm-gtD">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Getting Account Name..." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QDp-xm-gtD">
                                 <rect key="frame" x="16" y="592" width="382" height="24"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <nil key="highlightedColor"/>
@@ -73,6 +73,7 @@
                         <outlet property="accountTitleLabel" destination="QDp-xm-gtD" id="uCK-tJ-Zwd"/>
                         <outlet property="loggedInLabel" destination="8ri-5v-uZi" id="hzY-wp-jvZ"/>
                         <outlet property="loginButton" destination="WrY-mT-ken" id="OCw-Ct-cOI"/>
+                        <outlet property="logoutButton" destination="CdJ-sG-Uka" id="oTO-6c-FTn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

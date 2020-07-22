@@ -19,31 +19,54 @@ class LoginViewController: UIViewController, WKUIDelegate {
     override func viewDidLoad() {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         appDelegate.loginDelegate = self
-        setUpLoggedInMessage()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        setUpViews()
     }
     
     //MARK: Properties
     var mainNavigationController = FoldersNavigationController()
+    let loginStatus = LoginStatus()
+
     
     //MARK: Outlets
     @IBOutlet weak var loginButton: StyledButton!
     @IBOutlet weak var loggedInLabel: UILabel!
     @IBOutlet weak var accountTitleLabel: UILabel!
-    @IBAction func logoutButtonPressed(_ sender: UIButton) {
-    }
-    
+    @IBOutlet weak var logoutButton: UIButton!
     
     //MARK: Actions
     @IBAction func loginButtonPressed(_ sender: StyledButton) {
         loginToWrike()
     }
+    @IBAction func logoutButtonPressed(_ sender: UIButton) {
+    }
     
-    func setUpLoggedInMessage() {
-        
+    func setUpViews() {
+        setViewVisibility()
+        setLoginMessage()
     }
 }
 
 //MARK: Extensions
+extension LoginViewController {
+    private func setLoginMessage() {
+        loginStatus.setAccountTitle { accountName in
+            DispatchQueue.main.async {
+                self.accountTitleLabel.text = accountName
+            }
+        }
+    }
+    
+    private func setViewVisibility() {
+        loggedInLabel.isHidden = loginStatus.viewShouldHide()
+        accountTitleLabel.isHidden = loginStatus.viewShouldHide()
+        logoutButton.isHidden = loginStatus.viewShouldHide()
+    }
+}
+
+
 extension LoginViewController: RefreshDelegate {
     func loginToWrike() {
         addLoadingWheel()
@@ -72,7 +95,8 @@ extension LoginViewController: RefreshDelegate {
 //Used for setting this VCs window as the anchor for the web auth window
 extension LoginViewController: ASWebAuthenticationPresentationContextProviding {
     func presentationAnchor(for session: ASWebAuthenticationSession) -> ASPresentationAnchor {
-        return view.window!
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        return appDelegate.window!
     }
 }
 
