@@ -17,19 +17,19 @@ protocol RefreshDelegate {
 @IBDesignable
 class LoginViewController: UIViewController, WKUIDelegate {
     override func viewDidLoad() {
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
         appDelegate.loginDelegate = self
+        setViewVisibility()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        setUpViews()
+    override func viewDidAppear(_ animated: Bool) {
+        setLoginMessage()
     }
     
     //MARK: Properties
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
     var mainNavigationController = FoldersNavigationController()
     let loginStatus = LoginStatus()
 
-    
     //MARK: Outlets
     @IBOutlet weak var loginButton: StyledButton!
     @IBOutlet weak var loggedInLabel: UILabel!
@@ -40,12 +40,10 @@ class LoginViewController: UIViewController, WKUIDelegate {
     @IBAction func loginButtonPressed(_ sender: StyledButton) {
         loginToWrike()
     }
-    @IBAction func logoutButtonPressed(_ sender: UIButton) {
-    }
     
-    func setUpViews() {
+    @IBAction func logoutButtonPressed(_ sender: UIButton) {
+        appDelegate.clearUserDefaultsAuthData()
         setViewVisibility()
-        setLoginMessage()
     }
 }
 
@@ -65,7 +63,6 @@ extension LoginViewController {
         logoutButton.isHidden = loginStatus.viewShouldHide()
     }
 }
-
 
 extension LoginViewController: RefreshDelegate {
     func loginToWrike() {
