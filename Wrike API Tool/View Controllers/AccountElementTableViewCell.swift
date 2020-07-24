@@ -29,7 +29,6 @@ class AccountElementTableViewCell: UITableViewCell {
     }
     
     @IBAction func elementTitleTapped(_ sender: UIButton) {
-        //TODO: Make Get Folder call
         if let wrikeObject = wrikeObject {
             delegate?.launchFolderIdView(wrikeObject: wrikeObject)
         }

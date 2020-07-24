@@ -36,6 +36,7 @@ class SpacesViewController: UIViewController {
         //Setting footerView prevents the table view from creating blank cells
         //when there are not enough cells to fill the screen
         spacesTableView.tableFooterView = UIView()
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Logout", style: .done, target: self, action: #selector(logout))
     }
     
     //MARK: Functions

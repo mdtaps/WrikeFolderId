@@ -1,5 +1,5 @@
 //
-//  LoggedInView.swift
+//  LoginStatus.swift
 //  Wrike API Tool
 //
 //  Created by Mark Tapia on 7/20/20.

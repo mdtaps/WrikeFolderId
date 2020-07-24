@@ -75,16 +75,14 @@ extension LoginViewController: RefreshDelegate {
     private func launchFolderView(using spaceObjects: [IdentifiableWrikeObject]) {
         DispatchQueue.main.async {
             let vc = SpacesViewController(spaceObjects: spaceObjects, refreshDelegate: self)
-            vc.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Logout", style: .done, target: vc, action: #selector(SpacesViewController.logout))
             
-            self.mainNavigationController.viewControllers.removeAll()
-            self.mainNavigationController.pushViewController(vc, animated: false)
-            self.mainNavigationController.popToRootViewController(animated: false)
-
+            self.mainNavigationController.resetNavController(to: vc)
+            
+            //To handle when function is called from outside view controllers
+            //and main nav controller is already presented
             if self.mainNavigationController.presentingViewController == nil {
-                self.present(self.mainNavigationController, animated: true, completion: nil)
+                self.present(self.mainNavigationController, animated: true, completion: self.removeLoadingWheel)
             }
-            self.removeLoadingWheel()
         }
     }
 }

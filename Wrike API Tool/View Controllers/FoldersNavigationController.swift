@@ -15,4 +15,10 @@ class FoldersNavigationController: UINavigationController {
 
         self.modalPresentationStyle = .fullScreen
     }
+    
+    func resetNavController(to newRootViewController: SpacesViewController) {
+        self.viewControllers.removeAll()
+        self.pushViewController(newRootViewController, animated: false)
+        self.popToRootViewController(animated: false)
+    }
 }
