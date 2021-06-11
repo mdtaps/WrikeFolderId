@@ -10,6 +10,8 @@ import Foundation
 import UIKit
 
 extension UIViewController {
+    var appDelegate: AppDelegate { UIApplication.shared.delegate as! AppDelegate }
+    
     func addLoadingWheel() {
         let child = ActivityIndicatorViewController()
 

@@ -1,4 +1,4 @@
-//
+//  Borrowed from https://www.donnywals.com/efficiently-loading-images-in-table-views-and-collection-views/
 //  ImageLoader.swift
 //  Wrike API Tool
 //
@@ -10,35 +10,49 @@ import Foundation
 import UIKit
 
 class ImageLoader {
-    func downloadImage(from urlPath: String, completion: @escaping (UIImage) -> ()) {
-        guard let url = URL(string: urlPath) else {
-            DispatchQueue.main.async {
-                completion(UIImage())
+    private var loadedImages = [URL: UIImage]()
+    private var runningRequests = [UUID: URLSessionDataTask]()
+    
+    func loadImage(_ url: URL, _ completion: @escaping (Result<UIImage>) -> Void) -> UUID? {
+        if let image = loadedImages[url] {
+            completion(.Success(with: image))
+            return nil
+        }
+
+        let uuid = UUID()
+
+        let task = URLSession.shared.dataTask(with: url) { data, response, error in
+            defer {self.runningRequests.removeValue(forKey: uuid) }
+
+            if let error = error {
+                completion(.Failure(with: error.localizedDescription))
             }
-            return
-        }
-        
-        var data: Data
-        
-        do {
-            data = try Data(contentsOf: url)
-        } catch {
-            DispatchQueue.main.async {
-                completion(UIImage())
+
+            guard let httpResponse = response as? HTTPURLResponse else {
+                completion(.Failure(with: "No response from server"))
+                return
             }
-            print(error)
-            return
-        }
-        
-        guard let image = UIImage(data: data) else {
-            DispatchQueue.main.async {
-                completion(UIImage())
+
+            guard (200...299).contains(httpResponse.statusCode) else {
+                completion(.Failure(with: "Auth Request Invalid, status code of \(httpResponse.statusCode), \(HTTPURLResponse.localizedString(forStatusCode: httpResponse.statusCode))"))
+                return
             }
-            return
+
+            if let data = data, let image = UIImage(data: data) {
+              self.loadedImages[url] = image
+                completion(.Success(with: image))
+              return
+            }
         }
         
-        DispatchQueue.main.async {
-            completion(image)
-        }
+        task.resume()
+
+        runningRequests[uuid] = task
+        return uuid
+    }
+    
+    func cancelLoad(_ uuid: UUID) {
+        runningRequests[uuid]?.cancel()
+        runningRequests.removeValue(forKey: uuid)
     }
 }

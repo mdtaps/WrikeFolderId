@@ -9,8 +9,8 @@
 import UIKit
 
 protocol CellClickDelegate {
-    func launchFolderIdView(wrikeObject: IdentifiableWrikeObject)
-    func loadChildFolders(wrikeObject: IdentifiableWrikeObject)
+    func launchFolderIdView(using wrikeObject: IdentifiableWrikeObject)
+    func launchAccountElementView(using wrikeObject: IdentifiableWrikeObject)
 }
 
 class AccountElementTableViewCell: UITableViewCell {
@@ -18,8 +18,20 @@ class AccountElementTableViewCell: UITableViewCell {
     @IBOutlet weak var caretButton: StyledButton!
     @IBOutlet weak var elementImage: UIImageView!
     
+    var onReuse: () -> Void = {}
     var delegate: CellClickDelegate?
-    var wrikeObject: IdentifiableWrikeObject?
+    var wrikeObject: IdentifiableWrikeObject? {
+        didSet {
+            setTitleForElementTitleButton()
+            setImageForElementImage()
+        }
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        elementImage.image = nil
+        elementImage.cancelImageLoad()
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -30,13 +42,25 @@ class AccountElementTableViewCell: UITableViewCell {
     
     @IBAction func elementTitleTapped(_ sender: UIButton) {
         if let wrikeObject = wrikeObject {
-            delegate?.launchFolderIdView(wrikeObject: wrikeObject)
+            delegate?.launchFolderIdView(using: wrikeObject)
         }
     }
     
     @IBAction func caretTapped(_ sender: UIButton) {
         if let wrikeObject = wrikeObject {
-            delegate?.loadChildFolders(wrikeObject: wrikeObject)
+            delegate?.launchAccountElementView(using: wrikeObject)
         } 
+    }
+    
+    func setTitleForElementTitleButton() {
+        if wrikeObject?.title == "Root" {
+                elementTitleButton.setTitle("Shared with Me", for: .normal)
+        } else {
+            elementTitleButton.setTitle(wrikeObject?.title, for: .normal)
+        }
+    }
+    
+    func setImageForElementImage() {
+        
     }
 }

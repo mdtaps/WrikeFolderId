@@ -7,13 +7,24 @@
 //
 
 import Foundation
+import UIKit
 
 struct WrikeFolderListResponseObject: Decodable {
     let kind: String
     let data: [FolderObject]
 }
 
-class FolderObject: Decodable, WrikeFolderObject {
+class FolderObject: Decodable, IdentifiableWrikeObject {
+    func setImage(for imageView: UIImageView) {
+        let imageTitle = project != nil ? "clipboard" : "folder"
+        imageView.image = UIImage(named: imageTitle) ?? UIImage()
+    }
+    
+    func getChildObjects(completionHandler: @escaping ([IdentifiableWrikeObject]) -> Void) {
+        let wrikeObjectLoader = WrikeObjectLoader()
+        wrikeObjectLoader.loadChildObjects(for: self, completionHandler: completionHandler)
+    }
+    
     let id: String
     let accountId: String
     let title: String

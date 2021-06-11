@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 struct WrikeSpacesResponseObject: Decodable {
     let kind: String
@@ -14,6 +15,15 @@ struct WrikeSpacesResponseObject: Decodable {
 }
     
 class SpaceObject: Decodable, IdentifiableWrikeObject {
+    func setImage(for imageView: UIImageView) {
+        imageView.loadImage(at: avatarUrl)
+    }
+    
+    func getChildObjects(completionHandler: @escaping ([IdentifiableWrikeObject]) -> Void) {
+        let wrikeObjectLoader = WrikeObjectLoader()
+        wrikeObjectLoader.loadChildObjects(for: self, completionHandler: completionHandler)
+    }
+    
     let id: String
     let title: String
     let avatarUrl: String

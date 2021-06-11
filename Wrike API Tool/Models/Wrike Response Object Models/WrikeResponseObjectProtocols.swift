@@ -7,15 +7,13 @@
 //
 
 import Foundation
+import UIKit
 
 //Protocol used by all response objects to group
 //them. For use in displaying and identifying.
 protocol IdentifiableWrikeObject {
     var id: String { get }
     var title: String { get }
-}
-
-protocol WrikeFolderObject: IdentifiableWrikeObject {
-    var childIds: [String] { get }
-    var project: Project? { get }
+    func setImage(for imageView: UIImageView) -> Void
+    func getChildObjects(completionHandler: @escaping ([IdentifiableWrikeObject]) -> Void)
 }

@@ -12,8 +12,6 @@
 		EA1C36D12315054F00D87AAF /* AccessTokenRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1C36D02315054F00D87AAF /* AccessTokenRequest.swift */; };
 		EA1D125423A208800013A58D /* WrikeLoginProcess.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1D125323A208800013A58D /* WrikeLoginProcess.swift */; };
 		EA2F15A42454016E0099169B /* WrikeSpacesResponseObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2F15A32454016E0099169B /* WrikeSpacesResponseObject.swift */; };
-		EA2F15A724552A600099169B /* SpaceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2F15A524552A600099169B /* SpaceTableViewCell.swift */; };
-		EA2F15A824552A600099169B /* SpaceTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA2F15A624552A600099169B /* SpaceTableViewCell.xib */; };
 		EA52D6BF24C6A6C300C51DD3 /* LoginStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA52D6BE24C6A6C300C51DD3 /* LoginStatus.swift */; };
 		EA60C22024BBACAE00B3DDC5 /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA60C21F24BBACAE00B3DDC5 /* LoginModel.swift */; };
 		EA60C22624BC0C7C00B3DDC5 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA60C22524BC0C7C00B3DDC5 /* ImageLoader.swift */; };
@@ -23,14 +21,16 @@
 		EA652895231F5D8400EEE5D4 /* UserDefaults+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA652894231F5D8400EEE5D4 /* UserDefaults+Extension.swift */; };
 		EA65289A231F7B1000EEE5D4 /* AuthorizationCodeRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA652899231F7B1000EEE5D4 /* AuthorizationCodeRequest.swift */; };
 		EA65289C231F7CB400EEE5D4 /* ClientKeyRequestor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA65289B231F7CB400EEE5D4 /* ClientKeyRequestor.swift */; };
-		EA7578AD245EA4260092973F /* SpacesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7578AB245EA4260092973F /* SpacesViewController.swift */; };
 		EA7578AE245EA4260092973F /* SpacesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA7578AC245EA4260092973F /* SpacesViewController.xib */; };
+		EA7AC1B02671EE5C001219BF /* WrikeObjectLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7AC1AF2671EE5C001219BF /* WrikeObjectLoader.swift */; };
 		EA8131BC22C5750A009D2806 /* WrikeAllFoldersResponseObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA8131BB22C5750A009D2806 /* WrikeAllFoldersResponseObject.swift */; };
 		EA8131BE22CBFD75009D2806 /* WrikeAPINetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA8131BD22CBFD75009D2806 /* WrikeAPINetworkClient.swift */; };
 		EA8131C022CBFE92009D2806 /* WrikeAPINetworkClient+HelperFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA8131BF22CBFE92009D2806 /* WrikeAPINetworkClient+HelperFunctions.swift */; };
 		EA8131C322D854C2009D2806 /* AccountElementTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA8131C122D854C2009D2806 /* AccountElementTableViewCell.swift */; };
 		EA8131C422D854C2009D2806 /* AccountElementTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA8131C222D854C2009D2806 /* AccountElementTableViewCell.xib */; };
 		EA8131C622D93CC4009D2806 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA8131C522D93CC4009D2806 /* Extensions.swift */; };
+		EAA62E1D24CAC5510099503C /* LoginViewController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA62E1C24CAC5510099503C /* LoginViewController+Ext.swift */; };
+		EAA62E1F24CAC6460099503C /* ElementCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA62E1E24CAC6460099503C /* ElementCellModel.swift */; };
 		EAAAC98322BDB97600414284 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAAC98222BDB97600414284 /* AppDelegate.swift */; };
 		EAAAC98522BDB97600414284 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAAC98422BDB97600414284 /* LoginViewController.swift */; };
 		EAAAC98822BDB97600414284 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EAAAC98622BDB97600414284 /* Main.storyboard */; };
@@ -43,6 +43,9 @@
 		EAC7A1ED24A8694700C51AAA /* Array+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC7A1EC24A8694700C51AAA /* Array+Extension.swift */; };
 		EAC7A1EF24A8716100C51AAA /* WrikeResponseObjectProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC7A1EE24A8716100C51AAA /* WrikeResponseObjectProtocols.swift */; };
 		EAD32C1A22EE2139007368B8 /* ClientKeys.plist in Resources */ = {isa = PBXBuildFile; fileRef = EAD32C1922EE2139007368B8 /* ClientKeys.plist */; };
+		EAF0B309266A00C20097E7FB /* AccountElementViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF0B308266A00C20097E7FB /* AccountElementViewModel.swift */; };
+		EAF82B82266F341200313EC3 /* UIImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF82B81266F341200313EC3 /* UIImageLoader.swift */; };
+		EAF82B91266F45E300313EC3 /* UIImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF82B90266F45E300313EC3 /* UIImageView+Extension.swift */; };
 		EAFB81B322DE2FE30062813D /* FolderIdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAFB81B122DE2FE30062813D /* FolderIdViewController.swift */; };
 		EAFB81B422DE2FE30062813D /* FolderIdViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EAFB81B222DE2FE30062813D /* FolderIdViewController.xib */; };
 		EAFCC6B523AEB3A600DF8A16 /* WrikeFolderListResponseObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAFCC6B423AEB3A600DF8A16 /* WrikeFolderListResponseObject.swift */; };
@@ -58,8 +61,6 @@
 		EA1C36D02315054F00D87AAF /* AccessTokenRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccessTokenRequest.swift; sourceTree = "<group>"; };
 		EA1D125323A208800013A58D /* WrikeLoginProcess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WrikeLoginProcess.swift; sourceTree = "<group>"; };
 		EA2F15A32454016E0099169B /* WrikeSpacesResponseObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WrikeSpacesResponseObject.swift; sourceTree = "<group>"; };
-		EA2F15A524552A600099169B /* SpaceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceTableViewCell.swift; sourceTree = "<group>"; };
-		EA2F15A624552A600099169B /* SpaceTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SpaceTableViewCell.xib; sourceTree = "<group>"; };
 		EA52D6BE24C6A6C300C51DD3 /* LoginStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginStatus.swift; sourceTree = "<group>"; };
 		EA60C21F24BBACAE00B3DDC5 /* LoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
 		EA60C22524BC0C7C00B3DDC5 /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
@@ -69,14 +70,16 @@
 		EA652894231F5D8400EEE5D4 /* UserDefaults+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Extension.swift"; sourceTree = "<group>"; };
 		EA652899231F7B1000EEE5D4 /* AuthorizationCodeRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationCodeRequest.swift; sourceTree = "<group>"; };
 		EA65289B231F7CB400EEE5D4 /* ClientKeyRequestor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientKeyRequestor.swift; sourceTree = "<group>"; };
-		EA7578AB245EA4260092973F /* SpacesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpacesViewController.swift; sourceTree = "<group>"; };
 		EA7578AC245EA4260092973F /* SpacesViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SpacesViewController.xib; sourceTree = "<group>"; };
+		EA7AC1AF2671EE5C001219BF /* WrikeObjectLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WrikeObjectLoader.swift; sourceTree = "<group>"; };
 		EA8131BB22C5750A009D2806 /* WrikeAllFoldersResponseObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WrikeAllFoldersResponseObject.swift; sourceTree = "<group>"; };
 		EA8131BD22CBFD75009D2806 /* WrikeAPINetworkClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WrikeAPINetworkClient.swift; sourceTree = "<group>"; };
 		EA8131BF22CBFE92009D2806 /* WrikeAPINetworkClient+HelperFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WrikeAPINetworkClient+HelperFunctions.swift"; sourceTree = "<group>"; };
 		EA8131C122D854C2009D2806 /* AccountElementTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountElementTableViewCell.swift; sourceTree = "<group>"; };
 		EA8131C222D854C2009D2806 /* AccountElementTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AccountElementTableViewCell.xib; sourceTree = "<group>"; };
 		EA8131C522D93CC4009D2806 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		EAA62E1C24CAC5510099503C /* LoginViewController+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LoginViewController+Ext.swift"; sourceTree = "<group>"; };
+		EAA62E1E24CAC6460099503C /* ElementCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElementCellModel.swift; sourceTree = "<group>"; };
 		EAAAC97F22BDB97600414284 /* Wrike API Tool.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Wrike API Tool.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EAAAC98222BDB97600414284 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EAAAC98422BDB97600414284 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -92,6 +95,9 @@
 		EAC7A1EE24A8716100C51AAA /* WrikeResponseObjectProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WrikeResponseObjectProtocols.swift; sourceTree = "<group>"; };
 		EAD32C1622EA6420007368B8 /* Wrike API Tool.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Wrike API Tool.entitlements"; sourceTree = "<group>"; };
 		EAD32C1922EE2139007368B8 /* ClientKeys.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = ClientKeys.plist; sourceTree = "<group>"; };
+		EAF0B308266A00C20097E7FB /* AccountElementViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountElementViewModel.swift; sourceTree = "<group>"; };
+		EAF82B81266F341200313EC3 /* UIImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageLoader.swift; sourceTree = "<group>"; };
+		EAF82B90266F45E300313EC3 /* UIImageView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extension.swift"; sourceTree = "<group>"; };
 		EAFB81B122DE2FE30062813D /* FolderIdViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderIdViewController.swift; sourceTree = "<group>"; };
 		EAFB81B222DE2FE30062813D /* FolderIdViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FolderIdViewController.xib; sourceTree = "<group>"; };
 		EAFCC6B423AEB3A600DF8A16 /* WrikeFolderListResponseObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WrikeFolderListResponseObject.swift; sourceTree = "<group>"; };
@@ -142,6 +148,7 @@
 				EA652894231F5D8400EEE5D4 /* UserDefaults+Extension.swift */,
 				EA8131C522D93CC4009D2806 /* Extensions.swift */,
 				EAC7A1EC24A8694700C51AAA /* Array+Extension.swift */,
+				EAF82B90266F45E300313EC3 /* UIImageView+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -163,8 +170,12 @@
 		EA652898231F5F4300EEE5D4 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				EAF82B81266F341200313EC3 /* UIImageLoader.swift */,
 				EA60C22524BC0C7C00B3DDC5 /* ImageLoader.swift */,
+				EAF0B308266A00C20097E7FB /* AccountElementViewModel.swift */,
+				EAA62E1E24CAC6460099503C /* ElementCellModel.swift */,
 				EA60C21F24BBACAE00B3DDC5 /* LoginModel.swift */,
+				EA7AC1AF2671EE5C001219BF /* WrikeObjectLoader.swift */,
 				EA60C22124BC06C400B3DDC5 /* Wrike Response Object Models */,
 				EA60C22224BC083A00B3DDC5 /* OAuth Models */,
 				EA65289B231F7CB400EEE5D4 /* ClientKeyRequestor.swift */,
@@ -181,7 +192,6 @@
 				EAAAC98B22BDB97900414284 /* LaunchScreen.storyboard */,
 				EA8131C222D854C2009D2806 /* AccountElementTableViewCell.xib */,
 				EA7578AC245EA4260092973F /* SpacesViewController.xib */,
-				EA2F15A624552A600099169B /* SpaceTableViewCell.xib */,
 				EAAAC99C22C18B9800414284 /* AccountElementsViewController.xib */,
 				EAFB81B222DE2FE30062813D /* FolderIdViewController.xib */,
 			);
@@ -192,12 +202,11 @@
 			isa = PBXGroup;
 			children = (
 				EAAAC98422BDB97600414284 /* LoginViewController.swift */,
-				EA7578AB245EA4260092973F /* SpacesViewController.swift */,
+				EAA62E1C24CAC5510099503C /* LoginViewController+Ext.swift */,
 				EAAAC99B22C18B9800414284 /* AccountElementsViewController.swift */,
 				EAFCC6BC23CBC59F00DF8A16 /* ActivityIndicatorViewController.swift */,
 				EAFB81B122DE2FE30062813D /* FolderIdViewController.swift */,
 				EA8131C122D854C2009D2806 /* AccountElementTableViewCell.swift */,
-				EA2F15A524552A600099169B /* SpaceTableViewCell.swift */,
 				EAFCC6BA23CB09C000DF8A16 /* FoldersNavigationController.swift */,
 			);
 			path = "View Controllers";
@@ -323,7 +332,6 @@
 				EAFB81B422DE2FE30062813D /* FolderIdViewController.xib in Resources */,
 				EAAAC98A22BDB97900414284 /* Assets.xcassets in Resources */,
 				EA7578AE245EA4260092973F /* SpacesViewController.xib in Resources */,
-				EA2F15A824552A600099169B /* SpaceTableViewCell.xib in Resources */,
 				EAAAC98822BDB97600414284 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -339,33 +347,37 @@
 				EA60C22024BBACAE00B3DDC5 /* LoginModel.swift in Sources */,
 				EAAAC99D22C18B9800414284 /* AccountElementsViewController.swift in Sources */,
 				EA60C22624BC0C7C00B3DDC5 /* ImageLoader.swift in Sources */,
+				EA7AC1B02671EE5C001219BF /* WrikeObjectLoader.swift in Sources */,
 				EA8131C322D854C2009D2806 /* AccountElementTableViewCell.swift in Sources */,
 				EAFCC6BD23CBC59F00DF8A16 /* ActivityIndicatorViewController.swift in Sources */,
 				EA60C22C24C3ECE900B3DDC5 /* WrikeCustomFieldResponseObject.swift in Sources */,
 				EA8131BC22C5750A009D2806 /* WrikeAllFoldersResponseObject.swift in Sources */,
+				EAF82B91266F45E300313EC3 /* UIImageView+Extension.swift in Sources */,
 				EA65289C231F7CB400EEE5D4 /* ClientKeyRequestor.swift in Sources */,
 				EA1C36CB22F40D2000D87AAF /* WrikeAuthNetworkingClient.swift in Sources */,
 				EAAAC99522BDBA2800414284 /* StyledButton.swift in Sources */,
 				EA60C22E24C3ED9000B3DDC5 /* WrikeMetaDataObject.swift in Sources */,
 				EA8131C622D93CC4009D2806 /* Extensions.swift in Sources */,
 				EA8131C022CBFE92009D2806 /* WrikeAPINetworkClient+HelperFunctions.swift in Sources */,
-				EA2F15A724552A600099169B /* SpaceTableViewCell.swift in Sources */,
 				EAC7A1ED24A8694700C51AAA /* Array+Extension.swift in Sources */,
 				EAFCC6B723AEF42800DF8A16 /* WrikeAPIRequestModel.swift in Sources */,
 				EAAAC98522BDB97600414284 /* LoginViewController.swift in Sources */,
 				EA8131BE22CBFD75009D2806 /* WrikeAPINetworkClient.swift in Sources */,
 				EAAAC98322BDB97600414284 /* AppDelegate.swift in Sources */,
-				EA7578AD245EA4260092973F /* SpacesViewController.swift in Sources */,
 				EAFCC6B923B45BB500DF8A16 /* WrikeAPIRequestModel+Extension.swift in Sources */,
+				EAA62E1D24CAC5510099503C /* LoginViewController+Ext.swift in Sources */,
 				EA1C36D12315054F00D87AAF /* AccessTokenRequest.swift in Sources */,
 				EAC7A1EF24A8716100C51AAA /* WrikeResponseObjectProtocols.swift in Sources */,
 				EAFB81B322DE2FE30062813D /* FolderIdViewController.swift in Sources */,
 				EA2F15A42454016E0099169B /* WrikeSpacesResponseObject.swift in Sources */,
+				EAA62E1F24CAC6460099503C /* ElementCellModel.swift in Sources */,
 				EA652895231F5D8400EEE5D4 /* UserDefaults+Extension.swift in Sources */,
 				EA65289A231F7B1000EEE5D4 /* AuthorizationCodeRequest.swift in Sources */,
 				EAFCC6BB23CB09C000DF8A16 /* FoldersNavigationController.swift in Sources */,
+				EAF82B82266F341200313EC3 /* UIImageLoader.swift in Sources */,
 				EA52D6BF24C6A6C300C51DD3 /* LoginStatus.swift in Sources */,
 				EAFCC6B523AEB3A600DF8A16 /* WrikeFolderListResponseObject.swift in Sources */,
+				EAF0B309266A00C20097E7FB /* AccountElementViewModel.swift in Sources */,
 				EA1C36CD22F92BF000D87AAF /* WrikeAuthNetworkingClient+Functions.swift in Sources */,
 				EA60C22A24C3EA3F00B3DDC5 /* WrikeAccountResponseObject.swift in Sources */,
 			);
