@@ -34,6 +34,7 @@ class AccountElementsViewController: UIViewController {
         elementsTableView.dataSource = self
                 
         title = accountElementViewModel.title
+        addLogoutButtonToBar()
         
         //Setting footerView prevents the table view from creating blank cells
         //when there are not enough cells to fill the screen
@@ -72,6 +73,18 @@ extension AccountElementsViewController: UITableViewDelegate, UITableViewDataSou
         currentFolder.setImage(for: elementCell.elementImage)
         
         return elementCell
+    }
+}
+
+extension AccountElementsViewController {
+    @objc func logout() {
+        appDelegate.clearUserDefaultsAuthData()
+        dismiss(animated: true, completion: nil)
+    }
+    
+    private func addLogoutButtonToBar() {
+        let logoutButton = UIBarButtonItem(title: "Logout", style: .done, target: self, action: #selector(logout) )
+        self.navigationItem.rightBarButtonItem = logoutButton
     }
 }
 

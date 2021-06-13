@@ -12,7 +12,7 @@ class FoldersNavigationController: UINavigationController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         self.modalPresentationStyle = .fullScreen
     }
     

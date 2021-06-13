@@ -12,7 +12,9 @@ import UIKit
 class FolderIdViewController: UIViewController {
     
     @IBOutlet weak var copyButton: StyledButton!
-    @IBOutlet weak var folderIdLabel: UILabel!
+    @IBOutlet weak var objectIdLabel: UILabel!
+    @IBOutlet weak var objectTitleLabel: UILabel!
+    @IBOutlet weak var idCopiedMessageLabel: UILabel!
     
     var wrikeObject: IdentifiableWrikeObject
     
@@ -29,16 +31,22 @@ class FolderIdViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        folderIdLabel.text = wrikeObject.title
+        objectIdLabel.text = wrikeObject.id
+        objectTitleLabel.text = wrikeObject.title
     }
     
     @IBAction func copyButtonPressed(_ sender: StyledButton) {
-        UIPasteboard.general.string = wrikeObject.title
+        UIPasteboard.general.string = wrikeObject.id
+        animateIdCopiedMessageLabel()
     }
     
     @IBAction func backButtonPressed(_ sender: UIButton) {
         dismiss(animated: true, completion: nil)
     }
     
+    private func animateIdCopiedMessageLabel() {
+        idCopiedMessageLabel.alpha = 1.0
+        UIView.animate(withDuration: 0.5, delay: 0.75, animations: { self.idCopiedMessageLabel.alpha = 0.0 })
+    }
     
 }

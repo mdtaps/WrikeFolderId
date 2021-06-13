@@ -47,7 +47,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     //Handling Web to App handoff when login authorization has finished
     func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void) -> Bool {
-        
+        //TODO: Should handle errors instead of fatalError
         var authCode: String?
         guard userActivity.activityType == NSUserActivityTypeBrowsingWeb else {
             fatalError("User Activity Type in continueUserActivity, \(userActivity.activityType), is incorrect")

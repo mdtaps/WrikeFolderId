@@ -1,17 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="dark"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FolderIdViewController" customModule="Wrike_API_Tool" customModuleProvider="target">
             <connections>
                 <outlet property="copyButton" destination="nd5-kh-OVh" id="Oqi-cr-0AI"/>
-                <outlet property="folderIdLabel" destination="400-3i-0We" id="h21-Sj-MsZ"/>
+                <outlet property="idCopiedMessageLabel" destination="LNh-bN-HH6" id="iuw-4W-hXz"/>
+                <outlet property="objectIdLabel" destination="400-3i-0We" id="h21-Sj-MsZ"/>
+                <outlet property="objectTitleLabel" destination="FeE-86-JC1" id="IkY-tC-nbs"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -20,15 +23,15 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="400-3i-0We">
-                    <rect key="frame" x="161.5" y="403" width="91.5" height="100"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Object ID" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="400-3i-0We">
+                    <rect key="frame" x="129.5" y="403" width="155" height="100"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="100" id="w6b-0j-t1L"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="36"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nd5-kh-OVh" customClass="StyledButton" customModule="Wrike_API_Tool" customModuleProvider="target">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nd5-kh-OVh" customClass="StyledButton" customModule="Wrike_API_Tool" customModuleProvider="target">
                     <rect key="frame" x="83" y="620" width="248" height="44"/>
                     <color key="backgroundColor" red="0.65171706679999997" green="0.77407354120000005" blue="0.32929587360000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     <constraints>
@@ -48,29 +51,55 @@
                         <action selector="copyButtonPressed:" destination="-1" eventType="touchUpInside" id="x9p-Qr-1ru"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r7T-1w-Dja">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r7T-1w-Dja">
                     <rect key="frame" x="16" y="52" width="56" height="34"/>
                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
                     <state key="normal" title="&lt; Back">
-                        <color key="titleColor" systemColor="linkColor" red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="titleColor" systemColor="linkColor"/>
                     </state>
                     <connections>
                         <action selector="backButtonPressed:" destination="-1" eventType="touchUpInside" id="vXS-sA-Cgp"/>
                     </connections>
                 </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Object Title" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FeE-86-JC1">
+                    <rect key="frame" x="20" y="216.5" width="374" height="20.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ID Copied!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LNh-bN-HH6">
+                    <rect key="frame" x="167" y="680" width="80" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
-            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="nd5-kh-OVh" secondAttribute="bottom" constant="198" id="1Gw-2g-gg5"/>
                 <constraint firstItem="400-3i-0We" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="9vX-00-xha"/>
                 <constraint firstItem="400-3i-0We" firstAttribute="centerY" secondItem="fnl-2z-Ty3" secondAttribute="centerY" id="BYY-Fn-nxO"/>
+                <constraint firstItem="FeE-86-JC1" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="Cwm-ea-eUl"/>
                 <constraint firstItem="r7T-1w-Dja" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="CzD-TS-olv"/>
                 <constraint firstItem="nd5-kh-OVh" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="0.6" id="DCW-kj-49x"/>
+                <constraint firstItem="FeE-86-JC1" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="GiR-qH-mml"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="FeE-86-JC1" secondAttribute="trailing" constant="20" id="JD5-dT-Dxk"/>
                 <constraint firstItem="nd5-kh-OVh" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="OZV-UH-Fgs"/>
+                <constraint firstItem="LNh-bN-HH6" firstAttribute="top" secondItem="nd5-kh-OVh" secondAttribute="bottom" constant="16" id="TwL-7j-cvH"/>
                 <constraint firstItem="r7T-1w-Dja" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="8" id="USg-Vw-Nhb"/>
+                <constraint firstItem="LNh-bN-HH6" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="sEz-a6-ZWD"/>
+                <constraint firstItem="FeE-86-JC1" firstAttribute="centerY" secondItem="fnl-2z-Ty3" secondAttribute="centerY" multiplier="0.5" id="vKy-4O-vqd"/>
             </constraints>
-            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <point key="canvasLocation" x="34.782608695652179" y="34.821428571428569"/>
         </view>
     </objects>
+    <resources>
+        <systemColor name="linkColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>

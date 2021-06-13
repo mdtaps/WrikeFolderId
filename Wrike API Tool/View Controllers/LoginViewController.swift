@@ -22,6 +22,7 @@ class LoginViewController: UIViewController, WKUIDelegate {
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        setViewVisibility()
         setLoginMessage()
     }
     

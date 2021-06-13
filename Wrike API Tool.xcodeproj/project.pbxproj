@@ -170,6 +170,7 @@
 		EA652898231F5F4300EEE5D4 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				EA52D6BE24C6A6C300C51DD3 /* LoginStatus.swift */,
 				EAF82B81266F341200313EC3 /* UIImageLoader.swift */,
 				EA60C22524BC0C7C00B3DDC5 /* ImageLoader.swift */,
 				EAF0B308266A00C20097E7FB /* AccountElementViewModel.swift */,
@@ -215,7 +216,6 @@
 		EA8131C922DAF649009D2806 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				EA52D6BE24C6A6C300C51DD3 /* LoginStatus.swift */,
 				EAAAC99422BDBA2800414284 /* StyledButton.swift */,
 			);
 			path = Views;
