@@ -14,12 +14,15 @@ class LoginStatus {
     }
     
     func setAccountTitle(completion: @escaping (_ accountName: String) -> Void ) {
-        WrikeAPINetworkClient.shared.retrieveWrikeData(for: .GetAccountData, returnType: WrikeAccountResponseObject.self) { result in
-            switch result {
-            case .Failure(with: _):
-                completion("Account Title Not Found")
-            case .Success(with: let accountData):
-                completion(accountData.data.first?.name ?? "Account Title Not Found")
+        let defaults = UserDefaults.standard
+        if defaults.authCode != nil {
+            WrikeAPINetworkClient.shared.retrieveWrikeData(for: .GetAccountData, returnType: WrikeAccountResponseObject.self) { result in
+                switch result {
+                case .Failure(with: _):
+                    completion("Account Title Not Found")
+                case .Success(with: let accountData):
+                    completion(accountData.data.first?.name ?? "Account Title Not Found")
+                }
             }
         }
     }

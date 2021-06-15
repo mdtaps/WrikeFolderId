@@ -41,6 +41,7 @@ extension LoginViewController: RefreshDelegate {
                                                                refreshDelegate: self,
                                                                title: "Spaces")
         DispatchQueue.main.async {
+            self.removeLoadingWheel()
             let vc = AccountElementsViewController(accountElementViewModel: accountElementViewModel)
             self.mainNavigationController.resetNavController(to: vc)
             

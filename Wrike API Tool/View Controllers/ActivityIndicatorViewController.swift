@@ -11,6 +11,10 @@ import UIKit
 
 class ActivityIndicatorViewController: UIViewController {
     var spinner = UIActivityIndicatorView(style: .large)
+    
+    override func viewDidLoad() {
+        spinner.color = .white
+    }
 
     override func loadView() {
         view = UIView()

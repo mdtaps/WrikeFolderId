@@ -103,7 +103,7 @@ extension AccountElementsViewController: CellClickDelegate {
                                                                       refreshDelegate: self.accountElementViewModel.refreshDelegate,
                                                                       title: wrikeObject.title)
                 let vc = AccountElementsViewController(accountElementViewModel: nextAccountElementViewModel)
-            //TODO: Remove dependency on navigation Controller
+                //TODO: Remove dependency on navigation Controller
                 self.navigationController?.pushViewController(vc, animated: true)
             }
         }
